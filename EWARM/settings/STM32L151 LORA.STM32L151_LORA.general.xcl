@@ -1,0 +1,15 @@
+"D:\IAR\arm\bin\armPROC.dll" 
+
+"D:\IAR\arm\bin\armSTLINK.dll" 
+
+"D:\Programming\LORA\STM32L151 LORA NEW SENDER\EWARM\STM32L151 LORA\Exe\STM32L151 LORA.out" 
+
+--plugin="D:\IAR\arm\bin\armbat.dll" 
+
+--device_macro="D:\IAR\arm\config\debugger\ST\STM32L1xx.dmac" 
+
+--flash_loader="D:\IAR\arm\config\flashloader\ST\FlashSTM32L15xx8.board" 
+
+
+
+

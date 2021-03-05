@@ -25,7 +25,7 @@ if not "%~1" == "" goto debugFile
 
 @echo on 
 
-"D:\IAR\common\bin\cspybat" -f "D:\Programming\LORA\STM32L151 LORA NEW SENDER\EWARM\settings\STM32L151 LORA.STM32L151_LORA.general.xcl" --backend -f "D:\Programming\LORA\STM32L151 LORA NEW SENDER\EWARM\settings\STM32L151 LORA.STM32L151_LORA.driver.xcl" 
+"D:\IAR\common\bin\cspybat" -f "D:\Programming\LORA\LORA-SX1276\EWARM\settings\STM32L151 LORA.STM32L151_LORA.general.xcl" --backend -f "D:\Programming\LORA\LORA-SX1276\EWARM\settings\STM32L151 LORA.STM32L151_LORA.driver.xcl" 
 
 @echo off 
 goto end 
@@ -34,7 +34,7 @@ goto end
 
 @echo on 
 
-"D:\IAR\common\bin\cspybat" -f "D:\Programming\LORA\STM32L151 LORA NEW SENDER\EWARM\settings\STM32L151 LORA.STM32L151_LORA.general.xcl" "--debug_file=%~1" --backend -f "D:\Programming\LORA\STM32L151 LORA NEW SENDER\EWARM\settings\STM32L151 LORA.STM32L151_LORA.driver.xcl" 
+"D:\IAR\common\bin\cspybat" -f "D:\Programming\LORA\LORA-SX1276\EWARM\settings\STM32L151 LORA.STM32L151_LORA.general.xcl" "--debug_file=%~1" --backend -f "D:\Programming\LORA\LORA-SX1276\EWARM\settings\STM32L151 LORA.STM32L151_LORA.driver.xcl" 
 
 @echo off 
 :end

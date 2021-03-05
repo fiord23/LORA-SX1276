@@ -11,7 +11,7 @@
 */
 char TX_BUF[16] = {'T','e','s','t'};
 char str[] = "Hello world!";
-uint8_t Flag=0;
+uint8_t Flag= 0;
 char str_r[16] = {0};
 
 void Lora_init (void)

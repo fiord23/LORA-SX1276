@@ -1,25 +1,25 @@
-"D:\Programming\LORA\STM32L151 LORA NEW SENDER\Core\Src\SPI1.c"
+"D:\Programming\LORA\LORA-SX1276\Core\Src\SPI1.c"
 -std=c11
 -ferror-limit=0
 -fbracket-depth=512
 -funsigned-char
 -MD
 -MF
-D:\Programming\LORA\STM32L151 LORA NEW SENDER\EWARM\STM32L151 LORA\BrowseInfo\Application\User\Core\SPI1.pbi.dep
+D:\Programming\LORA\LORA-SX1276\EWARM\STM32L151 LORA\BrowseInfo\Application\User\Core\SPI1.pbi.dep
 -o
-D:\Programming\LORA\STM32L151 LORA NEW SENDER\EWARM\STM32L151 LORA\BrowseInfo\Application\User\Core\SPI1.pbi
+D:\Programming\LORA\LORA-SX1276\EWARM\STM32L151 LORA\BrowseInfo\Application\User\Core\SPI1.pbi
 -I
-D:\Programming\LORA\STM32L151 LORA NEW SENDER\Core\Src
+D:\Programming\LORA\LORA-SX1276\Core\Src
 -I
-D:\Programming\LORA\STM32L151 LORA NEW SENDER\EWARM/../Core/Inc\
+D:\Programming\LORA\LORA-SX1276\EWARM/../Core/Inc
 -I
-D:\Programming\LORA\STM32L151 LORA NEW SENDER\EWARM/../Drivers/STM32L1xx_HAL_Driver/Inc\
+D:\Programming\LORA\LORA-SX1276\EWARM/../Drivers/STM32L1xx_HAL_Driver/Inc
 -I
-D:\Programming\LORA\STM32L151 LORA NEW SENDER\EWARM/../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy\
+D:\Programming\LORA\LORA-SX1276\EWARM/../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy
 -I
-D:\Programming\LORA\STM32L151 LORA NEW SENDER\EWARM/../Drivers/CMSIS/Device/ST/STM32L1xx/Include\
+D:\Programming\LORA\LORA-SX1276\EWARM/../Drivers/CMSIS/Device/ST/STM32L1xx/Include
 -I
-D:\Programming\LORA\STM32L151 LORA NEW SENDER\EWARM/../Drivers/CMSIS/Include\
+D:\Programming\LORA\LORA-SX1276\EWARM/../Drivers/CMSIS/Include
 -I
 D:\IAR\arm\inc\c\aarch32
 -I
@@ -27,15 +27,15 @@ D:\IAR\arm\inc
 -I
 D:\IAR\arm\inc\c
 -I
-D:\Programming\LORA\STM32L151 LORA NEW SENDER\Core\Inc
+D:\Programming\LORA\LORA-SX1276\Core\Inc
 -I
-D:\Programming\LORA\STM32L151 LORA NEW SENDER\Drivers\STM32L1xx_HAL_Driver\Inc
+D:\Programming\LORA\LORA-SX1276\Drivers\STM32L1xx_HAL_Driver\Inc
 -I
-D:\Programming\LORA\STM32L151 LORA NEW SENDER\Drivers\STM32L1xx_HAL_Driver\Inc\Legacy
+D:\Programming\LORA\LORA-SX1276\Drivers\STM32L1xx_HAL_Driver\Inc\Legacy
 -I
-D:\Programming\LORA\STM32L151 LORA NEW SENDER\Drivers\CMSIS\Device\ST\STM32L1xx\Include
+D:\Programming\LORA\LORA-SX1276\Drivers\CMSIS\Device\ST\STM32L1xx\Include
 -I
-D:\Programming\LORA\STM32L151 LORA NEW SENDER\Drivers\CMSIS\Include
+D:\Programming\LORA\LORA-SX1276\Drivers\CMSIS\Include
 -D__CHAR_BITS__=8
 -D__CHAR_MAX__=0xff
 -D__CHAR_MIN__=0

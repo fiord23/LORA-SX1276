@@ -23,9 +23,9 @@
 
 if ($debugfile -eq "")
 {
-& "D:\IAR\common\bin\cspybat" -f "D:\Programming\LORA\STM32L151 LORA NEW SENDER\EWARM\settings\STM32L151 LORA.STM32L151_LORA.general.xcl" --backend -f "D:\Programming\LORA\STM32L151 LORA NEW SENDER\EWARM\settings\STM32L151 LORA.STM32L151_LORA.driver.xcl" 
+& "D:\IAR\common\bin\cspybat" -f "D:\Programming\LORA\LORA-SX1276\EWARM\settings\STM32L151 LORA.STM32L151_LORA.general.xcl" --backend -f "D:\Programming\LORA\LORA-SX1276\EWARM\settings\STM32L151 LORA.STM32L151_LORA.driver.xcl" 
 }
 else
 {
-& "D:\IAR\common\bin\cspybat" -f "D:\Programming\LORA\STM32L151 LORA NEW SENDER\EWARM\settings\STM32L151 LORA.STM32L151_LORA.general.xcl" --debug_file=$debugfile --backend -f "D:\Programming\LORA\STM32L151 LORA NEW SENDER\EWARM\settings\STM32L151 LORA.STM32L151_LORA.driver.xcl" 
+& "D:\IAR\common\bin\cspybat" -f "D:\Programming\LORA\LORA-SX1276\EWARM\settings\STM32L151 LORA.STM32L151_LORA.general.xcl" --debug_file=$debugfile --backend -f "D:\Programming\LORA\LORA-SX1276\EWARM\settings\STM32L151 LORA.STM32L151_LORA.driver.xcl" 
 }

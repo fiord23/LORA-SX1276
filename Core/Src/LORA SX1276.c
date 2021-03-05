@@ -84,17 +84,18 @@ void Lora_init (void)
 void Lora_transmit (void)
 {
 #ifdef TRANSMITTER
-  SPI_Write_a(REG_DIO_MAPPING_1,	RFLR_DIOMAPPING1_DIO0_01); //0xC0 0x40  
+  SPI_Write_a(REG_DIO_MAPPING_1, RFLR_DIOMAPPING1_DIO0_01); //0xC0 0x40  
   SPI_Write_a(REG_SYNC_WORD,0x12);	//0xB9 0x12
   SPI_Write_a(REG_OP_MODE,MODE_STDBY|0x80); // 0x81 0x81
   SPI_Write_a(REG_FIFO_ADDR_PTR,0x80); //0x8D 0x80
   SPI_Write_a(REG_PAYLOAD_LENGTH, sizeof(TX_BUF)/ sizeof(char));
   for ( uint8_t i = 0; i < (sizeof(TX_BUF)/ sizeof(char)); i++ )
     SPI_Write_a(REG_FIFO, TX_BUF[i]);
+  
   SPI_Write_a(REG_PAYLOAD_LENGTH, sizeof(TX_BUF)/ sizeof(char));
   SPI_Write_a(REG_OP_MODE,MODE_TX|0x80); //0x81 0x83
   while( SPI_Read_b(REG_IRQ_FLAGS) != 0x08)
-  led_green_high();
+    led_green_high();
   SPI_Write_a(REG_IRQ_FLAGS, 0x08); //0x92 -> 0x08
   HAL_Delay(300);
   led_green_low();     
@@ -103,11 +104,11 @@ void Lora_transmit (void)
 #endif
 
 #ifdef RECIEVER
-      //  while( SPI_Read_b(REG_IRQ_FLAGS) != 0x50)/
+
  while ( (GPIOA->IDR & GPIO_IDR_IDR_15) == 0 ); 
-          led_redmain_high();
+        led_redmain_high();
         HAL_Delay(300);
-          led_redmain_low(); 
+        led_redmain_low(); 
           
 
       

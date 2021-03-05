@@ -110,9 +110,6 @@ void Lora_transmit (void)
         HAL_Delay(300);
         led_redmain_low(); 
           
-
-      
-
 	SPI_Read_b(REG_RX_NB_BYTES);
 	SPI_Read_b(REG_PKT_RSSI_VALUE);
 	SPI_Read_b(REG_PKT_SNR_VALUE);

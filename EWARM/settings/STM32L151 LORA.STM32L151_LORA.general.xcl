@@ -1,14 +1,14 @@
-"D:\IAR\arm\bin\armPROC.dll" 
+"C:\Program Files\IAR Systems\Embedded Workbench 9.0\arm\bin\armPROC.dll" 
 
-"D:\IAR\arm\bin\armSTLINK.dll" 
+"C:\Program Files\IAR Systems\Embedded Workbench 9.0\arm\bin\armSTLINK.dll" 
 
-"D:\Programming\LORA\STM32L151 LORA NEW SENDER\EWARM\STM32L151 LORA\Exe\STM32L151 LORA.out" 
+"D:\Work\Programming\LORA\LORA SX1276\EWARM\STM32L151 LORA\Exe\STM32L151 LORA.out" 
 
---plugin="D:\IAR\arm\bin\armbat.dll" 
+--plugin="C:\Program Files\IAR Systems\Embedded Workbench 9.0\arm\bin\armbat.dll" 
 
---device_macro="D:\IAR\arm\config\debugger\ST\STM32L1xx.dmac" 
+--device_macro="C:\Program Files\IAR Systems\Embedded Workbench 9.0\arm\config\debugger\ST\STM32L1xx.dmac" 
 
---flash_loader="D:\IAR\arm\config\flashloader\ST\FlashSTM32L15xx8.board" 
+--flash_loader="C:\Program Files\IAR Systems\Embedded Workbench 9.0\arm\config\flashloader\ST\FlashSTM32L15xx8.board" 
 
 
 

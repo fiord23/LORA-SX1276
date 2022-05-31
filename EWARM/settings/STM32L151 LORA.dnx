@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <settings>
     <StLinkDriver>
-        <stlinkserialNo>0672FF495150807567024039</stlinkserialNo>
+        <stlinkserialNo>066DFF535254887767175048</stlinkserialNo>
         <stlinkfoundProbes />
+        <LeaveTargetRunning>_ 0</LeaveTargetRunning>
+        <CStepIntDis>_ 0</CStepIntDis>
         <stlinkResetStyle>0</stlinkResetStyle>
         <stlinkResetStrategy>2</stlinkResetStrategy>
-        <CStepIntDis>_ 0</CStepIntDis>
-        <LeaveTargetRunning>_ 0</LeaveTargetRunning>
     </StLinkDriver>
     <DebugChecksum>
-        <Checksum>3809789787</Checksum>
+        <Checksum>1339297918</Checksum>
     </DebugChecksum>
     <Exceptions>
         <StopOnUncaught>_ 0</StopOnUncaught>
@@ -59,6 +59,18 @@
     <watch_formats>
         <Fmt0>{W}42:str_r[0]	5	0</Fmt0>
     </watch_formats>
+    <PlDriver>
+        <FirstRun>0</FirstRun>
+        <MemConfigValue>C:\Program Files\IAR Systems\Embedded Workbench 9.0\arm\CONFIG\debugger\ST\STM32L151C8.ddf</MemConfigValue>
+    </PlDriver>
+    <Trace1>
+        <Enabled>0</Enabled>
+        <ShowSource>1</ShowSource>
+    </Trace1>
+    <ArmDriver>
+        <EnableCache>0</EnableCache>
+        <EnforceMemoryConfiguration>1</EnforceMemoryConfiguration>
+    </ArmDriver>
     <Trace2>
         <Enabled>0</Enabled>
         <ShowSource>0</ShowSource>
@@ -74,21 +86,24 @@
         <EventSLEEP>0</EventSLEEP>
     </SWOTraceWindow>
     <DataLog>
-        <LogEnabled>0</LogEnabled>
         <GraphEnabled>0</GraphEnabled>
+        <LogEnabled>0</LogEnabled>
         <ShowTimeLog>1</ShowTimeLog>
         <SumEnabled>0</SumEnabled>
         <ShowTimeSum>1</ShowTimeSum>
     </DataLog>
     <InterruptLog>
-        <LogEnabled>0</LogEnabled>
         <GraphEnabled>0</GraphEnabled>
+        <LogEnabled>0</LogEnabled>
         <ShowTimeLog>1</ShowTimeLog>
         <SumEnabled>0</SumEnabled>
         <ShowTimeSum>1</ShowTimeSum>
         <SumSortOrder>0</SumSortOrder>
     </InterruptLog>
     <EventLog>
+        <GraphEnabled>0</GraphEnabled>
+        <LogEnabled>0</LogEnabled>
+        <ShowTimeLog>1</ShowTimeLog>
         <Title_0>Ch3</Title_0>
         <Symbol_0>0 0 1</Symbol_0>
         <Title_1>Ch2</Title_1>
@@ -97,9 +112,6 @@
         <Symbol_2>0 0 1</Symbol_2>
         <Title_3>Ch0</Title_3>
         <Symbol_3>0 0 1</Symbol_3>
-        <LogEnabled>0</LogEnabled>
-        <GraphEnabled>0</GraphEnabled>
-        <ShowTimeLog>1</ShowTimeLog>
         <SumEnabled>0</SumEnabled>
         <ShowTimeSum>1</ShowTimeSum>
         <SumSortOrder>0</SumSortOrder>
@@ -108,11 +120,6 @@
         <LoggingEnabled>_ 0</LoggingEnabled>
         <LogFile>_ ""</LogFile>
     </TermIOLog>
-    <LogFile>
-        <LoggingEnabled>_ 0</LoggingEnabled>
-        <LogFile>_ ""</LogFile>
-        <Category>_ 0</Category>
-    </LogFile>
     <DriverProfiling>
         <Enabled>0</Enabled>
         <Mode>3</Mode>
@@ -126,6 +133,11 @@
     <CallStackStripe>
         <ShowTiming>1</ShowTiming>
     </CallStackStripe>
+    <LogFile>
+        <LoggingEnabled>_ 0</LoggingEnabled>
+        <LogFile>_ ""</LogFile>
+        <Category2>_ 0</Category2>
+    </LogFile>
     <DisassembleMode>
         <mode>0</mode>
     </DisassembleMode>

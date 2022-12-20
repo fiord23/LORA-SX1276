@@ -891,7 +891,7 @@
                     <item>str_r[0]</item>
                     <item>str_r[1]</item>
                     <item>str_r</item>
-                    <item></item>
+                    <item />
                 </expressions>
                 <col-names>
                     <item>Expression</item>

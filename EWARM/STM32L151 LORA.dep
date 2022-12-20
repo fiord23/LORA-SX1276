@@ -5,242 +5,98 @@
     <configuration>
         <name>STM32L151 LORA</name>
         <outputs>
+            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_flash.c</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_pwr.c</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_flash_ramfunc.c</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_flash_ex.c</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_gpio.c</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_pwr_ex.c</file>
+            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_exti.o</file>
+            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal.o</file>
+            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_flash_ramfunc.o</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_flash.h</file>
+            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Application\User\Core\SPI1.o</file>
+            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_pwr_ex.o</file>
+            <file>$TOOLKIT_DIR$\inc\c\aarch32\iccarm_builtin.h</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_def.h</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_rcc.h</file>
+            <file>$PROJ_DIR$\..\Core\Inc\stm32l1xx_it.h</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal.h</file>
+            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_pwr.o</file>
+            <file>$TOOLKIT_DIR$\inc\c\yvals.h</file>
+            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_cortex.o</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_flash_ex.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\DLib_Defaults.h</file>
+            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Drivers\CMSIS\system_stm32l1xx.o</file>
+            <file>$PROJ_DIR$\..\Drivers\CMSIS\Include\cmsis_compiler.h</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_exti.h</file>
+            <file>$PROJ_DIR$\..\Drivers\CMSIS\Device\ST\STM32L1xx\Include\system_stm32l1xx.h</file>
+            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_flash_ex.o</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_dma.h</file>
+            <file>$PROJ_DIR$\..\Drivers\CMSIS\Include\mpu_armv7.h</file>
+            <file>$PROJ_DIR$\STM32L151 LORA\Exe\STM32L151 LORA.hex</file>
+            <file>$PROJ_DIR$\..\Drivers\CMSIS\Include\cmsis_iccarm.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\stdbool.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\stddef.h</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_cortex.h</file>
+            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_rcc.o</file>
+            <file>$PROJ_DIR$\STM32L151 LORA\Exe\STM32L151 LORA.out</file>
+            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Application\User\Core\stm32l1xx_hal_msp.o</file>
+            <file>$PROJ_DIR$\..\Drivers\CMSIS\Include\core_cm3.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\stdint.h</file>
+            <file>$PROJ_DIR$\..\Core\Inc\stm32l1xx_hal_conf.h</file>
+            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_rcc_ex.o</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_flash_ramfunc.h</file>
+            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Application\User\Core\main.o</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_tim_ex.c</file>
+            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_tim.o</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_gpio.h</file>
+            <file>$TOOLKIT_DIR$\lib\dl7M_tln.a</file>
+            <file>$PROJ_DIR$\STM32L151 LORA\List\STM32L151 LORA.map</file>
             <file>$PROJ_DIR$\STM32L151 LORA\Obj\Application\User\Core\stm32l1xx_it.o</file>
+            <file>$TOOLKIT_DIR$\lib\m7M_tl.a</file>
+            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Application\EWARM\startup_stm32l151xb.o.rsp</file>
             <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_pwr_ex.h</file>
+            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Application\User\Core\LORA SX1276.o</file>
+            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_dma.o</file>
+            <file>$TOOLKIT_DIR$\lib\shb_l.a</file>
+            <file>$TOOLKIT_DIR$\inc\c\ycheck.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\DLib_Config_Full.h</file>
+            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_flash.o</file>
+            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_gpio.o</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Inc\Legacy\stm32_hal_legacy.h</file>
+            <file>$PROJ_DIR$\..\Drivers\CMSIS\Include\cmsis_version.h</file>
+            <file>$TOOLKIT_DIR$\lib\rt7M_tl.a</file>
+            <file>$PROJ_DIR$\stm32l151xb_flash.icf</file>
+            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_tim_ex.o</file>
+            <file>$PROJ_DIR$\..\Drivers\CMSIS\Device\ST\STM32L1xx\Include\stm32l151xb.h</file>
+            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Application\EWARM\startup_stm32l151xb.o</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_rcc_ex.c</file>
+            <file>$PROJ_DIR$\..\Core\Inc\main.h</file>
+            <file>$PROJ_DIR$\..\Drivers\CMSIS\Device\ST\STM32L1xx\Include\stm32l1xx.h</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_rcc.c</file>
+            <file>$TOOLKIT_DIR$\inc\c\DLib_Product.h</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_gpio_ex.h</file>
             <file>$TOOLKIT_DIR$\inc\c\ysizet.h</file>
             <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_rcc_ex.h</file>
-            <file>$TOOLKIT_DIR$\inc\c\DLib_Config_Full.h</file>
-            <file>$TOOLKIT_DIR$\lib\m7M_tl.a</file>
-            <file>$TOOLKIT_DIR$\inc\c\stdint.h</file>
-            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_pwr.h</file>
-            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_gpio_ex.h</file>
-            <file>$TOOLKIT_DIR$\inc\c\DLib_Product.h</file>
-            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_flash_ramfunc.h</file>
-            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_rcc.h</file>
-            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_flash.h</file>
-            <file>$PROJ_DIR$\stm32l151xb_flash.icf</file>
-            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_gpio.h</file>
-            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_flash_ex.h</file>
-            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Application\EWARM\startup_stm32l151xb.o.rsp</file>
-            <file>$TOOLKIT_DIR$\lib\dl7M_tln.a</file>
-            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_tim_ex.c</file>
-            <file>$TOOLKIT_DIR$\lib\rt7M_tl.a</file>
-            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_pwr_ex.c</file>
-            <file>$TOOLKIT_DIR$\lib\shb_l.a</file>
-            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Application\User\Core\main.o</file>
-            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Application\User\Core\LORA SX1276.o</file>
-            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_rcc.c</file>
-            <file>$PROJ_DIR$\..\Core\Src\system_stm32l1xx.c</file>
-            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Application\User\Core\SPI1.o</file>
-            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal.c</file>
-            <file>$PROJ_DIR$\..\Core\Inc\stm32l1xx_it.h</file>
-            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_exti.c</file>
-            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_flash.c</file>
-            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_flash_ramfunc.c</file>
             <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_tim.c</file>
-            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_flash_ex.c</file>
-            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_dma.c</file>
-            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_gpio.c</file>
-            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_pwr.c</file>
-            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_cortex.c</file>
-            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_rcc_ex.c</file>
-            <file>$PROJ_DIR$\..\Core\Src\main.c</file>
-            <file>$PROJ_DIR$\..\Core\Src\SPI1.c</file>
-            <file>$PROJ_DIR$\..\Core\Inc\SPI1.h</file>
-            <file>$PROJ_DIR$\..\Core\Src\stm32l1xx_it.c</file>
-            <file>$PROJ_DIR$\startup_stm32l151xb.s</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_pwr.h</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_exti.c</file>
             <file>$PROJ_DIR$\..\Core\Src\LORA SX1276.c</file>
             <file>$PROJ_DIR$\..\Core\Src\stm32l1xx_hal_msp.c</file>
+            <file>$PROJ_DIR$\..\Core\Src\stm32l1xx_it.c</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_dma.c</file>
+            <file>$PROJ_DIR$\..\Core\Src\SPI1.c</file>
+            <file>$PROJ_DIR$\startup_stm32l151xb.s</file>
             <file>$PROJ_DIR$\..\Core\Inc\LORA SX1276.h</file>
-            <file>$TOOLKIT_DIR$\inc\c\aarch32\iccarm_builtin.h</file>
-            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_pwr.o</file>
-            <file>$TOOLKIT_DIR$\inc\c\ycheck.h</file>
-            <file>$TOOLKIT_DIR$\inc\c\DLib_Defaults.h</file>
-            <file>$PROJ_DIR$\..\Drivers\CMSIS\Device\ST\STM32L1xx\Include\stm32l151xb.h</file>
-            <file>$PROJ_DIR$\..\Drivers\CMSIS\Include\cmsis_compiler.h</file>
-            <file>$PROJ_DIR$\..\Drivers\CMSIS\Include\cmsis_iccarm.h</file>
-            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Application\EWARM\startup_stm32l151xb.o</file>
-            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_cortex.h</file>
-            <file>$PROJ_DIR$\..\Drivers\CMSIS\Include\mpu_armv7.h</file>
-            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_flash_ex.o</file>
-            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_flash_ramfunc.o</file>
-            <file>$TOOLKIT_DIR$\inc\c\stddef.h</file>
-            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal.h</file>
-            <file>$TOOLKIT_DIR$\inc\c\yvals.h</file>
-            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_dma.h</file>
-            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_exti.h</file>
-            <file>$TOOLKIT_DIR$\inc\c\stdbool.h</file>
-            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_pwr_ex.o</file>
-            <file>$PROJ_DIR$\STM32L151 LORA\Exe\STM32L151 LORA.hex</file>
-            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_exti.o</file>
-            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Drivers\CMSIS\system_stm32l1xx.o</file>
-            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal.o</file>
-            <file>$PROJ_DIR$\..\Drivers\CMSIS\Device\ST\STM32L1xx\Include\system_stm32l1xx.h</file>
-            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_def.h</file>
-            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_cortex.o</file>
-            <file>$PROJ_DIR$\..\Core\Inc\main.h</file>
-            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_rcc_ex.o</file>
-            <file>$PROJ_DIR$\..\Drivers\CMSIS\Device\ST\STM32L1xx\Include\stm32l1xx.h</file>
-            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_flash.o</file>
-            <file>$PROJ_DIR$\..\Drivers\CMSIS\Include\core_cm3.h</file>
-            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Application\User\Core\stm32l1xx_hal_msp.o</file>
-            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Inc\Legacy\stm32_hal_legacy.h</file>
-            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_rcc.o</file>
-            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_tim.o</file>
-            <file>$PROJ_DIR$\STM32L151 LORA\Exe\STM32L151 LORA.out</file>
-            <file>$PROJ_DIR$\STM32L151 LORA\List\STM32L151 LORA.map</file>
-            <file>$PROJ_DIR$\..\Core\Inc\stm32l1xx_hal_conf.h</file>
-            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_tim_ex.o</file>
-            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_dma.o</file>
-            <file>$PROJ_DIR$\..\Drivers\CMSIS\Include\cmsis_version.h</file>
-            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_gpio.o</file>
+            <file>$PROJ_DIR$\..\Core\Src\main.c</file>
+            <file>$PROJ_DIR$\..\Core\Inc\SPI1.h</file>
+            <file>$PROJ_DIR$\..\Core\Src\system_stm32l1xx.c</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal.c</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_cortex.c</file>
         </outputs>
         <file>
-            <name>[ROOT_NODE]</name>
-            <outputs>
-                <tool>
-                    <name>ILINK</name>
-                    <file> 82 83</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_tim_ex.c</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 85</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 4 50 9 47 59 6 49 2 61 84 51 75 70 52 53 87 77 56 79 60 55 71 62 63 12 15 10 14 8 7 1 11 3</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_pwr_ex.c</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 65</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 4 50 9 47 59 6 49 2 61 84 51 75 70 52 53 87 77 56 79 60 55 71 62 63 12 15 10 14 8 7 1 11 3</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_rcc.c</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 80</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 4 50 9 47 59 6 49 2 61 84 51 75 70 52 53 87 77 56 79 60 55 71 62 63 12 15 10 14 8 7 1 11 3</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\Core\Src\system_stm32l1xx.c</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 68</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 4 50 9 47 59 6 49 2 61 84 51 75 70 52 53 87 77 56 79 60 55 71 62 63 12 15 10 14 8 7 1 11 3</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal.c</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 69</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 4 50 9 47 59 6 49 2 61 84 51 75 70 52 53 87 77 56 79 60 55 71 62 63 12 15 10 14 8 7 1 11 3</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_exti.c</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 67</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 4 50 9 47 59 6 49 2 61 84 51 75 70 52 53 87 77 56 79 60 55 71 62 63 12 15 10 14 8 7 1 11 3</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
             <name>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_flash.c</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 76</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 4 50 9 47 59 6 49 2 61 84 51 75 70 52 53 87 77 56 79 60 55 71 62 63 12 15 10 14 8 7 1 11 3</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_flash_ramfunc.c</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 58</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 4 50 9 47 59 6 49 2 61 84 51 75 70 52 53 87 77 56 79 60 55 71 62 63 12 15 10 14 8 7 1 11 3</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_tim.c</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 81</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 4 50 9 47 59 6 49 2 61 84 51 75 70 52 53 87 77 56 79 60 55 71 62 63 12 15 10 14 8 7 1 11 3</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_flash_ex.c</name>
             <outputs>
                 <tool>
                     <name>ICCARM</name>
@@ -250,37 +106,7 @@
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 4 50 9 47 59 6 49 2 61 84 51 75 70 52 53 87 77 56 79 60 55 71 62 63 12 15 10 14 8 7 1 11 3</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_dma.c</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 86</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 4 50 9 47 59 6 49 2 61 84 51 75 70 52 53 87 77 56 79 60 55 71 62 63 12 15 10 14 8 7 1 11 3</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_gpio.c</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 88</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 4 50 9 47 59 6 49 2 61 84 51 75 70 52 53 87 77 56 79 60 55 71 62 63 12 15 10 14 8 7 1 11 3</file>
+                    <file> 56 21 70 12 32 38 55 72 18 39 64 68 25 23 30 60 37 28 59 16 33 13 27 24 9 20 41 45 71 75 51 14 73</file>
                 </tool>
             </inputs>
         </file>
@@ -289,63 +115,33 @@
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 48</file>
+                    <file> 17</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 4 50 9 47 59 6 49 2 61 84 51 75 70 52 53 87 77 56 79 60 55 71 62 63 12 15 10 14 8 7 1 11 3</file>
+                    <file> 56 21 70 12 32 38 55 72 18 39 64 68 25 23 30 60 37 28 59 16 33 13 27 24 9 20 41 45 71 75 51 14 73</file>
                 </tool>
             </inputs>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_cortex.c</name>
+            <name>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_flash_ramfunc.c</name>
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 72</file>
+                    <file> 8</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 4 50 9 47 59 6 49 2 61 84 51 75 70 52 53 87 77 56 79 60 55 71 62 63 12 15 10 14 8 7 1 11 3</file>
+                    <file> 56 21 70 12 32 38 55 72 18 39 64 68 25 23 30 60 37 28 59 16 33 13 27 24 9 20 41 45 71 75 51 14 73</file>
                 </tool>
             </inputs>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_rcc_ex.c</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 74</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 4 50 9 47 59 6 49 2 61 84 51 75 70 52 53 87 77 56 79 60 55 71 62 63 12 15 10 14 8 7 1 11 3</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\Core\Src\main.c</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 22</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 4 50 9 47 64 59 6 49 2 61 46 41 73 84 51 75 70 52 53 87 77 56 79 60 55 71 62 63 12 15 10 14 8 7 1 11 3</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\Core\Src\SPI1.c</name>
+            <name>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_flash_ex.c</name>
             <outputs>
                 <tool>
                     <name>ICCARM</name>
@@ -355,76 +151,55 @@
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 4 50 9 47 59 6 49 2 61 41 73 84 51 75 70 52 53 87 77 56 79 60 55 71 62 63 12 15 10 14 8 7 1 11 3</file>
+                    <file> 56 21 70 12 32 38 55 72 18 39 64 68 25 23 30 60 37 28 59 16 33 13 27 24 9 20 41 45 71 75 51 14 73</file>
                 </tool>
             </inputs>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\Core\Src\stm32l1xx_it.c</name>
+            <name>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_gpio.c</name>
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 0</file>
+                    <file> 58</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 4 50 9 47 59 6 49 2 61 73 84 28 51 75 70 52 53 87 77 56 79 60 55 71 62 63 12 15 10 14 8 7 1 11 3</file>
+                    <file> 56 21 70 12 32 38 55 72 18 39 64 68 25 23 30 60 37 28 59 16 33 13 27 24 9 20 41 45 71 75 51 14 73</file>
                 </tool>
             </inputs>
         </file>
         <file>
-            <name>$PROJ_DIR$\startup_stm32l151xb.s</name>
-            <outputs>
-                <tool>
-                    <name>AARM</name>
-                    <file> 54</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>AARM</name>
-                    <file> 16</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\Core\Src\LORA SX1276.c</name>
+            <name>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_pwr_ex.c</name>
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 23</file>
+                    <file> 11</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 4 50 9 47 64 59 6 49 2 61 46 41 73 84 51 75 70 52 53 87 77 56 79 60 55 71 62 63 12 15 10 14 8 7 1 11 3</file>
+                    <file> 56 21 70 12 32 38 55 72 18 39 64 68 25 23 30 60 37 28 59 16 33 13 27 24 9 20 41 45 71 75 51 14 73</file>
                 </tool>
             </inputs>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\Core\Src\stm32l1xx_hal_msp.c</name>
+            <name>[ROOT_NODE]</name>
             <outputs>
                 <tool>
-                    <name>ICCARM</name>
-                    <file> 78</file>
+                    <name>ILINK</name>
+                    <file> 35 47</file>
                 </tool>
             </outputs>
-            <inputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 4 50 9 47 59 6 49 2 61 73 84 51 75 70 52 53 87 77 56 79 60 55 71 62 63 12 15 10 14 8 7 1 11 3</file>
-                </tool>
-            </inputs>
         </file>
         <file>
             <name>$PROJ_DIR$\STM32L151 LORA\Exe\STM32L151 LORA.hex</name>
             <inputs>
                 <tool>
                     <name>OBJCOPY</name>
-                    <file> 82</file>
+                    <file> 35</file>
                 </tool>
             </inputs>
         </file>
@@ -433,17 +208,242 @@
             <outputs>
                 <tool>
                     <name>ILINK</name>
-                    <file> 83</file>
+                    <file> 47</file>
                 </tool>
                 <tool>
                     <name>OBJCOPY</name>
-                    <file> 66</file>
+                    <file> 29</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ILINK</name>
-                    <file> 17 5 19 21 13 54 23 26 22 78 0 68 69 72 86 67 76 57 58 88 48 65 80 74 81 85</file>
+                    <file> 46 49 61 54 62 65 52 10 42 36 48 22 7 19 53 6 57 26 8 58 17 11 34 40 44 63</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_tim_ex.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 63</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 56 21 70 12 32 38 55 72 18 39 64 68 25 23 30 60 37 28 59 16 33 13 27 24 9 20 41 45 71 75 51 14 73</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_rcc_ex.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 40</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 56 21 70 12 32 38 55 72 18 39 64 68 25 23 30 60 37 28 59 16 33 13 27 24 9 20 41 45 71 75 51 14 73</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_rcc.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 34</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 56 21 70 12 32 38 55 72 18 39 64 68 25 23 30 60 37 28 59 16 33 13 27 24 9 20 41 45 71 75 51 14 73</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_tim.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 44</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 56 21 70 12 32 38 55 72 18 39 64 68 25 23 30 60 37 28 59 16 33 13 27 24 9 20 41 45 71 75 51 14 73</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_exti.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 6</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 56 21 70 12 32 38 55 72 18 39 64 68 25 23 30 60 37 28 59 16 33 13 27 24 9 20 41 45 71 75 51 14 73</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\Core\Src\LORA SX1276.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 52</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 56 21 70 12 31 32 38 55 72 18 83 85 67 39 64 68 25 23 30 60 37 28 59 16 33 13 27 24 9 20 41 45 71 75 51 14 73</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\Core\Src\stm32l1xx_hal_msp.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 36</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 56 21 70 12 32 38 55 72 18 67 39 64 68 25 23 30 60 37 28 59 16 33 13 27 24 9 20 41 45 71 75 51 14 73</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\Core\Src\stm32l1xx_it.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 48</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 56 21 70 12 32 38 55 72 18 67 39 15 64 68 25 23 30 60 37 28 59 16 33 13 27 24 9 20 41 45 71 75 51 14 73</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_dma.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 53</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 56 21 70 12 32 38 55 72 18 39 64 68 25 23 30 60 37 28 59 16 33 13 27 24 9 20 41 45 71 75 51 14 73</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\Core\Src\SPI1.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 10</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 56 21 70 12 32 38 55 72 18 85 67 39 64 68 25 23 30 60 37 28 59 16 33 13 27 24 9 20 41 45 71 75 51 14 73</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\startup_stm32l151xb.s</name>
+            <outputs>
+                <tool>
+                    <name>AARM</name>
+                    <file> 65</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>AARM</name>
+                    <file> 50</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\Core\Src\main.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 42</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 56 21 70 12 31 32 38 55 72 18 83 85 67 39 64 68 25 23 30 60 37 28 59 16 33 13 27 24 9 20 41 45 71 75 51 14 73</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\Core\Src\system_stm32l1xx.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 22</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 56 21 70 12 32 38 55 72 18 39 64 68 25 23 30 60 37 28 59 16 33 13 27 24 9 20 41 45 71 75 51 14 73</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 7</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 56 21 70 12 32 38 55 72 18 39 64 68 25 23 30 60 37 28 59 16 33 13 27 24 9 20 41 45 71 75 51 14 73</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_cortex.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 19</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 56 21 70 12 32 38 55 72 18 39 64 68 25 23 30 60 37 28 59 16 33 13 27 24 9 20 41 45 71 75 51 14 73</file>
                 </tool>
             </inputs>
         </file>

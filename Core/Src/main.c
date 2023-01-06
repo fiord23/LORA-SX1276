@@ -33,6 +33,8 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+    #define RECIEVER
+//#define TRANSMITTER
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -103,12 +105,18 @@ int main(void)
   while (1)
   {
 
-     
-    //if(flag == 1 )
-    //{
+#ifdef TRANSMITTER
+    if(flag == 1 )
+      {
+#endif
+    
     Lora_transmit();
-  //  flag = 0;
-  //  }
+ #ifdef TRANSMITTER
+    flag = 0;
+      }
+#endif
+  //  
+    
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -182,7 +190,6 @@ void EXTI0_IRQHandler(void)																				{
 	{
           EXTI->PR |= EXTI_PR_PIF0;
           flag = 1;
-
 	}
 }
 #ifdef  USE_FULL_ASSERT

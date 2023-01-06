@@ -2,7 +2,7 @@
 #include "LORA SX1276.h"
 #include "SPI1.h"
 #include <stdbool.h>
-#define RECIEVER
+//#define RECIEVER
 //#define TRANSMITTER
 /* Lora Config
 * (1) - Reset
@@ -55,7 +55,7 @@ void Lora_init (void)
    SPI_Write_a(REG_OCP, 0x31); //new
    SPI_Write_a(REG_PA_CONFIG, 0x8F); //new
    SPI_Write_a(REG_MODEM_CONFIG_1, 0x72); //new from 3 works
-   SPI_Write_a(REG_MODEM_CONFIG_2, 0xC0);  // SF12
+   SPI_Write_a(REG_MODEM_CONFIG_2, 0xC4);  // SF12
    SPI_Write_a(REG_MODEM_CONFIG_3, 0x04); //new
    SPI_Write_a(REG_OP_MODE, 0x81); //new
    /* ------------- Stnadby Mode -----------------*/

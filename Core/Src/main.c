@@ -24,6 +24,8 @@
 /* USER CODE BEGIN Includes */
 #include "SPI1.h"
 #include "LORA SX1276.h" 
+    
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -33,8 +35,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-    #define RECIEVER
-//#define TRANSMITTER
+
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/

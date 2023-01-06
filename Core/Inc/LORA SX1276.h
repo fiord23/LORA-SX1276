@@ -5,7 +5,8 @@
 #include "main.h"
 #include <stdbool.h>
 #include "SPI1.h"
-
+    //#define RECIEVER
+#define TRANSMITTER
 
 #define Lora_reset_low()   (GPIOA->BSRR |=  GPIO_BSRR_BR_1) /* PA1 = 0  CS LOW*/ 
 #define Lora_reset_high() (GPIOA->BSRR |=  GPIO_BSRR_BS_1) /* PA1 = 1 CS HIGH*/

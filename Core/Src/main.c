@@ -102,29 +102,13 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-     led_red_high();
-    HAL_Delay(500);
-    led_red_low();
-     HAL_Delay(500);
+
      
-     led_blue_high();
-     HAL_Delay(500);
-     led_blue_low();
-     HAL_Delay(500);
-     led_green_high();
-     HAL_Delay(500);
-     led_green_low();
-     HAL_Delay(500);
-     led_redmain_high();
-     HAL_Delay(500);
-     led_redmain_low();
-     HAL_Delay(500);
-     
-    if(flag == 1 )
-    {
+    //if(flag == 1 )
+    //{
     Lora_transmit();
-    flag = 0;
-    }
+  //  flag = 0;
+  //  }
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

@@ -2,8 +2,8 @@
 #include "LORA SX1276.h"
 #include "SPI1.h"
 #include <stdbool.h>
-//#define RECIEVER
-#define TRANSMITTER
+#define RECIEVER
+//#define TRANSMITTER
 /* Lora Config
 * (1) - Reset
 * (2) - Sleep mode 
@@ -24,7 +24,17 @@ void Lora_init (void)
     Delay_a();
      led_red_low(); 
    }
-   
+   else 
+   {
+     while(1)
+     {
+        led_blue_high();
+        HAL_Delay(200);
+        led_blue_low();
+        HAL_Delay(200);
+     }
+
+   }
    //--------------------------------LORA CONFIGURATION------------------------
    // 868MHz, SF12, 125kHz, 300bps, MaxPower, OcpOn, 9Byte info 	
    SPI_Write_a(REG_OP_MODE, 0x80); //Lora mode, HF, Sleep //0x81 0x80
@@ -88,10 +98,11 @@ void Lora_transmit (void)
   SPI_Write_a(REG_SYNC_WORD,0x12);	//0xB9 0x12
   SPI_Write_a(REG_OP_MODE,MODE_STDBY|0x80); // 0x81 0x81
   SPI_Write_a(REG_FIFO_ADDR_PTR,0x80); //0x8D 0x80
-  SPI_Write_a(REG_PAYLOAD_LENGTH, sizeof(TX_BUF)/ sizeof(char));
-  for ( uint8_t i = 0; i < (sizeof(TX_BUF)/ sizeof(char)); i++ )
-    SPI_Write_a(REG_FIFO, TX_BUF[i]);
-  SPI_Write_a(REG_PAYLOAD_LENGTH, sizeof(TX_BUF)/ sizeof(char));
+  
+  SPI_Write_a(REG_PAYLOAD_LENGTH, sizeof(str)/ sizeof(char));
+  for ( uint8_t i = 0; i < (sizeof(str)/ sizeof(str[0])); i++ )
+    SPI_Write_a(REG_FIFO, str[i]);
+  SPI_Write_a(REG_PAYLOAD_LENGTH, sizeof(str)/ sizeof(str[0]));
   SPI_Write_a(REG_OP_MODE,MODE_TX|0x80); //0x81 0x83
   while( SPI_Read_b(REG_IRQ_FLAGS) != 0x08)
   led_green_high();
@@ -103,8 +114,9 @@ void Lora_transmit (void)
 #endif
 
 #ifdef RECIEVER
-      //  while( SPI_Read_b(REG_IRQ_FLAGS) != 0x50)/
- while ( (GPIOA->IDR & GPIO_IDR_IDR_15) == 0 ); 
+        while( SPI_Read_b(REG_IRQ_FLAGS) != 0x50)
+ //while ( (GPIOA->IDR & GPIO_IDR_IDR_15) != 1 )
+            ; 
           led_redmain_high();
         HAL_Delay(300);
           led_redmain_low(); 

@@ -10,7 +10,7 @@
 *
 */
 char TX_BUF[16] = {'T','e','s','t'};
-uint8_t str[] = "Hello world!";
+uint8_t str[] = "Hello!";
 uint8_t Flag=0;
 uint8_t str_r[16] = {0};
 
@@ -54,8 +54,8 @@ void Lora_init (void)
    SPI_Write_a(REG_PA_DAC, 0x87); //new
    SPI_Write_a(REG_OCP, 0x31); //new
    SPI_Write_a(REG_PA_CONFIG, 0x8F); //new
-   SPI_Write_a(REG_MODEM_CONFIG_1, 0x72); //new from 3 works
-   SPI_Write_a(REG_MODEM_CONFIG_2, 0xC4);  // SF12
+   SPI_Write_a(REG_MODEM_CONFIG_1, 0x98); //new from 3 works b0111 0000
+   SPI_Write_a(REG_MODEM_CONFIG_2, 0xC0);  // SF12 / no CRC
    SPI_Write_a(REG_MODEM_CONFIG_3, 0x04); //new
    SPI_Write_a(REG_OP_MODE, 0x81); //new
    /* ------------- Stnadby Mode -----------------*/
@@ -82,7 +82,7 @@ void Lora_init (void)
    SPI_Write_a(REG_OP_MODE, MODE_SLEEP|0x80); // 0x81 0x80
    
    
-#ifdef RECIEVER
+
    SPI_Write_a(REG_DIO_MAPPING_1, RFLR_DIOMAPPING1_DIO0_00);
    SPI_Write_a(REG_SYNC_WORD,0x12);	
    SPI_Write_a(REG_OP_MODE, MODE_STDBY|0x80);
@@ -90,14 +90,14 @@ void Lora_init (void)
    SPI_Write_a(REG_FIFO_ADDR_PTR,0x00);
    SPI_Write_a(REG_OP_MODE, MODE_RX_CONTINUOUS|0x80);	 
    /*---------------Receive continuous ---------- */
-#endif
+
    
 }
 
 
 void Lora_transmit (void)
 {
-#ifdef TRANSMITTER
+
   SPI_Write_a(REG_DIO_MAPPING_1,	RFLR_DIOMAPPING1_DIO0_01); //0xC0 0x40  
   SPI_Write_a(REG_SYNC_WORD,0x12);	//0xB9 0x12
   SPI_Write_a(REG_OP_MODE,MODE_STDBY|0x80); // 0x81 0x81
@@ -118,36 +118,51 @@ void Lora_transmit (void)
   led_green_low();     
   SPI_Write_a(REG_OP_MODE,MODE_SLEEP|0x80);	
   HAL_Delay(3000); 
-#endif
 
-#ifdef RECIEVER
-  for (volatile uint8_t a = 0; a< 16; a ++)
+
+
+}
+
+uint8_t Lora_recieve(void)
+{
+      for (volatile uint8_t a = 0; a< 16; a ++)
     str_r[a] = 0;
-        while( SPI_Read_b(REG_IRQ_FLAGS) != 0x50)
- //while ( (GPIOA->IDR & GPIO_IDR_IDR_15) != 1 )
-            ; 
-        SPI_Write_a(REG_IRQ_FLAGS,0x50);
+  SPI_Write_a(REG_OP_MODE,MODE_STDBY|0x80); // 0x81 0x81
+   SPI_Write_a(REG_DIO_MAPPING_1, RFLR_DIOMAPPING1_DIO0_00);
+   SPI_Write_a(REG_SYNC_WORD,0x12);	
+    /* ------------- Stnadby Mode -----------------*/
+   SPI_Write_a(REG_FIFO_ADDR_PTR,0x00);
+   SPI_Write_a(REG_OP_MODE, MODE_RX_CONTINUOUS|0x80);
+   /*---------------Receive continuous ---------- */
+
+       // while( SPI_Read_b(REG_IRQ_FLAGS) != 0x50)
+          HAL_Delay(5000);
+        if( (GPIOA->IDR & GPIO_IDR_IDR_15))
+        {
+          HAL_Delay(200);
+       SPI_Write_a(REG_IRQ_FLAGS,0x50);
         SPI_Write_a(REG_SYNC_WORD,0x12);	
           led_redmain_high();
         HAL_Delay(300);
           led_redmain_low(); 
-          
-
 	SPI_Read_b(REG_RX_NB_BYTES);
 	SPI_Read_b(REG_PKT_RSSI_VALUE);
 	SPI_Read_b(REG_PKT_SNR_VALUE);
         
         for (uint8_t i = 0; i< SPI_Read_b(REG_RX_NB_BYTES); i++)
          str_r[i] = SPI_Read_b(REG_FIFO);	
-	SPI_Write_a(REG_OP_MODE,MODE_SLEEP|0x80);
+	SPI_Write_a(REG_OP_MODE,MODE_STDBY|0x80);
+        return str_r[0];
+        }
+        else 
+          return (0x40);
+                
+
         /*--------------Sleep Mode -------------------------*/
-	SPI_Write_a(REG_FIFO_ADDR_PTR,0x00);
-	SPI_Write_a(REG_OP_MODE,MODE_RX_CONTINUOUS|0x80);
+	//SPI_Write_a(REG_FIFO_ADDR_PTR,0x00);
+	//SPI_Write_a(REG_OP_MODE,MODE_RX_CONTINUOUS|0x80);
         /*---------------Receive continuous ---------- */
-
-#endif
 }
-
 
 
 void Lora_reset (void)

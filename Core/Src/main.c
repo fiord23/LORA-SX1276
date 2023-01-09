@@ -44,6 +44,7 @@
    uint8_t data;
    char str_re[16] = {0};
    uint8_t flag =0;
+   uint8_t answer = 0;
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
@@ -67,7 +68,7 @@ void SystemClock_Config(void);
   * @brief  The application entry point.
   * @retval int
   */
-int main(void)
+ int main(void)
 {
   
   /* USER CODE BEGIN 1 */
@@ -77,7 +78,7 @@ int main(void)
   SPI_config();
   LED_config(); 
   Lora_init ();
-  EXTI->IMR |= EXTI_IMR_MR0;
+
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -105,17 +106,26 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+        if (flag == 1)
+        {
+          Lora_transmit();
+          flag = 0;
+          answer = 1;
+        }
 
-#ifdef TRANSMITTER
-    if(flag == 1 )
-      {
-#endif
+      if (Lora_recieve() == 'H')
+        led_red_high();
+
+      
     
-    Lora_transmit();
- #ifdef TRANSMITTER
-    flag = 0;
-      }
-#endif
+
+    /*
+    if (flag == 1)
+    {
+      Lora_transmit();
+      flag = 0;
+    }
+    */ 
   //  
     
     /* USER CODE END WHILE */
@@ -186,11 +196,23 @@ void Error_Handler(void)
 }
 
 
-void EXTI0_IRQHandler(void)																				{
-  if(EXTI->PR & EXTI_PR_PIF0)
+void EXTI0_IRQHandler(void)	
+{
+ // if(EXTI->PR & EXTI_IMR_MR0)
 	{
-          EXTI->PR |= EXTI_PR_PIF0;
+          if ( (GPIOA->IDR & GPIO_IDR_IDR_0))
+          {
+           EXTI->PR = EXTI_PR_PR0;
+            asm("nop");
+            asm("nop");
+            asm("nop");
+            asm("nop");
+            asm("nop");
+          //EXTI->PR = EXTI_IMR_MR0;
+        //  EXTI->PR |= EXTI_IMR_MR0;
           flag = 1;
+        //  EXTI->PR &= EXTI_PR_PIF0;
+          }
 	}
 }
 #ifdef  USE_FULL_ASSERT

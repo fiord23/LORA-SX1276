@@ -17,7 +17,7 @@ void SPI_GPIO_config (void)
   
   RCC->AHBENR |= RCC_AHBENR_GPIOAEN_Msk << RCC_AHBENR_GPIOAEN_Pos; /* (1) */
   
-  GPIOA->MODER &=~ (3 << GPIO_MODER_MODER5_Pos | 3 << GPIO_MODER_MODER6_Pos | 3 << GPIO_MODER_MODER7_Pos);
+  GPIOA->MODER &=~ (3 << GPIO_MODER_MODER5_Pos | 3 << GPIO_MODER_MODER6_Pos | 3 << GPIO_MODER_MODER7_Pos | 3 << GPIO_MODER_MODER15_Pos);
   GPIOA->MODER |= (2 << GPIO_MODER_MODER5_Pos | 2 << GPIO_MODER_MODER6_Pos | 2 << GPIO_MODER_MODER7_Pos); /* (2) */
   GPIOA->AFR[0] |= (5 << GPIO_AFRL_AFSEL5_Pos | 5 << GPIO_AFRL_AFSEL6_Pos |5 << GPIO_AFRL_AFSEL7_Pos ); /* (3) */
   GPIOA->OSPEEDR &=~ (3 << GPIO_OSPEEDER_OSPEEDR5_Pos | 3 << GPIO_OSPEEDER_OSPEEDR6_Pos | 3 << GPIO_OSPEEDER_OSPEEDR7_Pos | 3 << GPIO_OSPEEDER_OSPEEDR8_Pos  );
@@ -32,10 +32,10 @@ void SPI_GPIO_config (void)
   
   
   //DIO0 PA15 INPUT
-  GPIOA->MODER &=~ (3 << GPIO_MODER_MODER15_Pos);
-  GPIOA->PUPDR &=~ (3 << GPIO_PUPDR_PUPDR15_Pos);
-  GPIOA->MODER &=~ (3 << GPIO_MODER_MODER1_Pos);
-  GPIOA->MODER |=  (1 << GPIO_MODER_MODER1_Pos); 
+  //GPIOA->MODER &=~ (3 << GPIO_MODER_MODER15_Pos);
+  //GPIOA->PUPDR &=~ (3 << GPIO_PUPDR_PUPDR15_Pos);
+  //GPIOA->MODER &=~ (3 << GPIO_MODER_MODER1_Pos);
+  //GPIOA->MODER |=  (1 << GPIO_MODER_MODER1_Pos); 
 
   
    //PA0 input interrupt
@@ -43,10 +43,13 @@ RCC->APB2ENR |=RCC_APB2ENR_SYSCFGEN;
 GPIOA->MODER &=(~GPIO_MODER_MODER0);																			// PA0- IRQ from 	SX1276 (Rx- Completed, Tx - completed) 		
 //GPIOA->PUPDR |=GPIO_PUPDR_PUPDR0_1;																				//Pull_down
 SYSCFG->EXTICR[1] |= SYSCFG_EXTICR1_EXTI0_PA;
+
 //EXTI->FTSR |= EXTI_FTSR_TR0_Pos; //Falling
-EXTI->RTSR |= EXTI_RTSR_RT0; //rising //rising
-	
-  NVIC_SetPriority(EXTI0_IRQn, 1); 
+  EXTI->PR = EXTI_PR_PR0;
+  
+EXTI->RTSR = EXTI_RTSR_RT0; //rising //rising
+	EXTI->IMR |= EXTI_IMR_MR0;
+  NVIC_SetPriority(EXTI0_IRQn, 0); 
   NVIC_EnableIRQ(EXTI0_IRQn); 
 	__enable_irq ();
         

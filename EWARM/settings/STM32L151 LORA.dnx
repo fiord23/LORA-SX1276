@@ -9,7 +9,7 @@
         <stlinkResetStrategy>2</stlinkResetStrategy>
     </StLinkDriver>
     <DebugChecksum>
-        <Checksum>695912079</Checksum>
+        <Checksum>4155952457</Checksum>
     </DebugChecksum>
     <Exceptions>
         <StopOnUncaught>_ 0</StopOnUncaught>
@@ -68,15 +68,15 @@
         <EnableCache>0</EnableCache>
         <EnforceMemoryConfiguration>1</EnforceMemoryConfiguration>
     </ArmDriver>
-    <watch_formats>
-        <Fmt0>{W}42:str_r	5	2</Fmt0>
-        <Fmt1>{W}42:str_r[0]	5	0</Fmt1>
-    </watch_formats>
     <LogFile>
         <LoggingEnabled>_ 0</LoggingEnabled>
         <LogFile>_ ""</LogFile>
         <Category2>_ 0</Category2>
     </LogFile>
+    <watch_formats>
+        <Fmt0>{W}42:str_r	5	2</Fmt0>
+        <Fmt1>{W}42:str_r[0]	5	0</Fmt1>
+    </watch_formats>
     <Trace2>
         <Enabled>0</Enabled>
         <ShowSource>0</ShowSource>
@@ -126,8 +126,7 @@
         <mode>0</mode>
     </DisassembleMode>
     <Breakpoints2>
-        <Bp0>_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\Core\Src\SPI1.c}.20.3" 0 0 1 "" 0 "" 0</Bp0>
-        <Count>1</Count>
+        <Count>0</Count>
     </Breakpoints2>
     <TermIOLog>
         <LoggingEnabled>_ 0</LoggingEnabled>

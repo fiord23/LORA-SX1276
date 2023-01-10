@@ -9,9 +9,7 @@
 * (2) - Sleep mode 
 *
 */
-char TX_BUF[16] = {'T','e','s','t'};
 uint8_t str[] = "Hello!";
-uint8_t Flag=0;
 uint8_t str_r[16] = {0};
 
 void Lora_init (void)
@@ -37,9 +35,8 @@ void Lora_init (void)
    }
    //--------------------------------LORA CONFIGURATION------------------------
    // 868MHz, SF12, 125kHz, 300bps, MaxPower, OcpOn, 9Byte info 	
-   SPI_Write_a(REG_OP_MODE, 0x80); //Lora mode, HF, Sleep //0x81 0x80
+   SPI_Write_a(REG_OP_MODE, 0x80|MODE_SLEEP); //Lora mode, HF, Sleep //0x81 0x80
    /*--------------Sleep Mode -------------------------*/
-//   SPI_Write_a(REG_DIO_MAPPING_1,	RFLR_DIOMAPPING1_DIO0_01); //0xC0 0x40 //new
    SPI_Write_a(REG_FIFO_TX_BASE_ADDR, 0x00); //new
    SPI_Write_a(REG_FIFO_RX_BASE_ADDR, 0x00); //new
    SPI_Write_a(REG_LNA, 0x23); //new
@@ -54,30 +51,23 @@ void Lora_init (void)
    SPI_Write_a(REG_PA_DAC, 0x87); //new
    SPI_Write_a(REG_OCP, 0x31); //new
    SPI_Write_a(REG_PA_CONFIG, 0x8F); //new
-   SPI_Write_a(REG_MODEM_CONFIG_1, 0x98); //new from 3 works b0111 0000
-   SPI_Write_a(REG_MODEM_CONFIG_2, 0xC0);  // SF12 / no CRC
-   SPI_Write_a(REG_MODEM_CONFIG_3, 0x04); //new
+   SPI_Write_a(REG_MODEM_CONFIG_1, 0x98); //500 kHz BW, Coding Rate 4/8, Explicit Header Mode
+   SPI_Write_a(REG_MODEM_CONFIG_2, 0xC0);  // SF12 , Normal Mode single packet, no CRC
+   SPI_Write_a(REG_MODEM_CONFIG_3, 0x04); //LNA gain set by the internal AGC loop
    SPI_Write_a(REG_OP_MODE, 0x81); //new
-   /* ------------- Stnadby Mode -----------------*/
    SPI_Write_a(REG_FIFO_ADDR_PTR, 0x00); //new
   // SPI_Write_a(REG_PA_CONFIG, 0xFF); //Max power 0x89 0x00
   // SPI_Write_a(REG_OCP, 0x1F);  //OCP-on, Current 130 mA 0x8B 0x1F
- //  SPI_Write_a(REG_MODEM_CONFIG_1, 0x72);  //125kHz,4/5 Coding Rate/ Explicit 0x9D 0x72
- //  SPI_Write_a(REG_MODEM_CONFIG_2, 0xC2);  //0x9E 0xC2
+
  //  SPI_Write_a(REG_LR_PAYLOADMAXLENGTH, 0x10); //16 bytes  0xA3 0x10
    
    // Standart -1
 //   SPI_Write_a(REG_LR_IRQFLAGSMASK, 0x48); //0x91 0x48            //Tx_Complete IRQ, RX_Complete IRQ	
  //  SPI_Write_a(REG_LR_PARAMP, 0x09);	 //0x8A 0x09               //Standart 40us
-//   SPI_Write_a(REG_FIFO_ADDR_PTR, 0x00); //0x8D 0x00        //Standart
  //  SPI_Write_a(REG_FIFO_TX_BASE_ADDR, 0x80);	// 0x8E 0x80       //Standart
    
  //  SPI_Write_a(REG_FIFO_RX_BASE_ADDR, 0x00);  //  0x8F 0x00       //Standart
  //  SPI_Write_a(REG_LNA, 0x20);	 //0x8C 0x20		        //Standart
-//   SPI_Write_a(REG_LR_SYMBTIMEOUTLSB, 0x64 );	 //0x9F 0x64        //Standart
-  // SPI_Write_a(REG_PREAMBLE_MSB, 0x00);	//0xA0 0x00	//Standart
- //  SPI_Write_a(REG_PREAMBLE_LSB, 0x08);//0xA1 0x08		//Standart
- //  SPI_Write_a(REG_PAYLOAD_LENGTH,0xFF); //0xA2 0xFF	        //Standart
    SPI_Write_a(REG_LR_HOPPERIOD, 0x00);	//0xA4 0x00	//Standart  
    SPI_Write_a(REG_OP_MODE, MODE_SLEEP|0x80); // 0x81 0x80
    

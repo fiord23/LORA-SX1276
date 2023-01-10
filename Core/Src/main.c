@@ -19,6 +19,8 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "usart.h"
+#include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -68,9 +70,8 @@ void SystemClock_Config(void);
   * @brief  The application entry point.
   * @retval int
   */
- int main(void)
+int main(void)
 {
-  
   /* USER CODE BEGIN 1 */
    HAL_Init();
    SystemClock_Config();
@@ -84,20 +85,22 @@ void SystemClock_Config(void);
   /* MCU Configuration--------------------------------------------------------*/
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
- 
+  HAL_Init();
 
   /* USER CODE BEGIN Init */
 
   /* USER CODE END Init */
 
   /* Configure the system clock */
-  
+  SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
 
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
+  MX_GPIO_Init();
+  MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
@@ -106,6 +109,7 @@ void SystemClock_Config(void);
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+    
         if (flag == 1)
         {
           Lora_transmit();
@@ -116,8 +120,9 @@ void SystemClock_Config(void);
       if (Lora_recieve() == 'H')
         led_red_high();
 
-      
-    
+     
+   // Lora_transmit();
+  //  HAL_Delay(1000);
 
     /*
     if (flag == 1)
@@ -177,7 +182,25 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
-
+void EXTI0_IRQHandler(void)	
+{
+ // if(EXTI->PR & EXTI_IMR_MR0)
+	{
+        //  if ( (GPIOA->IDR & GPIO_IDR_IDR_0))
+          {
+           EXTI->PR = EXTI_PR_PR0;
+            asm("nop");
+            asm("nop");
+            asm("nop");
+            asm("nop");
+            asm("nop");
+          //EXTI->PR = EXTI_IMR_MR0;
+        //  EXTI->PR |= EXTI_IMR_MR0;
+          flag = 1;
+        //  EXTI->PR &= EXTI_PR_PIF0;
+          }
+	}
+}
 /* USER CODE END 4 */
 
 /**
@@ -195,26 +218,6 @@ void Error_Handler(void)
   /* USER CODE END Error_Handler_Debug */
 }
 
-
-void EXTI0_IRQHandler(void)	
-{
- // if(EXTI->PR & EXTI_IMR_MR0)
-	{
-          if ( (GPIOA->IDR & GPIO_IDR_IDR_0))
-          {
-           EXTI->PR = EXTI_PR_PR0;
-            asm("nop");
-            asm("nop");
-            asm("nop");
-            asm("nop");
-            asm("nop");
-          //EXTI->PR = EXTI_IMR_MR0;
-        //  EXTI->PR |= EXTI_IMR_MR0;
-          flag = 1;
-        //  EXTI->PR &= EXTI_PR_PIF0;
-          }
-	}
-}
 #ifdef  USE_FULL_ASSERT
 /**
   * @brief  Reports the name of the source file and the source line number

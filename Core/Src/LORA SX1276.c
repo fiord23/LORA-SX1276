@@ -80,17 +80,22 @@ void Lora_transmit (void)
   SPI_Write_a(REG_PAYLOAD_LENGTH, sizeof(str)/ sizeof(str[0]));
   SPI_Write_a(REG_OP_MODE,MODE_TX|0x80); // MODE TX
   /*------------------Transmit--------*/
-  while( SPI_Read_b(REG_IRQ_FLAGS) != 0x08)
-  led_green_high();
-  SPI_Write_a(REG_IRQ_FLAGS, 0x08); //0x92 -> 0x08
-  HAL_Delay(300);
-  led_green_low();     
-  SPI_Write_a(REG_OP_MODE,MODE_SLEEP|0x80);	
-  HAL_Delay(3000); 
+ // HAL_Delay(3500);
+  while( SPI_Read_b(REG_IRQ_FLAGS) == !0x08)
+  
+    led_green_high();
+    SPI_Write_a(REG_IRQ_FLAGS, 0x08); //0x92 -> 0x08
+    HAL_Delay(300);
+    led_green_low();     
+    SPI_Write_a(REG_OP_MODE,MODE_SLEEP|0x80);
 
-
-
+  
 }
+  //HAL_Delay(3000); 
+
+
+
+
 
 uint8_t Lora_recieve(void)
 {

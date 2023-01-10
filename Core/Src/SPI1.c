@@ -31,27 +31,17 @@ void SPI_GPIO_config (void)
   GPIOA->BSRR |= GPIO_BSRR_BS_4; 
   
   
-  //DIO0 PA15 INPUT
-  //GPIOA->MODER &=~ (3 << GPIO_MODER_MODER15_Pos);
-  //GPIOA->PUPDR &=~ (3 << GPIO_PUPDR_PUPDR15_Pos);
-  //GPIOA->MODER &=~ (3 << GPIO_MODER_MODER1_Pos);
-  //GPIOA->MODER |=  (1 << GPIO_MODER_MODER1_Pos); 
-
-  
    //PA0 input interrupt
-RCC->APB2ENR |=RCC_APB2ENR_SYSCFGEN;
-GPIOA->MODER &=(~GPIO_MODER_MODER0);																			// PA0- IRQ from 	SX1276 (Rx- Completed, Tx - completed) 		
-//GPIOA->PUPDR |=GPIO_PUPDR_PUPDR0_1;																				//Pull_down
-SYSCFG->EXTICR[1] |= SYSCFG_EXTICR1_EXTI0_PA;
-
-//EXTI->FTSR |= EXTI_FTSR_TR0_Pos; //Falling
-  EXTI->PR = EXTI_PR_PR0;
+    RCC->APB2ENR |=RCC_APB2ENR_SYSCFGEN;
+    GPIOA->MODER &=(~GPIO_MODER_MODER0);														
+    SYSCFG->EXTICR[1] |= SYSCFG_EXTICR1_EXTI0_PA;
+    EXTI->PR = EXTI_PR_PR0;
   
-EXTI->RTSR = EXTI_RTSR_RT0; //rising //rising
-	EXTI->IMR |= EXTI_IMR_MR0;
-  NVIC_SetPriority(EXTI0_IRQn, 0); 
-  NVIC_EnableIRQ(EXTI0_IRQn); 
-	__enable_irq ();
+    EXTI->RTSR = EXTI_RTSR_RT0; //rising //rising
+    EXTI->IMR |= EXTI_IMR_MR0;
+    NVIC_SetPriority(EXTI0_IRQn, 0); 
+    NVIC_EnableIRQ(EXTI0_IRQn); 
+    __enable_irq ();
         
 }
 

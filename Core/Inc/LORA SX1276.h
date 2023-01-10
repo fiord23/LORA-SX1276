@@ -5,11 +5,10 @@
 #include "main.h"
 #include <stdbool.h>
 #include "SPI1.h"
-//#define RECIEVER
-//#define TRANSMITTER
 
-#define Lora_reset_low()   (GPIOA->BSRR |=  GPIO_BSRR_BR_1) /* PA1 = 0  CS LOW*/ 
-#define Lora_reset_high() (GPIOA->BSRR |=  GPIO_BSRR_BS_1) /* PA1 = 1 CS HIGH*/
+
+#define Lora_reset_low()   (GPIOA->BSRR |=  GPIO_BSRR_BR_1) /* PA1 = 0  RESET LORA*/ 
+#define Lora_reset_high() (GPIOA->BSRR |=  GPIO_BSRR_BS_1) /* PA1 = 1 SET LORA*/
 
 #define REG_FIFO                 0x00
 #define REG_OP_MODE              0x01
@@ -82,3 +81,11 @@ void Lora_reset (void);
 uint8_t Lora_recieve(void);
 
 #endif
+
+// Set the device to Standby and wait for oscillator startup
+// Set the device to FSRx mode
+// Set TempMonitorOff = 0 (enables the sensor). It is not required to wait for the PLL Lock indication
+// Wait for 140 microseconds
+// Set TempMonitorOff = 1
+// Set device back to Sleep of Standby mode
+// Access temperature value in RegTemp

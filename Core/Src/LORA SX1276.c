@@ -68,7 +68,7 @@ void Lora_init (void)
 void Lora_transmit (void)
 {
 
-  SPI_Write_a(REG_DIO_MAPPING_1, RFLR_DIOMAPPING1_DIO0_01); //0xC0 0x40  TX COMPLETE
+ // SPI_Write_a(REG_DIO_MAPPING_1, RFLR_DIOMAPPING1_DIO0_01); //0xC0 0x40  TX COMPLETE
   SPI_Write_a(REG_OP_MODE,MODE_STDBY|0x80); // 0x81 0x81
       /* ------------- Standby Mode Mode -----------------*/
     SPI_Write_a(REG_SYNC_WORD,0x12);	//0xB9 0x12
@@ -88,6 +88,7 @@ void Lora_transmit (void)
     HAL_Delay(300);
     led_green_low();     
     SPI_Write_a(REG_OP_MODE,MODE_SLEEP|0x80);
+   // SPI_Write_a(REG_DIO_MAPPING_1, RFLR_DIOMAPPING1_DIO0_00);
 
   
 }
@@ -110,9 +111,9 @@ uint8_t Lora_recieve(void)
    /*---------------Receive continuous ---------- */
 
        // while( SPI_Read_b(REG_IRQ_FLAGS) != 0x50)
-          HAL_Delay(5000);
-        if( (GPIOA->IDR & GPIO_IDR_IDR_15))
-        {
+     //     HAL_Delay(5000);
+     //   if( (GPIOA->IDR & GPIO_IDR_IDR_15))
+     //   {
             HAL_Delay(200);
             SPI_Write_a(REG_IRQ_FLAGS,0x50);
             SPI_Write_a(REG_SYNC_WORD,0x12);	
@@ -126,9 +127,9 @@ uint8_t Lora_recieve(void)
                 str_r[i] = SPI_Read_b(REG_FIFO);	
             SPI_Write_a(REG_OP_MODE,MODE_STDBY|0x80);
             return str_r[0];
-        }
-        else 
-            return (0x40);
+      //  }
+      //  else 
+       //     return (0x40);
 }
 
 

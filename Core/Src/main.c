@@ -78,8 +78,9 @@ int main(void)
   SPI_GPIO_config ();
   SPI_config();
   LED_config(); 
+  txdone_exti();
   Lora_init ();
-
+    
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -114,24 +115,20 @@ int main(void)
         {
           Lora_transmit();
           flag = 0;
-          answer = 1;
         }
+        if (answer == 1)
+        {
+            if (Lora_recieve() == 'H')
+            led_red_high();
+            answer = 0;
+        }
+        
+  //  Lora_transmit();
+   // HAL_Delay(2000);
+    
 
-      if (Lora_recieve() == 'H')
-        led_red_high();
 
-     
-   // Lora_transmit();
-  //  HAL_Delay(1000);
 
-    /*
-    if (flag == 1)
-    {
-      Lora_transmit();
-      flag = 0;
-    }
-    */ 
-  //  
     
     /* USER CODE END WHILE */
 
@@ -194,13 +191,27 @@ void EXTI0_IRQHandler(void)
             asm("nop");
             asm("nop");
             asm("nop");
-          //EXTI->PR = EXTI_IMR_MR0;
-        //  EXTI->PR |= EXTI_IMR_MR0;
           flag = 1;
-        //  EXTI->PR &= EXTI_PR_PIF0;
           }
 	}
 }
+void EXTI15_10_IRQHandler(void)	
+{
+ // if(EXTI->PR & EXTI_IMR_MR0)
+	{
+          //if ( (GPIOA->IDR & GPIO_IDR_IDR_15))
+          {
+           EXTI->PR = EXTI_PR_PR15;
+            asm("nop");
+            asm("nop");
+            asm("nop");
+            asm("nop");
+            asm("nop");
+          answer = 1;
+          }
+	}
+}
+
 /* USER CODE END 4 */
 
 /**

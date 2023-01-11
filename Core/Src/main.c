@@ -42,17 +42,19 @@
 
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
-   uint8_t a = 0;
-   uint8_t data;
-   char str_re[16] = {0};
-   uint8_t flag =0;
-   uint8_t answer = 0;
+
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-
+   uint8_t a = 0;
+   uint8_t data;
+   //char str_re[16] = {0};
+   uint8_t flag =0;
+   uint8_t answer = 0;
+   uint8_t str_uart[16] = {0};
+   uint8_t str_uart_r[16] = {0};
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -110,21 +112,23 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    
+        HAL_UART_Receive(&huart2, str_uart, 16, 1000);
         if (flag == 1)
         {
-          Lora_transmit();
+          Lora_transmit (str_uart, 16);
           flag = 0;
+          
         }
         if (answer == 1)
         {
-            if (Lora_recieve() == 'H')
+            Lora_recieve(str_uart_r);
+            HAL_UART_Transmit(&huart2, str_uart_r, 16, 100);
             led_red_high();
             answer = 0;
         }
         
   //  Lora_transmit();
-   // HAL_Delay(2000);
+  //  HAL_Delay(2000);
     
 
 

@@ -10,7 +10,7 @@
 *
 */
 uint8_t str[] = "Hello!";
-uint8_t str_r[16] = {0};
+//uint8_t str_r[16] = {0};
 
 void Lora_init (void)
 {  
@@ -59,25 +59,26 @@ void Lora_init (void)
    SPI_Write_a(REG_OP_MODE, MODE_STDBY|0x80);
     /* ------------- Stnadby Mode -----------------*/
    SPI_Write_a(REG_FIFO_ADDR_PTR,0x00);
+   
    SPI_Write_a(REG_OP_MODE, MODE_RX_CONTINUOUS|0x80);	 
    /*---------------Receive continuous ---------- */
 
 }
 
 
-void Lora_transmit (void)
+void Lora_transmit (uint8_t *strdata, uint8_t number_of_data)
 {
-
+    
  // SPI_Write_a(REG_DIO_MAPPING_1, RFLR_DIOMAPPING1_DIO0_01); //0xC0 0x40  TX COMPLETE
   SPI_Write_a(REG_OP_MODE,MODE_STDBY|0x80); // 0x81 0x81
       /* ------------- Standby Mode Mode -----------------*/
     SPI_Write_a(REG_SYNC_WORD,0x12);	//0xB9 0x12
   SPI_Write_a(REG_FIFO_ADDR_PTR,0x00); //0x8D 0x80
   
-  SPI_Write_a(REG_PAYLOAD_LENGTH, sizeof(str)/ sizeof(str[0]) );
-  for ( uint8_t i = 0; i < (sizeof(str)/ sizeof(str[0])); i++ )
-    SPI_Write_a(REG_FIFO, str[i]);
-  SPI_Write_a(REG_PAYLOAD_LENGTH, sizeof(str)/ sizeof(str[0]));
+  SPI_Write_a(REG_PAYLOAD_LENGTH, number_of_data );
+  for ( uint8_t i = 0; i < number_of_data; i++ )
+    SPI_Write_a(REG_FIFO, *(strdata+i));
+  SPI_Write_a(REG_PAYLOAD_LENGTH, number_of_data);
   SPI_Write_a(REG_OP_MODE,MODE_TX|0x80); // MODE TX
   /*------------------Transmit--------*/
  // HAL_Delay(3500);
@@ -98,10 +99,10 @@ void Lora_transmit (void)
 
 
 
-uint8_t Lora_recieve(void)
+void Lora_recieve(uint8_t *str_r)
 {
       for (volatile uint8_t a = 0; a< 16; a ++)
-    str_r[a] = 0;
+    *(str_r + a) = 0;
   SPI_Write_a(REG_OP_MODE,MODE_STDBY|0x80); // 0x81 0x81
    /* ------------- Standby Mode -----------------*/
    SPI_Write_a(REG_DIO_MAPPING_1, RFLR_DIOMAPPING1_DIO0_00); // RX READY
@@ -110,10 +111,10 @@ uint8_t Lora_recieve(void)
    SPI_Write_a(REG_OP_MODE, MODE_RX_CONTINUOUS|0x80);
    /*---------------Receive continuous ---------- */
 
-       // while( SPI_Read_b(REG_IRQ_FLAGS) != 0x50)
-     //     HAL_Delay(5000);
-     //   if( (GPIOA->IDR & GPIO_IDR_IDR_15))
-     //   {
+      //  while( SPI_Read_b(REG_IRQ_FLAGS) != 0x50)
+         // HAL_Delay(200);
+       // if( (GPIOA->IDR & GPIO_IDR_IDR_15))
+       // {
             HAL_Delay(200);
             SPI_Write_a(REG_IRQ_FLAGS,0x50);
             SPI_Write_a(REG_SYNC_WORD,0x12);	
@@ -124,12 +125,11 @@ uint8_t Lora_recieve(void)
             SPI_Read_b(REG_PKT_RSSI_VALUE);
             SPI_Read_b(REG_PKT_SNR_VALUE);       
             for (uint8_t i = 0; i< SPI_Read_b(REG_RX_NB_BYTES); i++)
-                str_r[i] = SPI_Read_b(REG_FIFO);	
-            SPI_Write_a(REG_OP_MODE,MODE_STDBY|0x80);
-            return str_r[0];
-      //  }
-      //  else 
-       //     return (0x40);
+                *(str_r+i) = SPI_Read_b(REG_FIFO);         
+            SPI_Write_a(REG_OP_MODE,MODE_STDBY|0x80); // 0x81 0x81
+            SPI_Write_a(REG_FIFO_ADDR_PTR,0x00);
+            SPI_Write_a(REG_OP_MODE, MODE_RX_CONTINUOUS|0x80);         
+
 }
 
 

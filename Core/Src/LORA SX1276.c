@@ -88,8 +88,11 @@ void Lora_transmit (uint8_t *strdata, uint8_t number_of_data)
     SPI_Write_a(REG_IRQ_FLAGS, 0x08); //0x92 -> 0x08
     HAL_Delay(300);
     led_green_low();     
-    SPI_Write_a(REG_OP_MODE,MODE_SLEEP|0x80);
+    //SPI_Write_a(REG_OP_MODE,MODE_SLEEP|0x80);
    // SPI_Write_a(REG_DIO_MAPPING_1, RFLR_DIOMAPPING1_DIO0_00);
+                SPI_Write_a(REG_OP_MODE,MODE_STDBY|0x80); // 0x81 0x81
+            SPI_Write_a(REG_FIFO_ADDR_PTR,0x00);
+            SPI_Write_a(REG_OP_MODE, MODE_RX_CONTINUOUS|0x80);     
 
   
 }

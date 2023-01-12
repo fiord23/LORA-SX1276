@@ -26,7 +26,7 @@
 /* USER CODE BEGIN Includes */
 #include "SPI1.h"
 #include "LORA SX1276.h" 
-    
+#include <stdio.h>
 
 /* USER CODE END Includes */
 
@@ -37,7 +37,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-
+#define RX_BUFFER_SIZE 100
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -49,12 +49,12 @@
 
 /* USER CODE BEGIN PV */
    uint8_t a = 0;
-   uint8_t data;
-   //char str_re[16] = {0};
+   uint8_t rx_buffer_len;
    uint8_t flag =0;
    uint8_t answer = 0;
-   uint8_t str_uart[16] = {0};
-   uint8_t str_uart_r[16] = {0};
+   uint8_t num_of_bytes;
+   uint8_t str_uart[RX_BUFFER_SIZE] = {0};
+   uint8_t str_uart_r[RX_BUFFER_SIZE] = {0, };
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -66,6 +66,38 @@ void SystemClock_Config(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
+/*---------------------------- IDLE Callback  ------------------------*/
+    void HAL_UART_IDLE_Callback(UART_HandleTypeDef *huart)
+    {
+      if (huart == &huart2)
+      {
+        __HAL_UART_DISABLE_IT(&huart2, UART_IT_IDLE);
+        rx_buffer_len = RX_BUFFER_SIZE - huart->RxXferCount;
+       // if (huart2.gState != HAL_UART_STATE_BUSY_TX)
+        flag = 1;
+        HAL_UART_AbortReceive_IT(&huart2);
+      __HAL_UART_CLEAR_IDLEFLAG(&huart2);
+      __HAL_UART_ENABLE_IT(&huart2, UART_IT_IDLE);
+      HAL_UART_Receive_IT(&huart2, str_uart, RX_BUFFER_SIZE);
+      }
+    }
+
+/*---------------------------- RxCpltCallback  ------------------------*/
+    void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+    {
+        if (huart == &huart2)
+        {
+          __HAL_UART_DISABLE_IT(&huart2, UART_IT_IDLE);
+          
+          rx_buffer_len = RX_BUFFER_SIZE;
+          flag = 1;
+       HAL_UART_AbortReceive_IT(&huart2);
+      __HAL_UART_CLEAR_IDLEFLAG(&huart2);
+      __HAL_UART_ENABLE_IT(&huart2, UART_IT_IDLE);
+      HAL_UART_Receive_IT(&huart2, str_uart, RX_BUFFER_SIZE);
+        }
+    }
+    
 /* USER CODE END 0 */
 
 /**
@@ -91,7 +123,7 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
-
+    
   /* USER CODE END Init */
 
   /* Configure the system clock */
@@ -105,30 +137,34 @@ int main(void)
   MX_GPIO_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
-
+  
+  __HAL_UART_ENABLE_IT(&huart2, UART_IT_IDLE);
+  HAL_UART_Receive_IT(&huart2, str_uart, RX_BUFFER_SIZE);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-        HAL_UART_Receive(&huart2, str_uart, 16, 1000);
+    
+
         if (flag == 1)
         {
-          Lora_transmit (str_uart, 16);
+          Lora_transmit (str_uart, rx_buffer_len);
           flag = 0;
           
         }
         if (answer == 1)
         {
-            Lora_recieve(str_uart_r);
-            HAL_UART_Transmit(&huart2, str_uart_r, 16, 100);
+            Lora_recieve(str_uart_r, &num_of_bytes);
+            HAL_UART_Transmit(&huart2, str_uart_r, num_of_bytes, 100);
             led_red_high();
             answer = 0;
         }
-        
-  //  Lora_transmit();
-  //  HAL_Delay(2000);
+       
+
+   //   Lora_transmit (str_uart, 16);
+   //   HAL_Delay(2000);
     
 
 

@@ -78,7 +78,7 @@
 void Lora_init (void);
 void Lora_transmit (uint8_t *strdata, uint8_t number_of_data);
 void Lora_reset (void);
-void Lora_recieve(uint8_t *str_r);
+void Lora_recieve(uint8_t *str_r, uint8_t *num_of_bytes);
 
 #endif
 

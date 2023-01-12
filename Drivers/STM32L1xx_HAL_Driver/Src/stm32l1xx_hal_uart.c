@@ -2560,10 +2560,11 @@ void HAL_UART_IRQHandler(UART_HandleTypeDef *huart)
     return;
   }
 
-  /* UART in mode Transmitter end --------------------------------------------*/
-  if (((isrflags & USART_SR_TC) != RESET) && ((cr1its & USART_CR1_TCIE) != RESET))
+  /* UART IDLE Interrupt end --------------------------------------------*/
+  
+    if (((isrflags & USART_SR_IDLE) != RESET) && ((cr1its & USART_CR1_IDLEIE) != RESET))
   {
-    UART_EndTransmit_IT(huart);
+    HAL_UART_IDLE_Callback(huart);
     return;
   }
 }

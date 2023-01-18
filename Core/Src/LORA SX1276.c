@@ -11,6 +11,7 @@
 *
 */
 uint8_t str[] = "Hello!";
+uint8_t RSSI[] = "RSSI = -";
 //uint8_t str_r[16] = {0};
 
 void Lora_init (void)
@@ -122,7 +123,22 @@ void Lora_recieve(uint8_t *str_r, uint8_t *num_of_bytes)
     SPI1_Read(REG_PKT_RSSI_VALUE);
     SPI1_Read(REG_PKT_SNR_VALUE);       
     for (uint8_t i = 0; i< SPI1_Read(REG_RX_NB_BYTES); i++)
-    *(str_r+i) = SPI1_Read(REG_FIFO);         
+    *(str_r+i) = SPI1_Read(REG_FIFO);
+    for (uint8_t r = 0; r < sizeof(RSSI); r++)
+    {
+      *(str_r+ *num_of_bytes + r) = *(RSSI+r);
+    }
+    uint8_t rssi_tmp = 157 - SPI1_Read(REG_PKT_RSSI_VALUE);
+    uint8_t rssi_tmp_first = (rssi_tmp / 100) + 0x30;
+    uint8_t rssi_tmp_sec = (rssi_tmp - 100*(rssi_tmp_first- 0x30));
+    rssi_tmp_sec = (rssi_tmp_sec/10) + 0x30;
+    uint8_t rssi_tmp_thi = ((rssi_tmp - 100*(rssi_tmp_first- 0x30) - 10*(rssi_tmp_sec - 0x30))+ 0x30);
+    
+    *(str_r+ *num_of_bytes + sizeof(RSSI) - 1) = rssi_tmp_first;
+    *(str_r+ *num_of_bytes + sizeof(RSSI)) = rssi_tmp_sec;
+    *(str_r+ *num_of_bytes + sizeof(RSSI) + 1) = rssi_tmp_thi;
+    *(str_r+ *num_of_bytes + sizeof(RSSI) + 2) = '\r';
+    *(str_r+ *num_of_bytes + sizeof(RSSI) + 3 ) = '\n';
     SPI1_Write(REG_OP_MODE,MODE_STDBY|0x80); // 0x81 0x81
     SPI1_Write(REG_FIFO_ADDR_PTR,0x00);
     SPI1_Write(REG_OP_MODE, MODE_RX_CONTINUOUS|0x80);         

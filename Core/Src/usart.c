@@ -21,7 +21,10 @@
 #include "usart.h"
 
 /* USER CODE BEGIN 0 */
-
+#define RX_BUFFER_SIZE 100
+extern uint8_t str_uart[RX_BUFFER_SIZE];
+extern uint8_t rx_buffer_len;
+extern uint8_t flag;
 /* USER CODE END 0 */
 
 UART_HandleTypeDef huart2;
@@ -105,6 +108,37 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* uartHandle)
 }
 
 /* USER CODE BEGIN 1 */
+/*---------------------------- IDLE Callback  ------------------------*/
+    void HAL_UART_IDLE_Callback(UART_HandleTypeDef *huart)
+    {
+      if (huart == &huart2)
+      {
+        __HAL_UART_DISABLE_IT(&huart2, UART_IT_IDLE);
+        rx_buffer_len = RX_BUFFER_SIZE - huart->RxXferCount;
+       // if (huart2.gState != HAL_UART_STATE_BUSY_TX)
+        flag = 1;
+        HAL_UART_AbortReceive_IT(&huart2);
+      __HAL_UART_CLEAR_IDLEFLAG(&huart2);
+      __HAL_UART_ENABLE_IT(&huart2, UART_IT_IDLE);
+      HAL_UART_Receive_IT(&huart2, str_uart, RX_BUFFER_SIZE);
+      }
+    }
+
+/*---------------------------- RxCpltCallback  ------------------------*/
+    void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+    {
+        if (huart == &huart2)
+        {
+          __HAL_UART_DISABLE_IT(&huart2, UART_IT_IDLE);
+          
+          rx_buffer_len = RX_BUFFER_SIZE;
+          flag = 1;
+       HAL_UART_AbortReceive_IT(&huart2);
+      __HAL_UART_CLEAR_IDLEFLAG(&huart2);
+      __HAL_UART_ENABLE_IT(&huart2, UART_IT_IDLE);
+      HAL_UART_Receive_IT(&huart2, str_uart, RX_BUFFER_SIZE);
+        }
+    }
 
 /* USER CODE END 1 */
 

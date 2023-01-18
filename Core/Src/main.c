@@ -53,7 +53,7 @@
    uint8_t flag =0;
    uint8_t answer = 0;
    uint8_t num_of_bytes;
-   uint8_t str_uart[RX_BUFFER_SIZE] = {0};
+   uint8_t str_uart[RX_BUFFER_SIZE] = {1, 2, 3};
    uint8_t str_uart_r[RX_BUFFER_SIZE] = {0, };
 /* USER CODE END PV */
 
@@ -66,37 +66,8 @@ void SystemClock_Config(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
-/*---------------------------- IDLE Callback  ------------------------*/
-    void HAL_UART_IDLE_Callback(UART_HandleTypeDef *huart)
-    {
-      if (huart == &huart2)
-      {
-        __HAL_UART_DISABLE_IT(&huart2, UART_IT_IDLE);
-        rx_buffer_len = RX_BUFFER_SIZE - huart->RxXferCount;
-       // if (huart2.gState != HAL_UART_STATE_BUSY_TX)
-        flag = 1;
-        HAL_UART_AbortReceive_IT(&huart2);
-      __HAL_UART_CLEAR_IDLEFLAG(&huart2);
-      __HAL_UART_ENABLE_IT(&huart2, UART_IT_IDLE);
-      HAL_UART_Receive_IT(&huart2, str_uart, RX_BUFFER_SIZE);
-      }
-    }
 
-/*---------------------------- RxCpltCallback  ------------------------*/
-    void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
-    {
-        if (huart == &huart2)
-        {
-          __HAL_UART_DISABLE_IT(&huart2, UART_IT_IDLE);
-          
-          rx_buffer_len = RX_BUFFER_SIZE;
-          flag = 1;
-       HAL_UART_AbortReceive_IT(&huart2);
-      __HAL_UART_CLEAR_IDLEFLAG(&huart2);
-      __HAL_UART_ENABLE_IT(&huart2, UART_IT_IDLE);
-      HAL_UART_Receive_IT(&huart2, str_uart, RX_BUFFER_SIZE);
-        }
-    }
+
     
 /* USER CODE END 0 */
 
@@ -104,17 +75,13 @@ void SystemClock_Config(void);
   * @brief  The application entry point.
   * @retval int
   */
+   
 int main(void)
 {
   /* USER CODE BEGIN 1 */
    HAL_Init();
    SystemClock_Config();
-  SPI_GPIO_config ();
-  SPI_config();
-  LED_config(); 
-  txdone_exti();
-  Lora_init ();
-    
+
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -137,7 +104,11 @@ int main(void)
   MX_GPIO_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
-  
+  SPI_GPIO_config ();
+  SPI_config();
+  LED_config(); 
+  exti_config();
+  Lora_init ();  
   __HAL_UART_ENABLE_IT(&huart2, UART_IT_IDLE);
   HAL_UART_Receive_IT(&huart2, str_uart, RX_BUFFER_SIZE);
   /* USER CODE END 2 */
@@ -161,10 +132,11 @@ int main(void)
             led_red_high();
             answer = 0;
         }
-       
-
-   //   Lora_transmit (str_uart, 16);
-   //   HAL_Delay(2000);
+    
+    /*
+    HAL_Delay(3000);
+     Lora_transmit (str_uart, 16);
+     */
     
 
 

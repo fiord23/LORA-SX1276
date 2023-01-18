@@ -9,7 +9,7 @@
         <stlinkResetStrategy>2</stlinkResetStrategy>
     </StLinkDriver>
     <DebugChecksum>
-        <Checksum>1819137970</Checksum>
+        <Checksum>625528513</Checksum>
     </DebugChecksum>
     <Exceptions>
         <StopOnUncaught>_ 0</StopOnUncaught>
@@ -68,15 +68,17 @@
         <EnableCache>0</EnableCache>
         <EnforceMemoryConfiguration>1</EnforceMemoryConfiguration>
     </ArmDriver>
-    <watch_formats>
-        <Fmt0>{W}42:str_r	5	2</Fmt0>
-        <Fmt1>{W}42:str_r[0]	5	0</Fmt1>
-    </watch_formats>
     <LogFile>
         <LoggingEnabled>_ 0</LoggingEnabled>
         <LogFile>_ ""</LogFile>
         <Category2>_ 0</Category2>
     </LogFile>
+    <watch_formats>
+        <Fmt0>{W}42:num_of_bytes	3	0</Fmt0>
+        <Fmt1>{W}42:rx_buffer_len	3	0</Fmt1>
+        <Fmt2>{W}42:str_r	5	2</Fmt2>
+        <Fmt3>{W}42:str_r[0]	5	0</Fmt3>
+    </watch_formats>
     <Registers>
         <regBase0>EXTI_PR 2</regBase0>
     </Registers>

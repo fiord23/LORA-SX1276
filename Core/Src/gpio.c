@@ -42,7 +42,48 @@ void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 2 */
+void LED_config (void)
+{
+  RCC->AHBENR |= RCC_AHBENR_GPIOBEN; /* PORTB CLOCK ENABLE */
+  GPIOB->MODER &=~ (3 << GPIO_MODER_MODER0); 
+  GPIOB->MODER |=  (1 << GPIO_MODER_MODER0); 
+  GPIOB->MODER &=~ (3 << GPIO_MODER_MODER4_Pos);     //RED   
+  GPIOB->MODER |=  (1 << GPIO_MODER_MODER4_Pos); 
+  GPIOB->BSRR |= GPIO_BSRR_BS_4; 
+  GPIOB->MODER &=~ (3 << GPIO_MODER_MODER1_Pos);      //GREEN
+  GPIOB->MODER |=  (1 << GPIO_MODER_MODER1_Pos); 
+  GPIOB->BSRR |= GPIO_BSRR_BS_1;
+  GPIOB->MODER &=~ (3 << GPIO_MODER_MODER0_Pos);      //BLUE 
+  GPIOB->MODER |=  (1 << GPIO_MODER_MODER0_Pos);  
+  GPIOB->BSRR |= GPIO_BSRR_BS_0;
+  GPIOB->MODER &=~ (3 << GPIO_MODER_MODER5_Pos);      //RED MAIN
+  GPIOB->MODER |=  (1 << GPIO_MODER_MODER5_Pos);  
+  GPIOB->BSRR |= GPIO_BSRR_BR_5;
+}
 
+void exti_config (void)
+{
+       //PA0, PA15 input interrupt
+    RCC->APB2ENR |=RCC_APB2ENR_SYSCFGEN;
+    GPIOA->MODER &=(~GPIO_MODER_MODER0);	
+    GPIOA->MODER &=(~GPIO_MODER_MODER15);  
+    SYSCFG->EXTICR[1] |= SYSCFG_EXTICR1_EXTI0_PA;
+    SYSCFG->EXTICR[2] |= SYSCFG_EXTICR2_EXTI5;
+    EXTI->PR |= EXTI_PR_PR0 | EXTI_PR_PR15; 
+    EXTI->RTSR |= EXTI_RTSR_RT0 | EXTI_RTSR_RT15;  ; //rising
+    EXTI->IMR |= EXTI_IMR_MR0 | EXTI_IMR_MR15;
+    NVIC_SetPriority(EXTI0_IRQn, 0);
+    NVIC_SetPriority(EXTI15_10_IRQn, 0);
+    NVIC_EnableIRQ(EXTI0_IRQn); 
+    NVIC_EnableIRQ(EXTI15_10_IRQn); 
+    __enable_irq ();
+}
+
+void Delay_a (void)
+{
+  volatile uint32_t i;
+  for (i=0; i != 0x100; i++);  
+}
 /* USER CODE END 2 */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

@@ -11,7 +11,9 @@
 *
 */
 uint8_t str[] = "Hello!";
-uint8_t RSSI[] = "RSSI = -";
+uint8_t RSSI[17] = "RSSI = -";
+uint8_t SNR[15] = "SNR = ";
+extern UART_HandleTypeDef huart2;
 //uint8_t str_r[16] = {0};
 
 void Lora_init (void)
@@ -97,9 +99,9 @@ void Lora_transmit (uint8_t *strdata, uint8_t number_of_data)
 
 void Lora_recieve(uint8_t *str_r, uint8_t *num_of_bytes)
 {
-      for (volatile uint8_t a = 0; a< RX_BUFFER_SIZE; a ++)
+   for (volatile uint8_t a = 0; a< RX_BUFFER_SIZE; a ++)
     *(str_r + a) = 0;
-  SPI1_Write(REG_OP_MODE,MODE_STDBY|0x80); // 0x81 0x81
+   SPI1_Write(REG_OP_MODE,MODE_STDBY|0x80); // 0x81 0x81
    /* ------------- Standby Mode -----------------*/
  //  SPI1_Write(REG_MODEM_CONFIG_2, 0xC0);  // SF12 , Normal Mode single packet, no CRC
    SPI1_Write(REG_DIO_MAPPING_1, RFLR_DIOMAPPING1_DIO0_00); // RX READY
@@ -107,11 +109,6 @@ void Lora_recieve(uint8_t *str_r, uint8_t *num_of_bytes)
    SPI1_Write(REG_FIFO_ADDR_PTR,0x00);
    SPI1_Write(REG_OP_MODE, MODE_RX_CONTINUOUS|0x80);
    /*---------------Receive continuous ---------- */
-
-      //  while( SPI1_Read(REG_IRQ_FLAGS) != 0x50)
-         // HAL_Delay(200);
-       // if( (GPIOA->IDR & GPIO_IDR_IDR_15))
-       // {
     HAL_Delay(200);
     SPI1_Read(REG_IRQ_FLAGS);
     SPI1_Write(REG_IRQ_FLAGS,0x50);
@@ -120,29 +117,14 @@ void Lora_recieve(uint8_t *str_r, uint8_t *num_of_bytes)
     HAL_Delay(300);
     led_redmain_low(); 
     *num_of_bytes =  SPI1_Read(REG_RX_NB_BYTES);
-    SPI1_Read(REG_PKT_RSSI_VALUE);
     SPI1_Read(REG_PKT_SNR_VALUE);       
     for (uint8_t i = 0; i< SPI1_Read(REG_RX_NB_BYTES); i++)
     *(str_r+i) = SPI1_Read(REG_FIFO);
-    for (uint8_t r = 0; r < sizeof(RSSI); r++)
-    {
-      *(str_r+ *num_of_bytes + r) = *(RSSI+r);
-    }
-    uint8_t rssi_tmp = 157 - SPI1_Read(REG_PKT_RSSI_VALUE);
-    uint8_t rssi_tmp_first = (rssi_tmp / 100) + 0x30;
-    uint8_t rssi_tmp_sec = (rssi_tmp - 100*(rssi_tmp_first- 0x30));
-    rssi_tmp_sec = (rssi_tmp_sec/10) + 0x30;
-    uint8_t rssi_tmp_thi = ((rssi_tmp - 100*(rssi_tmp_first- 0x30) - 10*(rssi_tmp_sec - 0x30))+ 0x30);
-    
-    *(str_r+ *num_of_bytes + sizeof(RSSI) - 1) = rssi_tmp_first;
-    *(str_r+ *num_of_bytes + sizeof(RSSI)) = rssi_tmp_sec;
-    *(str_r+ *num_of_bytes + sizeof(RSSI) + 1) = rssi_tmp_thi;
-    *(str_r+ *num_of_bytes + sizeof(RSSI) + 2) = '\r';
-    *(str_r+ *num_of_bytes + sizeof(RSSI) + 3 ) = '\n';
+    *(RSSI + 13) =  157 - SPI1_Read(REG_PKT_RSSI_VALUE);
+    *(SNR + 10) =  SPI1_Read(REG_PKT_SNR_VALUE) / 4;
     SPI1_Write(REG_OP_MODE,MODE_STDBY|0x80); // 0x81 0x81
     SPI1_Write(REG_FIFO_ADDR_PTR,0x00);
     SPI1_Write(REG_OP_MODE, MODE_RX_CONTINUOUS|0x80);         
-
 }
 
 
@@ -155,5 +137,31 @@ void Lora_reset (void)
   HAL_Delay(1);
   Lora_reset_high();
   HAL_Delay(10);  
-  
+}
+
+void Show_RSSI (void)
+{
+  *(RSSI + 9) = (*(RSSI + 13)/100) + 0x30;
+  *(RSSI + 10) = (*(RSSI + 13) - 100*(*(RSSI + 9) - 0x30));
+  *(RSSI + 10) = (*(RSSI + 10)/10) + 0x30;
+  *(RSSI + 11) = ((*(RSSI + 13) - 100*(*(RSSI + 9) - 0x30) - 10*(*(RSSI + 10) - 0x30))+ 0x30);
+  *(RSSI + 12) = 'd';
+  *(RSSI + 13) = 'B';
+  *(RSSI + 14) = 'm';
+  *(RSSI + 15) = '\r';
+  *(RSSI + 16) = '\n';
+  HAL_UART_Transmit(&huart2, RSSI, 17, 100);
+}
+
+void Show_SNR (void)
+{
+  *(SNR + 7) = (*(SNR + 10)/100) + 0x30;
+  *(SNR + 8) = (*(SNR + 10) - 100*(*(SNR + 7) - 0x30));
+  *(SNR + 8) = (*(SNR + 8)/10) + 0x30;
+  *(SNR + 9) = ((*(SNR + 10) - 100*(*(SNR + 7) - 0x30) - 10*(*(SNR + 8) - 0x30))+ 0x30);
+  *(SNR + 10) = 'd';
+  *(SNR + 11) = 'B';
+  *(SNR + 12) = '\r';
+  *(SNR + 13) = '\n';
+  HAL_UART_Transmit(&huart2, SNR, 14, 100);
 }

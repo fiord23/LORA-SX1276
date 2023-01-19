@@ -128,7 +128,9 @@ int main(void)
         if (answer == 1)
         {
             Lora_recieve(str_uart_r, &num_of_bytes);
-            HAL_UART_Transmit(&huart2, str_uart_r, num_of_bytes + 13, 100);
+            HAL_UART_Transmit(&huart2, str_uart_r, num_of_bytes, 100);
+            Show_RSSI();
+            Show_SNR();
             led_red_high();
             answer = 0;
         }

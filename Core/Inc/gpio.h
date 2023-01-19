@@ -41,6 +41,7 @@ void MX_GPIO_Init(void);
 void LED_config (void);
 void exti_config (void);
 void Delay_a (void);
+void MCO_config (void);
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus

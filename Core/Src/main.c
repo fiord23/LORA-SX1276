@@ -108,6 +108,7 @@ int main(void)
   SPI_config();
   LED_config(); 
   exti_config();
+  MCO_config();
   Lora_init ();  
   __HAL_UART_ENABLE_IT(&huart2, UART_IT_IDLE);
   HAL_UART_Receive_IT(&huart2, str_uart, RX_BUFFER_SIZE);

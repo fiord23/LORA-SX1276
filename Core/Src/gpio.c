@@ -79,6 +79,19 @@ void exti_config (void)
     __enable_irq ();
 }
 
+void MCO_config (void)
+{
+  RCC->AHBENR |= RCC_AHBENR_GPIOAEN; 
+  GPIOA->MODER &=~ (3 <<GPIO_MODER_MODER8_Pos); 
+  GPIOA->MODER |=  (2 << GPIO_MODER_MODER8_Pos); 
+  GPIOA->OSPEEDR &=~(3 << GPIO_OSPEEDER_OSPEEDR8_Pos);
+  GPIOA->OSPEEDR |= (3 << GPIO_OSPEEDER_OSPEEDR8_Pos);
+  GPIOA->AFR[1] &=~(15 << GPIO_AFRH_AFSEL8_Pos);
+  GPIOA->AFR[1] |= (0 << GPIO_AFRH_AFSEL8_Pos);
+  RCC->CFGR &=~(7 <<RCC_CFGR_MCOPRE_Pos);
+  RCC->CFGR &=~(7 <<RCC_CFGR_MCOSEL_Pos);
+  RCC->CFGR |= (1 <<RCC_CFGR_MCOSEL_Pos);
+}
 void Delay_a (void)
 {
   volatile uint32_t i;

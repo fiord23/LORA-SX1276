@@ -121,7 +121,7 @@ void Lora_recieve(uint8_t *str_r, uint8_t *num_of_bytes)
     for (uint8_t i = 0; i< SPI1_Read(REG_RX_NB_BYTES); i++)
     *(str_r+i) = SPI1_Read(REG_FIFO);
     *(RSSI + 13) =  157 - SPI1_Read(REG_PKT_RSSI_VALUE);
-    *(SNR + 10) =  SPI1_Read(REG_PKT_SNR_VALUE) / 4;
+    *(SNR + 10) =  SPI1_Read(REG_PKT_SNR_VALUE) >> 2;
     SPI1_Write(REG_OP_MODE,MODE_STDBY|0x80); // 0x81 0x81
     SPI1_Write(REG_FIFO_ADDR_PTR,0x00);
     SPI1_Write(REG_OP_MODE, MODE_RX_CONTINUOUS|0x80);         

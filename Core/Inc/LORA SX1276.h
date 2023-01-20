@@ -1,11 +1,6 @@
 #ifndef __LORA_SX1276_H
 #define __LORA_SX1276_H
-
-
-#include "main.h"
 #include <stdbool.h>
-#include "SPI1.h"
-
 
 #define Lora_reset_low()   (GPIOA->BSRR |=  GPIO_BSRR_BR_1) /* PA1 = 0  RESET LORA*/ 
 #define Lora_reset_high() (GPIOA->BSRR |=  GPIO_BSRR_BS_1) /* PA1 = 1 SET LORA*/

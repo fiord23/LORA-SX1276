@@ -19,12 +19,12 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "usart.h"
-
+#include <stdbool.h>
 /* USER CODE BEGIN 0 */
 #define RX_BUFFER_SIZE 100
 extern uint8_t str_uart[RX_BUFFER_SIZE];
 extern uint8_t rx_buffer_len;
-extern uint8_t flag;
+extern bool flag;
 /* USER CODE END 0 */
 
 UART_HandleTypeDef huart2;
@@ -132,7 +132,7 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* uartHandle)
           __HAL_UART_DISABLE_IT(&huart2, UART_IT_IDLE);
           
           rx_buffer_len = RX_BUFFER_SIZE;
-          flag = 1;
+          flag = true;
        HAL_UART_AbortReceive_IT(&huart2);
       __HAL_UART_CLEAR_IDLEFLAG(&huart2);
       __HAL_UART_ENABLE_IT(&huart2, UART_IT_IDLE);

@@ -4,15 +4,6 @@
 #include "main.h"
 #define cs_low()   (GPIOA->BSRR |= GPIO_BSRR_BR_4) /* PF12 = 0  CS LOW*/ 
 #define cs_high() (GPIOA->BSRR |= GPIO_BSRR_BS_4) /* PF12 = 1 CS HIGH*/
-#define led_redmain_high()   (GPIOB->BSRR |= GPIO_BSRR_BS_5) 
-#define led_redmain_low() (GPIOB->BSRR |= GPIO_BSRR_BR_5) 
-#define led_green_high()   (GPIOB->BSRR |= GPIO_BSRR_BR_1)  
-#define led_green_low() (GPIOB->BSRR |= GPIO_BSRR_BS_1) 
-#define led_red_high()   (GPIOB->BSRR |= GPIO_BSRR_BR_4) 
-#define led_red_low() (GPIOB->BSRR |= GPIO_BSRR_BS_4) 
-#define led_blue_high()   (GPIOB->BSRR |= GPIO_BSRR_BR_0) 
-#define led_blue_low() (GPIOB->BSRR |= GPIO_BSRR_BS_0)
-
 void SPI_GPIO_config (void);
 void SPI_config (void);
 uint8_t SPI1_Read (uint8_t reg );

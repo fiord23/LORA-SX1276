@@ -26,7 +26,6 @@
 /* USER CODE BEGIN Includes */
 #include "SPI1.h"
 #include "LORA SX1276.h" 
-#include <stdio.h>
 
 /* USER CODE END Includes */
 
@@ -48,10 +47,9 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-   uint8_t a = 0;
    uint8_t rx_buffer_len;
-   uint8_t flag =0;
-   uint8_t answer = 0;
+   bool flag = false;
+   bool answer = false;
    uint8_t num_of_bytes;
    uint8_t str_uart[RX_BUFFER_SIZE] = {1, 2, 3};
    uint8_t str_uart_r[RX_BUFFER_SIZE] = {0, };
@@ -65,9 +63,6 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
-
-
     
 /* USER CODE END 0 */
 
@@ -81,25 +76,18 @@ int main(void)
   /* USER CODE BEGIN 1 */
    HAL_Init();
    SystemClock_Config();
-
   /* USER CODE END 1 */
-
   /* MCU Configuration--------------------------------------------------------*/
-
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
   HAL_Init();
-
   /* USER CODE BEGIN Init */
     
   /* USER CODE END Init */
-
   /* Configure the system clock */
   SystemClock_Config();
-
   /* USER CODE BEGIN SysInit */
 
   /* USER CODE END SysInit */
-
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_USART2_UART_Init();
@@ -113,38 +101,28 @@ int main(void)
   __HAL_UART_ENABLE_IT(&huart2, UART_IT_IDLE);
   HAL_UART_Receive_IT(&huart2, str_uart, RX_BUFFER_SIZE);
   /* USER CODE END 2 */
-
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
-  {
-    
-
-        if (flag == 1)
-        {
-          Lora_transmit (str_uart, rx_buffer_len);
-          flag = 0;
-          
-        }
-        if (answer == 1)
-        {
-            Lora_recieve(str_uart_r, &num_of_bytes);
-            HAL_UART_Transmit(&huart2, str_uart_r, num_of_bytes, 100);
-            Show_RSSI();
-            Show_SNR();
-            led_red_high();
-            answer = 0;
-        }
-    
+  {    
+    if (flag)
+     {
+        Lora_transmit (str_uart, rx_buffer_len);
+        flag = false;          
+      }
+    if (answer)
+      {
+        Lora_recieve(str_uart_r, &num_of_bytes);
+        HAL_UART_Transmit(&huart2, str_uart_r, num_of_bytes, 100);
+        Show_RSSI();
+        Show_SNR();
+        led_red_high();
+        answer = false;
+       }    
     /*
     HAL_Delay(3000);
      Lora_transmit (str_uart, 16);
      */
-    
-
-
-
-    
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -196,35 +174,24 @@ void SystemClock_Config(void)
 /* USER CODE BEGIN 4 */
 void EXTI0_IRQHandler(void)	
 {
- // if(EXTI->PR & EXTI_IMR_MR0)
-	{
-        //  if ( (GPIOA->IDR & GPIO_IDR_IDR_0))
-          {
-           EXTI->PR = EXTI_PR_PR0;
-            asm("nop");
-            asm("nop");
-            asm("nop");
-            asm("nop");
-            asm("nop");
-          flag = 1;
-          }
-	}
+    EXTI->PR = EXTI_PR_PR0;
+    asm("nop");
+    asm("nop");
+    asm("nop");
+    asm("nop");
+    asm("nop");
+    flag = true;
 }
+
 void EXTI15_10_IRQHandler(void)	
 {
- // if(EXTI->PR & EXTI_IMR_MR0)
-	{
-          //if ( (GPIOA->IDR & GPIO_IDR_IDR_15))
-          {
-           EXTI->PR = EXTI_PR_PR15;
-            asm("nop");
-            asm("nop");
-            asm("nop");
-            asm("nop");
-            asm("nop");
-          answer = 1;
-          }
-	}
+    EXTI->PR = EXTI_PR_PR15;
+    asm("nop");
+    asm("nop");
+    asm("nop");
+    asm("nop");
+    asm("nop");
+    answer = true;
 }
 
 /* USER CODE END 4 */

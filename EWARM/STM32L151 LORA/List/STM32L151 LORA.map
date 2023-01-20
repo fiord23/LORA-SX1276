@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR ELF Linker V9.20.2.320/W64 for ARM                  19/Jan/2023  17:02:21
+# IAR ELF Linker V9.20.2.320/W64 for ARM                  20/Jan/2023  11:12:05
 # Copyright 2007-2021 IAR Systems AB.
 #
 #    Output file  =
@@ -104,7 +104,7 @@ initialize by copy { rw };
   .intvec            ro code   0x800'0000    0xf4  startup_stm32l151xb.o [1]
                              - 0x800'00f4    0xf4
 
-"P1":                                      0x1cba
+"P1":                                      0x1cf0
   .text              ro code   0x800'00f4   0x658  stm32l1xx_hal_uart.o [4]
   .text              ro code   0x800'074c   0x12c  usart.o [2]
   .text              ro code   0x800'0878     0xc  stm32l1xx_hal.o [4]
@@ -123,42 +123,25 @@ initialize by copy { rw };
   .text              ro code   0x800'14d4    0x1e  stm32l1xx_hal.o [4]
   .text              ro code   0x800'14f4   0x1a8  gpio.o [2]
   .text              ro code   0x800'169c   0x14a  SPI1.o [2]
-  .text              ro code   0x800'17e8   0x30e  LORA SX1276.o [2]
-  .text              ro code   0x800'1af8    0x66  ABImemset.o [6]
-  .text              ro code   0x800'1b60     0x2  I64DivZer.o [6]
-  .text              ro code   0x800'1b64    0x44  stm32l1xx_hal_msp.o [2]
-  .text              ro code   0x800'1ba8    0x28  stm32l1xx_hal.o [4]
-  .text              ro code   0x800'1bd0    0x2c  system_stm32l1xx.o [3]
-  .text              ro code   0x800'1bfc    0x28  data_init.o [6]
-  .iar.init_table    const     0x800'1c24    0x10  - Linker created -
-  .text              ro code   0x800'1c34    0x20  stm32l1xx_it.o [2]
-  .text              ro code   0x800'1c54    0x10  stm32l1xx_hal.o [4]
-  .text              ro code   0x800'1c64    0x1e  cmain.o [6]
-  .text              ro code   0x800'1c82     0x4  low_level_init.o [5]
-  .text              ro code   0x800'1c86     0x4  exit.o [5]
-  .text              ro code   0x800'1c8c     0xa  cexit.o [6]
-  .text              ro code   0x800'1c98    0x14  exit.o [7]
-  .text              ro code   0x800'1cac    0x1c  cstartup_M.o [6]
-  .text              ro code   0x800'1cc8    0x10  startup_stm32l151xb.o [1]
-  .rodata            const     0x800'1cd8     0x8  system_stm32l1xx.o [3]
-  .text              ro code   0x800'1ce0     0x4  startup_stm32l151xb.o [1]
-  .text              ro code   0x800'1ce4     0x4  startup_stm32l151xb.o [1]
-  .text              ro code   0x800'1ce8     0x4  startup_stm32l151xb.o [1]
-  .text              ro code   0x800'1cec     0x4  startup_stm32l151xb.o [1]
-  .text              ro code   0x800'1cf0     0x4  startup_stm32l151xb.o [1]
-  .text              ro code   0x800'1cf4     0x4  startup_stm32l151xb.o [1]
-  .text              ro code   0x800'1cf8     0x4  startup_stm32l151xb.o [1]
-  .text              ro code   0x800'1cfc     0x4  startup_stm32l151xb.o [1]
-  .text              ro code   0x800'1d00     0x4  startup_stm32l151xb.o [1]
-  .text              ro code   0x800'1d04     0x4  startup_stm32l151xb.o [1]
-  .text              ro code   0x800'1d08     0x4  startup_stm32l151xb.o [1]
-  .text              ro code   0x800'1d0c     0x4  startup_stm32l151xb.o [1]
-  .text              ro code   0x800'1d10     0x4  startup_stm32l151xb.o [1]
-  .text              ro code   0x800'1d14     0x4  startup_stm32l151xb.o [1]
-  .text              ro code   0x800'1d18     0x4  startup_stm32l151xb.o [1]
-  .text              ro code   0x800'1d1c     0x4  startup_stm32l151xb.o [1]
-  .text              ro code   0x800'1d20     0x4  startup_stm32l151xb.o [1]
-  .text              ro code   0x800'1d24     0x4  startup_stm32l151xb.o [1]
+  .text              ro code   0x800'17e8   0x340  LORA SX1276.o [2]
+  .text              ro code   0x800'1b28    0x66  ABImemset.o [6]
+  .text              ro code   0x800'1b90     0x2  I64DivZer.o [6]
+  .text              ro code   0x800'1b94    0x44  stm32l1xx_hal_msp.o [2]
+  .text              ro code   0x800'1bd8    0x28  stm32l1xx_hal.o [4]
+  .text              ro code   0x800'1c00    0x18  ABImemcpy_small.o [6]
+  .text              ro code   0x800'1c18    0x2c  system_stm32l1xx.o [3]
+  .text              ro code   0x800'1c44    0x28  data_init.o [6]
+  .iar.init_table    const     0x800'1c6c    0x10  - Linker created -
+  .text              ro code   0x800'1c7c    0x20  stm32l1xx_it.o [2]
+  .text              ro code   0x800'1c9c    0x10  stm32l1xx_hal.o [4]
+  .text              ro code   0x800'1cac    0x1e  cmain.o [6]
+  .text              ro code   0x800'1cca     0x4  low_level_init.o [5]
+  .text              ro code   0x800'1cce     0x4  exit.o [5]
+  .text              ro code   0x800'1cd4     0xa  cexit.o [6]
+  .text              ro code   0x800'1ce0    0x14  exit.o [7]
+  .text              ro code   0x800'1cf4    0x1c  cstartup_M.o [6]
+  .text              ro code   0x800'1d10    0x10  startup_stm32l151xb.o [1]
+  .rodata            const     0x800'1d20     0x8  system_stm32l1xx.o [3]
   .text              ro code   0x800'1d28     0x4  startup_stm32l151xb.o [1]
   .text              ro code   0x800'1d2c     0x4  startup_stm32l151xb.o [1]
   .text              ro code   0x800'1d30     0x4  startup_stm32l151xb.o [1]
@@ -182,32 +165,49 @@ initialize by copy { rw };
   .text              ro code   0x800'1d78     0x4  startup_stm32l151xb.o [1]
   .text              ro code   0x800'1d7c     0x4  startup_stm32l151xb.o [1]
   .text              ro code   0x800'1d80     0x4  startup_stm32l151xb.o [1]
-  .rodata            const     0x800'1d84     0x0  packbits_init_single.o [6]
-  Initializer bytes  const     0x800'1d84    0x2a  <for P2-1>
-                             - 0x800'1dae  0x1cba
+  .text              ro code   0x800'1d84     0x4  startup_stm32l151xb.o [1]
+  .text              ro code   0x800'1d88     0x4  startup_stm32l151xb.o [1]
+  .text              ro code   0x800'1d8c     0x4  startup_stm32l151xb.o [1]
+  .text              ro code   0x800'1d90     0x4  startup_stm32l151xb.o [1]
+  .text              ro code   0x800'1d94     0x4  startup_stm32l151xb.o [1]
+  .text              ro code   0x800'1d98     0x4  startup_stm32l151xb.o [1]
+  .text              ro code   0x800'1d9c     0x4  startup_stm32l151xb.o [1]
+  .text              ro code   0x800'1da0     0x4  startup_stm32l151xb.o [1]
+  .text              ro code   0x800'1da4     0x4  startup_stm32l151xb.o [1]
+  .text              ro code   0x800'1da8     0x4  startup_stm32l151xb.o [1]
+  .text              ro code   0x800'1dac     0x4  startup_stm32l151xb.o [1]
+  .text              ro code   0x800'1db0     0x4  startup_stm32l151xb.o [1]
+  .text              ro code   0x800'1db4     0x4  startup_stm32l151xb.o [1]
+  .text              ro code   0x800'1db8     0x4  startup_stm32l151xb.o [1]
+  .text              ro code   0x800'1dbc     0x4  startup_stm32l151xb.o [1]
+  .text              ro code   0x800'1dc0     0x4  startup_stm32l151xb.o [1]
+  .text              ro code   0x800'1dc4     0x4  startup_stm32l151xb.o [1]
+  .text              ro code   0x800'1dc8     0x4  startup_stm32l151xb.o [1]
+  .rodata            const     0x800'1dcc     0x0  packbits_init_single.o [6]
+  Initializer bytes  const     0x800'1dcc    0x18  <for P2-1>
+                             - 0x800'1de4  0x1cf0
 
-"P2", part 1 of 2:                          0x144
-  P2-1                        0x2000'0000   0x144  <Init block>
-    .data            inited   0x2000'0000    0x14  LORA SX1276.o [2]
-    .data            inited   0x2000'0014    0x10  LORA SX1276.o [2]
-    .data            inited   0x2000'0024    0xcc  main.o [2]
-    .data            inited   0x2000'00f0     0xc  stm32l1xx_hal.o [4]
-    .data            inited   0x2000'00fc     0x4  system_stm32l1xx.o [3]
-    .bss             inited   0x2000'0100    0x44  usart.o [2]
-                            - 0x2000'0144   0x144
+"P2", part 1 of 2:                          0x122
+  P2-1                        0x2000'0000   0x122  <Init block>
+    .data            inited   0x2000'0000    0xcc  main.o [2]
+    .data            inited   0x2000'00cc     0xc  stm32l1xx_hal.o [4]
+    .data            inited   0x2000'00d8     0x4  system_stm32l1xx.o [3]
+    .bss             inited   0x2000'00dc    0x44  usart.o [2]
+    .bss             inited   0x2000'0120     0x2  LORA SX1276.o [2]
+                            - 0x2000'0122   0x122
 
 "P2", part 2 of 2:                          0x400
-  CSTACK                      0x2000'0148   0x400  <Block>
-    CSTACK           uninit   0x2000'0148   0x400  <Block tail>
-                            - 0x2000'0548   0x400
+  CSTACK                      0x2000'0128   0x400  <Block>
+    CSTACK           uninit   0x2000'0128   0x400  <Block tail>
+                            - 0x2000'0528   0x400
 
 Unused ranges:
 
          From           To      Size
          ----           --      ----
-   0x800'1dae   0x801'ffff  0x1'e252
-  0x2000'0144  0x2000'0147       0x4
-  0x2000'0548  0x2000'3fff    0x3ab8
+   0x800'1de4   0x801'ffff  0x1'e21c
+  0x2000'0122  0x2000'0127       0x6
+  0x2000'0528  0x2000'3fff    0x3ad8
 
 
 *******************************************************************************
@@ -217,10 +217,10 @@ Unused ranges:
           Address      Size
           -------      ----
 Copy/packbits (__iar_packbits_init_single3)
-    1 source range, total size 0x2a (12% of destination):
-           0x800'1d84   0x2a
-    1 destination range, total size 0x144:
-          0x2000'0000  0x144
+    1 source range, total size 0x18 (8% of destination):
+           0x800'1dcc   0x18
+    1 destination range, total size 0x122:
+          0x2000'0000  0x122
 
 
 
@@ -240,15 +240,15 @@ D:\Work\Programming\LORA\LORA SX1276\EWARM\STM32L151 LORA\Obj\Application\EWARM:
     Total:                      424
 
 D:\Work\Programming\LORA\LORA SX1276\EWARM\STM32L151 LORA\Obj\Application\User\Core: [2]
-    LORA SX1276.o               782        4       36
+    LORA SX1276.o               832        1        2
     SPI1.o                      330
     gpio.o                      424
-    main.o                      332       27      204
+    main.o                      332       16      204
     stm32l1xx_hal_msp.o          68
     stm32l1xx_it.o               32
-    usart.o                     300        9       68
+    usart.o                     300        5       68
     -------------------------------------------------
-    Total:                    2'268       40      308
+    Total:                    2'318       22      274
 
 D:\Work\Programming\LORA\LORA SX1276\EWARM\STM32L151 LORA\Obj\Drivers\CMSIS: [3]
     system_stm32l1xx.o           44        9        4
@@ -265,13 +265,14 @@ D:\Work\Programming\LORA\LORA SX1276\EWARM\STM32L151 LORA\Obj\Drivers\STM32L1xx_
     -------------------------------------------------
     Total:                    4'202        1       12
 
-dl7M_tlf.a: [5]
+dl7M_tln.a: [5]
     exit.o                        4
     low_level_init.o              4
     -------------------------------------------------
     Total:                        8
 
 rt7M_tl.a: [6]
+    ABImemcpy_small.o            24
     ABImemset.o                 102
     I64DivMod_small.o           262
     I64DivZer.o                   2
@@ -282,17 +283,17 @@ rt7M_tl.a: [6]
     memset.o                     20
     packbits_init_single.o       58
     -------------------------------------------------
-    Total:                      552
+    Total:                      576
 
 shb_l.a: [7]
     exit.o                       20
     -------------------------------------------------
     Total:                       20
 
-    Gaps                         14
+    Gaps                         12
     Linker created                        16    1'024
 -----------------------------------------------------
-    Grand Total:              7'532       66    1'348
+    Grand Total:              7'604       48    1'314
 
 
 *******************************************************************************
@@ -301,28 +302,28 @@ shb_l.a: [7]
 
 Entry                       Address   Size  Type      Object
 -----                       -------   ----  ----      ------
-.iar.init_table$$Base    0x800'1c24          --   Gb  - Linker created -
-.iar.init_table$$Limit   0x800'1c34          --   Gb  - Linker created -
-?main                    0x800'1c65         Code  Gb  cmain.o [6]
-AHBPrescTable            0x800'1bec   0x10  Data  Gb  system_stm32l1xx.o [3]
-APBPrescTable            0x800'1cd8    0x8  Data  Gb  system_stm32l1xx.o [3]
-BusFault_Handler         0x800'1c3b    0x2  Code  Gb  stm32l1xx_it.o [2]
-CSTACK$$Base            0x2000'0148          --   Gb  - Linker created -
-CSTACK$$Limit           0x2000'0548          --   Gb  - Linker created -
-DebugMon_Handler         0x800'1c41    0x2  Code  Gb  stm32l1xx_it.o [2]
+.iar.init_table$$Base    0x800'1c6c          --   Gb  - Linker created -
+.iar.init_table$$Limit   0x800'1c7c          --   Gb  - Linker created -
+?main                    0x800'1cad         Code  Gb  cmain.o [6]
+AHBPrescTable            0x800'1c34   0x10  Data  Gb  system_stm32l1xx.o [3]
+APBPrescTable            0x800'1d20    0x8  Data  Gb  system_stm32l1xx.o [3]
+BusFault_Handler         0x800'1c83    0x2  Code  Gb  stm32l1xx_it.o [2]
+CSTACK$$Base            0x2000'0128          --   Gb  - Linker created -
+CSTACK$$Limit           0x2000'0528          --   Gb  - Linker created -
+DebugMon_Handler         0x800'1c89    0x2  Code  Gb  stm32l1xx_it.o [2]
 Delay_a                  0x800'1685   0x18  Code  Gb  gpio.o [2]
 EXTI0_IRQHandler         0x800'1059   0x16  Code  Gb  main.o [2]
 EXTI15_10_IRQHandler     0x800'1071   0x1a  Code  Gb  main.o [2]
 Error_Handler            0x800'10a1    0x4  Code  Gb  main.o [2]
 HAL_DMA_Abort            0x800'0885   0x3e  Code  Gb  stm32l1xx_hal_dma.o [4]
 HAL_DMA_Abort_IT         0x800'08cb   0x46  Code  Gb  stm32l1xx_hal_dma.o [4]
-HAL_Delay                0x800'1ba9   0x28  Code  Wk  stm32l1xx_hal.o [4]
+HAL_Delay                0x800'1bd9   0x28  Code  Wk  stm32l1xx_hal.o [4]
 HAL_GPIO_Init            0x800'10b9  0x1b2  Code  Gb  stm32l1xx_hal_gpio.o [4]
 HAL_GetTick              0x800'0879    0xc  Code  Wk  stm32l1xx_hal.o [4]
-HAL_IncTick              0x800'1c55   0x10  Code  Wk  stm32l1xx_hal.o [4]
+HAL_IncTick              0x800'1c9d   0x10  Code  Wk  stm32l1xx_hal.o [4]
 HAL_Init                 0x800'14d5   0x1e  Code  Gb  stm32l1xx_hal.o [4]
 HAL_InitTick             0x800'1351   0x44  Code  Wk  stm32l1xx_hal.o [4]
-HAL_MspInit              0x800'1b65   0x44  Code  Gb  stm32l1xx_hal_msp.o [2]
+HAL_MspInit              0x800'1b95   0x44  Code  Gb  stm32l1xx_hal_msp.o [2]
 HAL_NVIC_EnableIRQ       0x800'12fb   0x16  Code  Gb  stm32l1xx_hal_cortex.o [4]
 HAL_NVIC_SetPriority     0x800'12c1   0x3a  Code  Gb  stm32l1xx_hal_cortex.o [4]
 HAL_NVIC_SetPriorityGrouping
@@ -344,36 +345,36 @@ HAL_UART_Receive_IT      0x800'021f   0x30  Code  Gb  stm32l1xx_hal_uart.o [4]
 HAL_UART_RxCpltCallback
                          0x800'080d   0x20  Code  Gb  usart.o [2]
 HAL_UART_Transmit        0x800'016f   0xb0  Code  Gb  stm32l1xx_hal_uart.o [4]
-HardFault_Handler        0x800'1c37    0x2  Code  Gb  stm32l1xx_it.o [2]
+HardFault_Handler        0x800'1c7f    0x2  Code  Gb  stm32l1xx_it.o [2]
 LED_config               0x800'1529   0x7e  Code  Gb  gpio.o [2]
-Lora_init                0x800'17e9   0xd8  Code  Gb  LORA SX1276.o [2]
-Lora_recieve             0x800'195f   0xc4  Code  Gb  LORA SX1276.o [2]
-Lora_reset               0x800'1a23   0x34  Code  Gb  LORA SX1276.o [2]
-Lora_transmit            0x800'18c9   0x76  Code  Gb  LORA SX1276.o [2]
+Lora_init                0x800'17e9   0xda  Code  Gb  LORA SX1276.o [2]
+Lora_recieve             0x800'1963   0xc4  Code  Gb  LORA SX1276.o [2]
+Lora_reset               0x800'1a27   0x34  Code  Gb  LORA SX1276.o [2]
+Lora_transmit            0x800'18cb   0x78  Code  Gb  LORA SX1276.o [2]
 MCO_config               0x800'160b   0x52  Code  Gb  gpio.o [2]
 MX_GPIO_Init             0x800'150f   0x1a  Code  Gb  gpio.o [2]
 MX_USART2_UART_Init      0x800'074d   0x2e  Code  Gb  usart.o [2]
-MemManage_Handler        0x800'1c39    0x2  Code  Gb  stm32l1xx_it.o [2]
-NMI_Handler              0x800'1c35    0x2  Code  Gb  stm32l1xx_it.o [2]
-PLLMulTable              0x800'1be0    0xc  Data  Gb  system_stm32l1xx.o [3]
-PendSV_Handler           0x800'1c43    0x2  Code  Gb  stm32l1xx_it.o [2]
+MemManage_Handler        0x800'1c81    0x2  Code  Gb  stm32l1xx_it.o [2]
+NMI_Handler              0x800'1c7d    0x2  Code  Gb  stm32l1xx_it.o [2]
+PLLMulTable              0x800'1c28    0xc  Data  Gb  system_stm32l1xx.o [3]
+PendSV_Handler           0x800'1c8b    0x2  Code  Gb  stm32l1xx_it.o [2]
 RCC_SetFlashLatencyFromMSIRange
                          0x800'0eaf   0x72  Code  Lc  stm32l1xx_hal_rcc.o [4]
-RSSI                    0x2000'0000   0x14  Data  Gb  LORA SX1276.o [2]
-Region$$Table$$Base      0x800'1c24          --   Gb  - Linker created -
-Region$$Table$$Limit     0x800'1c34          --   Gb  - Linker created -
-SNR                     0x2000'0014   0x10  Data  Gb  LORA SX1276.o [2]
+RSSI_value              0x2000'0120    0x1  Data  Gb  LORA SX1276.o [2]
+Region$$Table$$Base      0x800'1c6c          --   Gb  - Linker created -
+Region$$Table$$Limit     0x800'1c7c          --   Gb  - Linker created -
+SNR_value               0x2000'0121    0x1  Data  Gb  LORA SX1276.o [2]
 SPI1_Read                0x800'1723   0x44  Code  Gb  SPI1.o [2]
 SPI1_Write               0x800'1767   0x3e  Code  Gb  SPI1.o [2]
 SPI_GPIO_config          0x800'169d   0x5e  Code  Gb  SPI1.o [2]
 SPI_config               0x800'16fb   0x28  Code  Gb  SPI1.o [2]
-SVC_Handler              0x800'1c3f    0x2  Code  Gb  stm32l1xx_it.o [2]
-Show_RSSI                0x800'1a57   0x2c  Code  Gb  LORA SX1276.o [2]
-Show_SNR                 0x800'1a83   0x26  Code  Gb  LORA SX1276.o [2]
-SysTick_Handler          0x800'1c45    0x4  Code  Gb  stm32l1xx_it.o [2]
-SystemClock_Config       0x800'0feb   0x6e  Code  Gb  main.o [2]
-SystemCoreClock         0x2000'00fc    0x4  Data  Gb  system_stm32l1xx.o [3]
-SystemInit               0x800'1bd1    0xa  Code  Gb  system_stm32l1xx.o [3]
+SVC_Handler              0x800'1c87    0x2  Code  Gb  stm32l1xx_it.o [2]
+Show_RSSI                0x800'1a5d   0x32  Code  Gb  LORA SX1276.o [2]
+Show_SNR                 0x800'1a91   0x32  Code  Gb  LORA SX1276.o [2]
+SysTick_Handler          0x800'1c8d    0x4  Code  Gb  stm32l1xx_it.o [2]
+SystemClock_Config       0x800'0fe9   0x6e  Code  Gb  main.o [2]
+SystemCoreClock         0x2000'00d8    0x4  Data  Gb  system_stm32l1xx.o [3]
+SystemInit               0x800'1c19    0xa  Code  Gb  system_stm32l1xx.o [3]
 UART_DMAAbortOnError     0x800'05bd    0xe  Code  Lc  stm32l1xx_hal_uart.o [4]
 UART_DMARxOnlyAbortCallback
                          0x800'05cd   0x12  Code  Lc  stm32l1xx_hal_uart.o [4]
@@ -383,52 +384,56 @@ UART_SetConfig           0x800'0697   0x9c  Code  Lc  stm32l1xx_hal_uart.o [4]
 UART_Start_Receive_IT    0x800'0557   0x36  Code  Gb  stm32l1xx_hal_uart.o [4]
 UART_WaitOnFlagUntilTimeout
                          0x800'04f1   0x5a  Code  Lc  stm32l1xx_hal_uart.o [4]
-USART2_IRQHandler        0x800'1c49    0x6  Code  Gb  stm32l1xx_it.o [2]
-UsageFault_Handler       0x800'1c3d    0x2  Code  Gb  stm32l1xx_it.o [2]
+USART2_IRQHandler        0x800'1c91    0x6  Code  Gb  stm32l1xx_it.o [2]
+UsageFault_Handler       0x800'1c85    0x2  Code  Gb  stm32l1xx_it.o [2]
 __NVIC_SetPriority       0x800'14f5   0x1a  Code  Lc  gpio.o [2]
 __NVIC_SetPriority       0x800'128d   0x1a  Code  Lc  stm32l1xx_hal_cortex.o [4]
-__aeabi_ldiv0            0x800'1b61         Code  Gb  I64DivZer.o [6]
-__aeabi_memset           0x800'1af9         Code  Gb  ABImemset.o [6]
-__cmain                  0x800'1c65         Code  Gb  cmain.o [6]
-__exit                   0x800'1c99   0x14  Code  Gb  exit.o [7]
-__iar_Memset             0x800'1af9         Code  Gb  ABImemset.o [6]
-__iar_Memset_word        0x800'1b01         Code  Gb  ABImemset.o [6]
-__iar_data_init3         0x800'1bfd   0x28  Code  Gb  data_init.o [6]
+__aeabi_ldiv0            0x800'1b91         Code  Gb  I64DivZer.o [6]
+__aeabi_memset           0x800'1b29         Code  Gb  ABImemset.o [6]
+__cmain                  0x800'1cad         Code  Gb  cmain.o [6]
+__exit                   0x800'1ce1   0x14  Code  Gb  exit.o [7]
+__iar_Memset             0x800'1b29         Code  Gb  ABImemset.o [6]
+__iar_Memset_word        0x800'1b31         Code  Gb  ABImemset.o [6]
+__iar_data_init3         0x800'1c45   0x28  Code  Gb  data_init.o [6]
 __iar_packbits_init_single3
                          0x800'149b   0x3a  Code  Gb  packbits_init_single.o [6]
-__iar_program_start      0x800'1cad         Code  Gb  cstartup_M.o [6]
+__iar_program_start      0x800'1cf5         Code  Gb  cstartup_M.o [6]
+__iar_small_Memcpy       0x800'1c05         Code  Gb  ABImemcpy_small.o [6]
+__iar_small_memcpy       0x800'1c01         Code  Gb  ABImemcpy_small.o [6]
+__iar_small_memcpy4      0x800'1c01         Code  Gb  ABImemcpy_small.o [6]
+__iar_small_memcpy8      0x800'1c01         Code  Gb  ABImemcpy_small.o [6]
 __iar_small_uldivmod     0x800'1395         Code  Gb  I64DivMod_small.o [6]
-__low_level_init         0x800'1c83    0x4  Code  Gb  low_level_init.o [5]
+__low_level_init         0x800'1ccb    0x4  Code  Gb  low_level_init.o [5]
 __vector_table           0x800'0000         Data  Gb  startup_stm32l151xb.o [1]
-_call_main               0x800'1c71         Code  Gb  cmain.o [6]
-_exit                    0x800'1c8d         Code  Gb  cexit.o [6]
-answer                  0x2000'0026    0x1  Data  Gb  main.o [2]
-exit                     0x800'1c87    0x4  Code  Gb  exit.o [5]
+_call_main               0x800'1cb9         Code  Gb  cmain.o [6]
+_exit                    0x800'1cd5         Code  Gb  cexit.o [6]
+answer                  0x2000'0002    0x1  Data  Gb  main.o [2]
+exit                     0x800'1ccf    0x4  Code  Gb  exit.o [5]
 exti_config              0x800'15a7   0x64  Code  Gb  gpio.o [2]
-flag                    0x2000'0025    0x1  Data  Gb  main.o [2]
-huart2                  0x2000'0100   0x44  Data  Gb  usart.o [2]
-main                     0x800'0f59   0x92  Code  Gb  main.o [2]
+flag                    0x2000'0001    0x1  Data  Gb  main.o [2]
+huart2                  0x2000'00dc   0x44  Data  Gb  usart.o [2]
+main                     0x800'0f59   0x90  Code  Gb  main.o [2]
 memset                   0x800'10a5   0x14  Code  Gb  memset.o [6]
-num_of_bytes            0x2000'0027    0x1  Data  Gb  main.o [2]
-rx_buffer_len           0x2000'0024    0x1  Data  Gb  main.o [2]
-str_uart                0x2000'0028   0x64  Data  Gb  main.o [2]
-str_uart_r              0x2000'008c   0x64  Data  Gb  main.o [2]
-uwTick                  0x2000'00f0    0x4  Data  Gb  stm32l1xx_hal.o [4]
-uwTickFreq              0x2000'00f8    0x4  Data  Gb  stm32l1xx_hal.o [4]
-uwTickPrio              0x2000'00f4    0x4  Data  Gb  stm32l1xx_hal.o [4]
+num_of_bytes            0x2000'0003    0x1  Data  Gb  main.o [2]
+rx_buffer_len           0x2000'0000    0x1  Data  Gb  main.o [2]
+str_uart                0x2000'0004   0x64  Data  Gb  main.o [2]
+str_uart_r              0x2000'0068   0x64  Data  Gb  main.o [2]
+uwTick                  0x2000'00cc    0x4  Data  Gb  stm32l1xx_hal.o [4]
+uwTickFreq              0x2000'00d4    0x4  Data  Gb  stm32l1xx_hal.o [4]
+uwTickPrio              0x2000'00d0    0x4  Data  Gb  stm32l1xx_hal.o [4]
 
 
 [1] = D:\Work\Programming\LORA\LORA SX1276\EWARM\STM32L151 LORA\Obj\Application\EWARM
 [2] = D:\Work\Programming\LORA\LORA SX1276\EWARM\STM32L151 LORA\Obj\Application\User\Core
 [3] = D:\Work\Programming\LORA\LORA SX1276\EWARM\STM32L151 LORA\Obj\Drivers\CMSIS
 [4] = D:\Work\Programming\LORA\LORA SX1276\EWARM\STM32L151 LORA\Obj\Drivers\STM32L1xx_HAL_Driver
-[5] = dl7M_tlf.a
+[5] = dl7M_tln.a
 [6] = rt7M_tl.a
 [7] = shb_l.a
 
-  7'532 bytes of readonly  code memory
-     66 bytes of readonly  data memory
-  1'348 bytes of readwrite data memory
+  7'604 bytes of readonly  code memory
+     48 bytes of readonly  data memory
+  1'314 bytes of readwrite data memory
 
 Errors: none
 Warnings: none

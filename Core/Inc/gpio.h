@@ -42,6 +42,15 @@ void LED_config (void);
 void exti_config (void);
 void Delay_a (void);
 void MCO_config (void);
+#define led_redmain_high()   (GPIOB->BSRR |= GPIO_BSRR_BS_5) 
+#define led_redmain_low() (GPIOB->BSRR |= GPIO_BSRR_BR_5) 
+#define led_green_high()   (GPIOB->BSRR |= GPIO_BSRR_BR_1)  
+#define led_green_low() (GPIOB->BSRR |= GPIO_BSRR_BS_1) 
+#define led_red_high()   (GPIOB->BSRR |= GPIO_BSRR_BR_4) 
+#define led_red_low() (GPIOB->BSRR |= GPIO_BSRR_BS_4) 
+#define led_blue_high()   (GPIOB->BSRR |= GPIO_BSRR_BR_0) 
+#define led_blue_low() (GPIOB->BSRR |= GPIO_BSRR_BS_0)
+
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus

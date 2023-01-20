@@ -1,6 +1,5 @@
-#include "main.h"
 #include "SPI1.h"
-
+#include "gpio.h"
 
 void SPI_GPIO_config (void)
 { 
@@ -16,7 +15,6 @@ void SPI_GPIO_config (void)
   GPIOA->OSPEEDR |= (3 << GPIO_OSPEEDER_OSPEEDR4_Pos ); 
   GPIOA->BSRR |= GPIO_BSRR_BS_4;    
 }
-
 
 void SPI_config (void)
 {
@@ -34,7 +32,7 @@ uint8_t SPI1_Read (uint8_t reg )
   cs_low();
   Delay_a();
   while (!(SPI1->SR & SPI_SR_TXE));
-  SPI1->DR = reg ; 
+  SPI1->DR = reg; 
   while (!(SPI1->SR & SPI_SR_TXE));
   while ((SPI1->SR & SPI_SR_BSY));  
   SPI1->DR = 0; 
@@ -47,7 +45,6 @@ uint8_t SPI1_Read (uint8_t reg )
   Delay_a();
   return data;
 }
-
 
 void SPI1_Write (uint8_t reg, uint8_t data)
 {

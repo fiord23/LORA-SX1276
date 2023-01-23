@@ -6,6 +6,7 @@
 uint8_t RSSI_value = 0;
 uint8_t SNR_value = 0;
 
+
 extern UART_HandleTypeDef huart2;
 
 void Lora_init (void)
@@ -27,6 +28,7 @@ void Lora_init (void)
         HAL_Delay(200);
      }
    }
+   
    //--------------------------------LORA CONFIGURATION------------------------
    // 868MHz, SF12, 125kHz, 300bps, MaxPower, OcpOn, 9Byte info 	
    SPI1_Write(REG_OP_MODE, MODE_LONG_RANGE_MODE|MODE_SLEEP); //Lora mode, HF, Sleep //0x81 0x80
@@ -37,7 +39,7 @@ void Lora_init (void)
    SPI1_Write(REG_PA_DAC, 0x84); //Default value PA_HF/LF or +17dBm
    SPI1_Write(REG_OCP, 0x2b); //OCP enabled, OcpTrim = 100 mA
    SPI1_Write(REG_PA_CONFIG, 0xFF); //PA_BOOST, Pout = 17 dBm 
-   SPI1_Write(REG_FRF_MSB, 0xD9); //868 MHz
+  // SPI1_Write(REG_FRF_MSB, 0xD9); //868 MHz
    SPI1_Write(REG_FRF_MID, 0x00);
    SPI1_Write(REG_FRF_LSB, 0x00);
    SPI1_Write(REG_OP_MODE, MODE_STDBY|0x80); //new

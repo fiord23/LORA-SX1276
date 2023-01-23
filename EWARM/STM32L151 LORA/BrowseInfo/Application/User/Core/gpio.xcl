@@ -21,11 +21,11 @@ D:\Work\Programming\LORA\LORA SX1276\EWARM/../Drivers/CMSIS/Device/ST/STM32L1xx/
 -I
 D:\Work\Programming\LORA\LORA SX1276\EWARM/../Drivers/CMSIS/Include\
 -I
-C:\Program Files\IAR Systems\Embedded Workbench 9.0\arm\inc\c\aarch32
+C:\Program Files\IAR Systems\Embedded Workbench 9.1\arm\inc\c\aarch32
 -I
-C:\Program Files\IAR Systems\Embedded Workbench 9.0\arm\inc
+C:\Program Files\IAR Systems\Embedded Workbench 9.1\arm\inc
 -I
-C:\Program Files\IAR Systems\Embedded Workbench 9.0\arm\inc\c
+C:\Program Files\IAR Systems\Embedded Workbench 9.1\arm\inc\c
 -I
 D:\Work\Programming\LORA\LORA SX1276\Core\Inc
 -I
@@ -240,8 +240,8 @@ D:\Work\Programming\LORA\LORA SX1276\Drivers\CMSIS\Include
 -D__JMP_BUF_ELEMENT_TYPE__=unsigned long long int
 -D__JMP_BUF_NUM_ELEMENTS__=8
 -D__TID__=0xcf60
--D__VER__=9020002
--D__BUILD_NUMBER__=320
+-D__VER__=9032001
+-D__BUILD_NUMBER__=338
 -D__IAR_SYSTEMS_ICC__=9
 -D_MAX_ALIGNMENT=8
 -D__LITTLE_ENDIAN__=1
@@ -322,13 +322,15 @@ D:\Work\Programming\LORA\LORA SX1276\Drivers\CMSIS\Include
 -D__HAS_JOINED_TYPES__=1
 -D__HAS_LOCATED_DECLARATION__=1
 -D__HAS_LOCATED_WITH_INIT__=1
--D__IAR_COMPILERBASE__=0xa0901
--D__IAR_COMPILERBASE_STR__=10.9.1.1363
+-D__IAR_COMPILERBASE__=0xa0c04
+-D__IAR_COMPILERBASE_STR__=10.12.4.1420
 -D__UNICODE_SOURCE_SUPPORTED__=1
 -D__VTABLE_MEM__=
 -D__PRAGMA_REDEFINE_EXTNAME=1
 -D__STDC__=1
 -D__STDC_VERSION__=201710L
+-D__STDC_IEC_559__=1
+-D__STDC_IEC_559_COMPLEX__=1
 -D__STDC_NO_VLA__=1
 -D__MEMORY_ORDER_RELAXED__=0
 -D__MEMORY_ORDER_CONSUME__=1
@@ -351,7 +353,7 @@ D:\Work\Programming\LORA\LORA SX1276\Drivers\CMSIS\Include
 -D__cpp_unicode_literals=200710L
 -D__cpp_static_assert=200410L
 -D__EDG__=1
--D__EDG_VERSION__=602
+-D__EDG_VERSION__=603
 -D__EDG_SIZE_TYPE__=unsigned int
 -D__EDG_PTRDIFF_TYPE__=int
 -D__EDG_DELTA_TYPE=int
@@ -372,9 +374,9 @@ D:\Work\Programming\LORA\LORA SX1276\Drivers\CMSIS\Include
 -D__EDG_INT128_EXTENSIONS_ALLOWED=0
 -DUSE_HAL_DRIVER=1
 -DSTM32L151xB=1
--D_DLIB_CONFIG_FILE_HEADER_NAME="C:\Program Files\IAR Systems\Embedded Workbench 9.0\arm\inc\c\DLib_Config_Full.h"
--D_DLIB_CONFIG_FILE_STRING="C:\\Program Files\\IAR Systems\\Embedded Workbench 9.0\\arm\\inc\\c\\DLib_Config_Full.h"
--D__VERSION__="IAR ANSI C/C++ Compiler V9.20.2.320/W64 for ARM"
+-D_DLIB_CONFIG_FILE_HEADER_NAME="C:\Program Files\IAR Systems\Embedded Workbench 9.1\arm\inc\c\DLib_Config_Full.h"
+-D_DLIB_CONFIG_FILE_STRING="C:\\Program Files\\IAR Systems\\Embedded Workbench 9.1\\arm\\inc\\c\\DLib_Config_Full.h"
+-D__VERSION__="IAR ANSI C/C++ Compiler V9.32.1.338/W64 for ARM"
 -D_VA_DEFINED=
 -D_VA_LIST=struct __va_list
 -D__ICCARM_OLD_DEFINED_VAARGS__=1

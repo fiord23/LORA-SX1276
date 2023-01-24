@@ -2,6 +2,7 @@
 #include "SPI1.h"
 #include "LORA SX1276.h"
 #include "gpio.h"
+
 #define RX_BUFFER_SIZE 100
 uint8_t RSSI_value = 0;
 uint8_t SNR_value = 0;
@@ -39,10 +40,10 @@ void Lora_init (void)
    SPI1_Write(REG_PA_DAC, 0x84); //Default value PA_HF/LF or +17dBm
    SPI1_Write(REG_OCP, 0x2b); //OCP enabled, OcpTrim = 100 mA
    SPI1_Write(REG_PA_CONFIG, 0xFF); //PA_BOOST, Pout = 17 dBm 
-  // SPI1_Write(REG_FRF_MSB, 0xD9); //868 MHz
+   SPI1_Write(REG_FRF_MSB, 0xD9); //868 MHz
    SPI1_Write(REG_FRF_MID, 0x00);
    SPI1_Write(REG_FRF_LSB, 0x00);
-   SPI1_Write(REG_OP_MODE, MODE_STDBY|0x80); //new
+   SPI1_Write(REG_OP_MODE, MODE_STDBY|MODE_LONG_RANGE_MODE); //new
    /* ------------- Standby Mode -----------------*/
    SPI1_Write(REG_PA_DAC, 0x87); //Set Pmax to +20dBm for PA_HP
    SPI1_Write(REG_OCP, 0x3b); //OCP enabled,  OcpTrim = 27 Imax = 240 mA
@@ -52,10 +53,10 @@ void Lora_init (void)
    SPI1_Write(REG_MODEM_CONFIG_3, 0x04); //LNA gain set by the internal AGC loop
    SPI1_Write(REG_DIO_MAPPING_1, RFLR_DIOMAPPING1_DIO0_00); //RX READY
    SPI1_Write(REG_SYNC_WORD,0x12);	
-   SPI1_Write(REG_OP_MODE, MODE_STDBY|0x80);
+   SPI1_Write(REG_OP_MODE, MODE_STDBY|MODE_LONG_RANGE_MODE);
     /* ------------- Stnadby Mode -----------------*/
    SPI1_Write(REG_FIFO_ADDR_PTR,0x00);   
-   SPI1_Write(REG_OP_MODE, MODE_RX_CONTINUOUS|0x80);	 
+   SPI1_Write(REG_OP_MODE, MODE_RX_CONTINUOUS|MODE_LONG_RANGE_MODE);	 
    /*---------------Receive continuous ---------- */
 }
 
@@ -64,7 +65,7 @@ void Lora_transmit (uint8_t *strdata, uint8_t number_of_data)
 {
     
  // SPI_Write_a(REG_DIO_MAPPING_1, RFLR_DIOMAPPING1_DIO0_01); //0xC0 0x40  TX COMPLETE
-   SPI1_Write(REG_OP_MODE,MODE_STDBY|0x80); // 0x81 0x81
+   SPI1_Write(REG_OP_MODE,MODE_STDBY|MODE_LONG_RANGE_MODE); // 0x81 0x81
       /* ------------- Standby Mode Mode -----------------*/
  // SPI1_Write(REG_MODEM_CONFIG_2, 0xC4);  // SF12 , Normal Mode single packet, CRC
    SPI1_Write(REG_SYNC_WORD,0x12);
@@ -73,17 +74,19 @@ void Lora_transmit (uint8_t *strdata, uint8_t number_of_data)
    for ( uint8_t i = 0; i < number_of_data; i++ )
      SPI1_Write(REG_FIFO, *(strdata+i));
    SPI1_Write(REG_PAYLOAD_LENGTH, number_of_data);
-   SPI1_Write(REG_OP_MODE,MODE_TX|0x80); // MODE TX
+   SPI1_Write(REG_OP_MODE,MODE_TX|MODE_LONG_RANGE_MODE); // MODE TX
   /*------------------Transmit--------*/
  // HAL_Delay(3500);
-   while( SPI1_Read(REG_IRQ_FLAGS) == !0x08)  
-   led_green_high();
-   SPI1_Write(REG_IRQ_FLAGS, 0x08);
+   while( SPI1_Read(REG_IRQ_FLAGS) == !IRQ_TX_DONE_MASK)
+   {
+     led_green_high();
+   }       
+   SPI1_Write(REG_IRQ_FLAGS, IRQ_TX_DONE_MASK);
    HAL_Delay(300);
    led_green_low();     
-   SPI1_Write(REG_OP_MODE,MODE_STDBY|0x80);
+   SPI1_Write(REG_OP_MODE,MODE_STDBY|MODE_LONG_RANGE_MODE);
    SPI1_Write(REG_FIFO_ADDR_PTR,0x00);
-   SPI1_Write(REG_OP_MODE, MODE_RX_CONTINUOUS|0x80);       
+   SPI1_Write(REG_OP_MODE, MODE_RX_CONTINUOUS|MODE_LONG_RANGE_MODE);       
 }
 
 void Lora_recieve(uint8_t *str_r, uint8_t *num_of_bytes)
@@ -93,7 +96,6 @@ void Lora_recieve(uint8_t *str_r, uint8_t *num_of_bytes)
    SPI1_Write(REG_OP_MODE,MODE_STDBY|0x80); 
    /* ------------- Standby Mode -----------------*/
     //  SPI1_Write(REG_MODEM_CONFIG_2, 0xC0);  // SF12 , Normal Mode single packet, no CRC
-   SPI1_Write(REG_DIO_MAPPING_1, RFLR_DIOMAPPING1_DIO0_00); // RX READY
    SPI1_Write(REG_SYNC_WORD,0x12);	
    SPI1_Write(REG_FIFO_ADDR_PTR,0x00);
    SPI1_Write(REG_OP_MODE, MODE_RX_CONTINUOUS|0x80);

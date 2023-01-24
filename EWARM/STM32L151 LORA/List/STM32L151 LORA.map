@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR ELF Linker V9.32.1.338/W64 for ARM                  23/Jan/2023  15:53:52
+# IAR ELF Linker V9.32.1.338/W64 for ARM                  24/Jan/2023  09:14:44
 # Copyright 2007-2022 IAR Systems AB.
 #
 #    Output file  =
@@ -380,10 +380,10 @@ I2C1_EV_IRQHandler       0x800'1d75         Code  Wk  startup_stm32l151xb.o [1]
 I2C2_ER_IRQHandler       0x800'1d81         Code  Wk  startup_stm32l151xb.o [1]
 I2C2_EV_IRQHandler       0x800'1d7d         Code  Wk  startup_stm32l151xb.o [1]
 LED_config               0x800'150f   0x7e  Code  Gb  gpio.o [2]
-Lora_init                0x800'17c9   0xd2  Code  Gb  LORA SX1276.o [2]
-Lora_recieve             0x800'193b   0xc4  Code  Gb  LORA SX1276.o [2]
+Lora_init                0x800'17c9   0xda  Code  Gb  LORA SX1276.o [2]
+Lora_recieve             0x800'1943   0xbc  Code  Gb  LORA SX1276.o [2]
 Lora_reset               0x800'19ff   0x34  Code  Gb  LORA SX1276.o [2]
-Lora_transmit            0x800'18a3   0x78  Code  Gb  LORA SX1276.o [2]
+Lora_transmit            0x800'18ab   0x78  Code  Gb  LORA SX1276.o [2]
 MCO_config               0x800'15eb   0x52  Code  Gb  gpio.o [2]
 MX_GPIO_Init             0x800'14f5   0x1a  Code  Gb  gpio.o [2]
 MX_USART2_UART_Init      0x800'074d   0x2e  Code  Gb  usart.o [2]

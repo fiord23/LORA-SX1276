@@ -58,10 +58,11 @@
 // PA config
 #define PA_BOOST                 0x80
 
-#define IRQ_TX_DONE_MASK           0x08
+
+#define IRQ_VALID_HEADER           0x10
 #define IRQ_PAYLOAD_CRC_ERROR_MASK 0x20
 #define IRQ_RX_DONE_MASK           0x40
-#define IRQ_VALID_HEADER           0x10
+#define IRQ_TX_DONE_MASK           0x08
 
 #define FXOSC 32000000
 #define F868  868000000

@@ -64,7 +64,6 @@ void Lora_init (void)
 void Lora_transmit (uint8_t *strdata, uint8_t number_of_data)
 {
     
- // SPI_Write_a(REG_DIO_MAPPING_1, RFLR_DIOMAPPING1_DIO0_01); //0xC0 0x40  TX COMPLETE
    SPI1_Write(REG_OP_MODE,MODE_STDBY|MODE_LONG_RANGE_MODE); // 0x81 0x81
       /* ------------- Standby Mode Mode -----------------*/
  // SPI1_Write(REG_MODEM_CONFIG_2, 0xC4);  // SF12 , Normal Mode single packet, CRC
@@ -84,9 +83,12 @@ void Lora_transmit (uint8_t *strdata, uint8_t number_of_data)
    SPI1_Write(REG_IRQ_FLAGS, IRQ_TX_DONE_MASK);
    HAL_Delay(300);
    led_green_low();     
-   SPI1_Write(REG_OP_MODE,MODE_STDBY|MODE_LONG_RANGE_MODE);
+   SPI1_Write(REG_OP_MODE,MODE_SLEEP|MODE_LONG_RANGE_MODE);
+   SPI1_Write(REG_DIO_MAPPING_1, RFLR_DIOMAPPING1_RX_READY);
    SPI1_Write(REG_FIFO_ADDR_PTR,0x00);
-   SPI1_Write(REG_OP_MODE, MODE_RX_CONTINUOUS|MODE_LONG_RANGE_MODE);       
+   SPI1_Write(REG_OP_MODE, MODE_RX_CONTINUOUS|MODE_LONG_RANGE_MODE);
+   SPI1_Write(REG_DIO_MAPPING_1, RFLR_DIOMAPPING1_RX_READY);
+   SPI1_Write(REG_FIFO_ADDR_PTR,0x00);
 }
 
 void Lora_recieve(uint8_t *str_r, uint8_t *num_of_bytes)
@@ -115,7 +117,9 @@ void Lora_recieve(uint8_t *str_r, uint8_t *num_of_bytes)
     SNR_value =  SPI1_Read(REG_PKT_SNR_VALUE) >> 2;
     SPI1_Write(REG_OP_MODE,MODE_STDBY|MODE_LONG_RANGE_MODE);
     SPI1_Write(REG_FIFO_ADDR_PTR,0x00);
-    SPI1_Write(REG_OP_MODE, MODE_RX_CONTINUOUS|MODE_LONG_RANGE_MODE);         
+    SPI1_Write(REG_OP_MODE, MODE_RX_CONTINUOUS|MODE_LONG_RANGE_MODE);
+    SPI1_Write(REG_DIO_MAPPING_1, RFLR_DIOMAPPING1_RX_READY);
+    SPI1_Write(REG_FIFO_ADDR_PTR,0x00);
 }
 
 

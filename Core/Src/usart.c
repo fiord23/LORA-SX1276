@@ -108,7 +108,7 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* uartHandle)
 }
 
 /* USER CODE BEGIN 1 */
-/*---------------------------- IDLE Callback  ------------------------*/
+    /*---------------------------- IDLE Callback  ------------------------*/
     void HAL_UART_IDLE_Callback(UART_HandleTypeDef *huart)
     {
       if (huart == &huart2)
@@ -139,7 +139,6 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* uartHandle)
       HAL_UART_Receive_IT(&huart2, str_uart, RX_BUFFER_SIZE);
         }
     }
-
 /* USER CODE END 1 */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

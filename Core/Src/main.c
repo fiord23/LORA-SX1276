@@ -64,7 +64,8 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-    
+
+
 /* USER CODE END 0 */
 
 /**
@@ -87,7 +88,7 @@ int main(void)
   /* Configure the system clock */
   SystemClock_Config();
   /* USER CODE BEGIN SysInit */
-
+    
   /* USER CODE END SysInit */
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
@@ -182,10 +183,10 @@ void SystemClock_Config(void)
 /* USER CODE BEGIN 4 */
 void EXTI0_IRQHandler(void)	
 {
-    EXTI->PR = EXTI_PR_PR0;
+    EXTI->PR |= EXTI_PR_PR0;
     asm("nop");
     asm("nop");
-    asm("nop");
+     asm("nop");
     asm("nop");
     asm("nop");
     flag = true;
@@ -193,7 +194,7 @@ void EXTI0_IRQHandler(void)
 
 void EXTI15_10_IRQHandler(void)	
 {
-    EXTI->PR = EXTI_PR_PR15;
+    EXTI->PR |= EXTI_PR_PR15;
     asm("nop");
     asm("nop");
     asm("nop");

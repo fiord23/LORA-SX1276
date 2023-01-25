@@ -9,7 +9,7 @@
         <stlinkResetStrategy>2</stlinkResetStrategy>
     </StLinkDriver>
     <DebugChecksum>
-        <Checksum>290714681</Checksum>
+        <Checksum>4240536898</Checksum>
     </DebugChecksum>
     <Exceptions>
         <StopOnUncaught>_ 0</StopOnUncaught>
@@ -87,6 +87,7 @@
     </watch_formats>
     <Registers>
         <regBase0>EXTI_PR 2</regBase0>
+        <regBase1>EXTI_EMR 2</regBase1>
     </Registers>
     <Trace2>
         <Enabled>0</Enabled>

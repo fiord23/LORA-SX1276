@@ -32,26 +32,26 @@ void Lora_init (void)
    
    //--------------------------------LORA CONFIGURATION------------------------
    // 868MHz, SF12, 125kHz, 300bps, MaxPower, OcpOn, 9Byte info 	
-   SPI1_Write(REG_OP_MODE, MODE_LONG_RANGE_MODE|MODE_SLEEP); //Lora mode, HF, Sleep //0x81 0x80
+   SPI1_Write(REG_OP_MODE, MODE_LONG_RANGE_MODE|MODE_SLEEP); 
    /*--------------Sleep Mode -------------------------*/
    SPI1_Write(REG_FIFO_TX_BASE_ADDR, 0x00); 
    SPI1_Write(REG_FIFO_RX_BASE_ADDR, 0x00); 
-   SPI1_Write(REG_LNA, 0x23); //G1 = maximum gain, Boost om, 150% LNA current
-   SPI1_Write(REG_PA_DAC, 0x84); //Default value PA_HF/LF or +17dBm
-   SPI1_Write(REG_OCP, 0x2b); //OCP enabled, OcpTrim = 100 mA
-   SPI1_Write(REG_PA_CONFIG, 0xFF); //PA_BOOST, Pout = 17 dBm 
-   SPI1_Write(REG_FRF_MSB, 0xD9); //868 MHz
-   SPI1_Write(REG_FRF_MID, 0x00);
-   SPI1_Write(REG_FRF_LSB, 0x00);
-   SPI1_Write(REG_OP_MODE, MODE_STDBY|MODE_LONG_RANGE_MODE); //new
+   SPI1_Write(REG_LNA, LNA_GAIN_G1 | LNA_BOOST_LF | BOOST_ON_150_LNA_CURRENT);
+   SPI1_Write(REG_PA_DAC, PA_HF_LF_OR_17_dBm);
+   SPI1_Write(REG_OCP, OCP_ENABLED | OCP_240mA);
+   SPI1_Write(REG_PA_CONFIG, PA_BOOST_TO_20dBm | POWER_15dBm | POUT_PA_17dBm); 
+   SPI1_Write(REG_FRF_MSB, FREQUENCY_868_MSB);
+   SPI1_Write(REG_FRF_MID, FREQUENCY_868_MID);
+   SPI1_Write(REG_FRF_LSB, FREQUENCY_868_LSB);
+   SPI1_Write(REG_OP_MODE, MODE_STDBY|MODE_LONG_RANGE_MODE); 
    /* ------------- Standby Mode -----------------*/
-   SPI1_Write(REG_PA_DAC, 0x87); //Set Pmax to +20dBm for PA_HP
-   SPI1_Write(REG_OCP, 0x3b); //OCP enabled,  OcpTrim = 27 Imax = 240 mA
-   SPI1_Write(REG_PA_CONFIG, 0x8F); //PA_BOOST, Pout = 17 dBm 
-   SPI1_Write(REG_MODEM_CONFIG_1, 0x98); //500 kHz BW, Coding Rate 4/8, Explicit Header Mode
-   SPI1_Write(REG_MODEM_CONFIG_2, 0xC0);  // SF12 , Normal Mode single packet, no CRC
-   SPI1_Write(REG_MODEM_CONFIG_3, 0x04); //LNA gain set by the internal AGC loop
-   SPI1_Write(REG_DIO_MAPPING_1, RFLR_DIOMAPPING1_DIO0_00); //RX READY
+   SPI1_Write(REG_PA_DAC, PA_HIGH_POWER);
+   SPI1_Write(REG_OCP, OCP_ENABLED | OCP_240mA);
+   SPI1_Write(REG_PA_CONFIG, PA_BOOST_TO_20dBm | POUT_PA_17dBm);
+   SPI1_Write(REG_MODEM_CONFIG_1, BANDWIDTH_500_kHz | CODING_RATE_4_8 | EXPLICIT_HEADER_MODE);
+   SPI1_Write(REG_MODEM_CONFIG_2, SPREADING_FACTOR_12 | TX_NORMAL_SINGLE_MODE | CRC_DISABLE); 
+   SPI1_Write(REG_MODEM_CONFIG_3, GAIN_INTERANL_AGC_LOOP); 
+   SPI1_Write(REG_DIO_MAPPING_1, RFLR_DIOMAPPING1_RX_READY);
    SPI1_Write(REG_SYNC_WORD,0x12);	
    SPI1_Write(REG_OP_MODE, MODE_STDBY|MODE_LONG_RANGE_MODE);
     /* ------------- Stnadby Mode -----------------*/
@@ -77,7 +77,7 @@ void Lora_transmit (uint8_t *strdata, uint8_t number_of_data)
    SPI1_Write(REG_OP_MODE,MODE_TX|MODE_LONG_RANGE_MODE); // MODE TX
   /*------------------Transmit--------*/
  // HAL_Delay(3500);
-   while( SPI1_Read(REG_IRQ_FLAGS) == !IRQ_TX_DONE_MASK)
+   while( SPI1_Read(REG_IRQ_FLAGS) != IRQ_TX_DONE_MASK)
    {
      led_green_high();
    }       
@@ -93,12 +93,12 @@ void Lora_recieve(uint8_t *str_r, uint8_t *num_of_bytes)
 {
    for (volatile uint8_t a = 0; a< RX_BUFFER_SIZE; a ++)
     *(str_r + a) = 0;
-   SPI1_Write(REG_OP_MODE,MODE_STDBY|0x80); 
+   SPI1_Write(REG_OP_MODE,MODE_STDBY|MODE_LONG_RANGE_MODE); 
    /* ------------- Standby Mode -----------------*/
     //  SPI1_Write(REG_MODEM_CONFIG_2, 0xC0);  // SF12 , Normal Mode single packet, no CRC
    SPI1_Write(REG_SYNC_WORD,0x12);	
    SPI1_Write(REG_FIFO_ADDR_PTR,0x00);
-   SPI1_Write(REG_OP_MODE, MODE_RX_CONTINUOUS|0x80);
+   SPI1_Write(REG_OP_MODE, MODE_RX_CONTINUOUS|MODE_LONG_RANGE_MODE);
    /*---------------Receive continuous ---------- */
     HAL_Delay(200);
     SPI1_Read(REG_IRQ_FLAGS);
@@ -113,9 +113,9 @@ void Lora_recieve(uint8_t *str_r, uint8_t *num_of_bytes)
         *(str_r+i) = SPI1_Read(REG_FIFO);
     RSSI_value =  157 - SPI1_Read(REG_PKT_RSSI_VALUE);
     SNR_value =  SPI1_Read(REG_PKT_SNR_VALUE) >> 2;
-    SPI1_Write(REG_OP_MODE,MODE_STDBY|0x80);
+    SPI1_Write(REG_OP_MODE,MODE_STDBY|MODE_LONG_RANGE_MODE);
     SPI1_Write(REG_FIFO_ADDR_PTR,0x00);
-    SPI1_Write(REG_OP_MODE, MODE_RX_CONTINUOUS|0x80);         
+    SPI1_Write(REG_OP_MODE, MODE_RX_CONTINUOUS|MODE_LONG_RANGE_MODE);         
 }
 
 

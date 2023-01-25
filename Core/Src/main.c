@@ -53,6 +53,7 @@
    uint8_t num_of_bytes;
    uint8_t str_uart[RX_BUFFER_SIZE] = {1, 2, 3};
    uint8_t str_uart_r[RX_BUFFER_SIZE] = {0, };
+   uint8_t str_test[3] = {0, '\r', '\n'};
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -105,7 +106,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {    
-    
+  //  /*
     if (flag)
      {
         Lora_transmit (str_uart, rx_buffer_len);
@@ -120,9 +121,15 @@ int main(void)
         led_red_high();
         answer = false;
        }    
-    
-   // HAL_Delay(3000);
-    // Lora_transmit (str_uart, 16);
+    //*/
+   /* 
+    for (uint8_t i = 0x41; i< 0x5B; i++)
+    {  
+        *str_test = i;      
+        Lora_transmit (str_test, 3);
+        HAL_Delay(3000);
+    }
+  //  */
      
     /* USER CODE END WHILE */
 

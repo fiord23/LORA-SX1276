@@ -7,18 +7,24 @@
         <outputs>
             <file>$TOOLKIT_DIR$\inc\c\aarch32\iccarm_builtin.h</file>
             <file>$PROJ_DIR$\STM32L151 LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_flash.o</file>
+            <file>$PROJ_DIR$\STM32L151 LORA\List\STM32L151 LORA.map</file>
             <file>$PROJ_DIR$\STM32L151 LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal.o</file>
             <file>$PROJ_DIR$\..\Core\Inc\main.h</file>
             <file>$PROJ_DIR$\..\Drivers\CMSIS\Include\cmsis_compiler.h</file>
             <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_rcc_ex.h</file>
+            <file>$PROJ_DIR$\STM32L151 LORA\Exe\STM32L151 LORA.hex</file>
             <file>$PROJ_DIR$\STM32L151 LORA\Obj\Application\User\Core\SPI1.o</file>
             <file>$PROJ_DIR$\STM32L151 LORA\Obj\Application\User\Core\usart.o</file>
             <file>$PROJ_DIR$\..\Core\Inc\gpio.h</file>
+            <file>$PROJ_DIR$\stm32l151xb_flash.icf</file>
+            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Application\User\Core\LORA SX1276.o</file>
             <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_flash_ex.h</file>
             <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_flash_ramfunc.h</file>
             <file>$PROJ_DIR$\STM32L151 LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_pwr.o</file>
+            <file>$TOOLKIT_DIR$\lib\rt7M_tl.a</file>
             <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_def.h</file>
             <file>$PROJ_DIR$\..\Drivers\CMSIS\Device\ST\STM32L1xx\Include\stm32l1xx.h</file>
+            <file>$TOOLKIT_DIR$\lib\dl7M_tln.a</file>
             <file>$PROJ_DIR$\STM32L151 LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_flash_ramfunc.o</file>
             <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_pwr_ex.h</file>
             <file>$PROJ_DIR$\STM32L151 LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_tim_ex.o</file>
@@ -36,11 +42,13 @@
             <file>$PROJ_DIR$\STM32L151 LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_exti.o</file>
             <file>$TOOLKIT_DIR$\inc\c\yvals.h</file>
             <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_pwr.h</file>
+            <file>$TOOLKIT_DIR$\lib\shb_l.a</file>
             <file>$PROJ_DIR$\STM32L151 LORA\Obj\Application\User\Core\stm32l1xx_it.o</file>
             <file>$TOOLKIT_DIR$\inc\c\stdbool.h</file>
             <file>$PROJ_DIR$\..\Drivers\CMSIS\Include\cmsis_iccarm.h</file>
             <file>$TOOLKIT_DIR$\inc\c\DLib_Config_Full.h</file>
             <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal.h</file>
+            <file>$PROJ_DIR$\STM32L151 LORA\Exe\STM32L151 LORA.out</file>
             <file>$PROJ_DIR$\STM32L151 LORA\Obj\Application\User\Core\stm32l1xx_hal_msp.o</file>
             <file>$PROJ_DIR$\..\Drivers\CMSIS\Device\ST\STM32L1xx\Include\stm32l151xb.h</file>
             <file>$PROJ_DIR$\..\Core\Inc\usart.h</file>
@@ -66,6 +74,7 @@
             <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_flash.h</file>
             <file>$TOOLKIT_DIR$\inc\c\stddef.h</file>
             <file>$PROJ_DIR$\STM32L151 LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_rcc.o</file>
+            <file>$TOOLKIT_DIR$\lib\m7M_tl.a</file>
             <file>$PROJ_DIR$\STM32L151 LORA\Obj\Application\User\Core\main.o</file>
             <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_uart.h</file>
             <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_rcc.h</file>
@@ -99,13 +108,13 @@
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 46</file>
+                    <file> 54</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 35 53 63 12 13 37 64 47 45 29 42 34 20 39 4 33 0 22 51 17 59 43 5 54 18 23 49 58 9 10 30 15 62 56</file>
+                    <file> 42 61 72 17 18 45 73 55 53 35 50 41 26 47 5 40 0 28 59 23 67 51 6 62 24 29 57 66 13 14 36 21 71 64</file>
                 </tool>
             </inputs>
         </file>
@@ -114,13 +123,13 @@
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 16</file>
+                    <file> 22</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 35 53 63 12 13 37 64 47 45 29 42 34 20 39 4 33 0 22 51 17 59 43 5 54 18 23 49 58 9 10 30 15 62 56</file>
+                    <file> 42 61 72 17 18 45 73 55 53 35 50 41 26 47 5 40 0 28 59 23 67 51 6 62 24 29 57 66 13 14 36 21 71 64</file>
                 </tool>
             </inputs>
         </file>
@@ -129,13 +138,32 @@
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 55</file>
+                    <file> 63</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 35 53 63 12 13 37 64 47 45 29 42 34 20 39 4 33 0 22 51 17 59 43 5 54 18 23 49 58 9 10 30 15 62 56</file>
+                    <file> 42 61 72 17 18 45 73 55 53 35 50 41 26 47 5 40 0 28 59 23 67 51 6 62 24 29 57 66 13 14 36 21 71 64</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\STM32L151 LORA\Exe\STM32L151 LORA.out</name>
+            <outputs>
+                <tool>
+                    <name>ILINK</name>
+                    <file> 2</file>
+                </tool>
+                <tool>
+                    <name>OBJCOPY</name>
+                    <file> 7</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ILINK</name>
+                    <file> 11 33 12 70 8 65 3 25 49 34 1 27 20 48 44 15 58 68 60 54 22 63 38 56 9 37 16 69 19</file>
                 </tool>
             </inputs>
         </file>
@@ -144,22 +172,28 @@
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 27</file>
+                    <file> 33</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 8 3 35 53 63 12 13 37 64 47 45 29 42 34 20 39 4 33 0 22 51 17 59 43 5 54 18 23 49 58 9 10 30 15 62 56</file>
+                    <file> 10 4 42 61 72 17 18 45 73 55 53 35 50 41 26 47 5 40 0 28 59 23 67 51 6 62 24 29 57 66 13 14 36 21 71 64</file>
                 </tool>
             </inputs>
         </file>
         <file>
             <name>$PROJ_DIR$\..\Core\Src\LORA SX1276.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 12</file>
+                </tool>
+            </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 71 3 35 53 63 12 13 37 64 47 45 29 42 34 20 39 4 33 0 22 51 17 59 43 5 54 18 23 49 58 9 10 30 15 62 56 68 32 8</file>
+                    <file> 80 4 42 61 72 17 18 45 73 55 53 35 50 41 26 47 5 40 0 28 59 23 67 51 6 62 24 29 57 66 13 14 36 21 71 64 77 39 10 46</file>
                 </tool>
             </inputs>
         </file>
@@ -168,7 +202,7 @@
             <outputs>
                 <tool>
                     <name>AARM</name>
-                    <file> 57</file>
+                    <file> 65</file>
                 </tool>
             </outputs>
         </file>
@@ -177,13 +211,13 @@
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 61</file>
+                    <file> 70</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 3 35 53 63 12 13 37 64 47 45 29 42 34 20 39 4 33 0 22 51 17 59 43 5 54 18 23 49 58 9 10 30 15 62 56 38 8 71 68 32</file>
+                    <file> 4 42 61 72 17 18 45 73 55 53 35 50 41 26 47 5 40 0 28 59 23 67 51 6 62 24 29 57 66 13 14 36 21 71 64 46 10 80 77 39</file>
                 </tool>
             </inputs>
         </file>
@@ -192,13 +226,13 @@
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 6</file>
+                    <file> 8</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 71 3 35 53 63 12 13 37 64 47 45 29 42 34 20 39 4 33 0 22 51 17 59 43 5 54 18 23 49 58 9 10 30 15 62 56 8</file>
+                    <file> 80 4 42 61 72 17 18 45 73 55 53 35 50 41 26 47 5 40 0 28 59 23 67 51 6 62 24 29 57 66 13 14 36 21 71 64 10</file>
                 </tool>
             </inputs>
         </file>
@@ -207,13 +241,13 @@
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 36</file>
+                    <file> 44</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 3 35 53 63 12 13 37 64 47 45 29 42 34 20 39 4 33 0 22 51 17 59 43 5 54 18 23 49 58 9 10 30 15 62 56</file>
+                    <file> 4 42 61 72 17 18 45 73 55 53 35 50 41 26 47 5 40 0 28 59 23 67 51 6 62 24 29 57 66 13 14 36 21 71 64</file>
                 </tool>
             </inputs>
         </file>
@@ -222,13 +256,13 @@
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 31</file>
+                    <file> 38</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 3 35 53 63 12 13 37 64 47 45 29 42 34 20 39 4 33 0 22 51 17 59 43 5 54 18 23 49 58 9 10 30 15 62 56 44</file>
+                    <file> 4 42 61 72 17 18 45 73 55 53 35 50 41 26 47 5 40 0 28 59 23 67 51 6 62 24 29 57 66 13 14 36 21 71 64 52</file>
                 </tool>
             </inputs>
         </file>
@@ -237,13 +271,13 @@
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 7</file>
+                    <file> 9</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 38 3 35 53 63 12 13 37 64 47 45 29 42 34 20 39 4 33 0 22 51 17 59 43 5 54 18 23 49 58 9 10 30 15 62 56 32</file>
+                    <file> 46 4 42 61 72 17 18 45 73 55 53 35 50 41 26 47 5 40 0 28 59 23 67 51 6 62 24 29 57 66 13 14 36 21 71 64 39</file>
                 </tool>
             </inputs>
         </file>
@@ -252,13 +286,13 @@
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 48</file>
+                    <file> 56</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 13 37 64 47 45 29 42 34 20 39 4 33 0 22 51 35 53 63 12 17 59 43 5 54 18 23 49 58 9 10 30 15 62 56</file>
+                    <file> 18 45 73 55 53 35 50 41 26 47 5 40 0 28 59 42 61 72 17 23 67 51 6 62 24 29 57 66 13 14 36 21 71 64</file>
                 </tool>
             </inputs>
         </file>
@@ -267,13 +301,13 @@
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 2</file>
+                    <file> 3</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 35 53 63 12 13 37 64 47 45 29 42 34 20 39 4 33 0 22 51 17 59 43 5 54 18 23 49 58 9 10 30 15 62 56</file>
+                    <file> 42 61 72 17 18 45 73 55 53 35 50 41 26 47 5 40 0 28 59 23 67 51 6 62 24 29 57 66 13 14 36 21 71 64</file>
                 </tool>
             </inputs>
         </file>
@@ -282,13 +316,13 @@
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 19</file>
+                    <file> 25</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 35 53 63 12 13 37 64 47 45 29 42 34 20 39 4 33 0 22 51 17 59 43 5 54 18 23 49 58 9 10 30 15 62 56</file>
+                    <file> 42 61 72 17 18 45 73 55 53 35 50 41 26 47 5 40 0 28 59 23 67 51 6 62 24 29 57 66 13 14 36 21 71 64</file>
                 </tool>
             </inputs>
         </file>
@@ -297,13 +331,13 @@
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 41</file>
+                    <file> 49</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 35 53 63 12 13 37 64 47 45 29 42 34 20 39 4 33 0 22 51 17 59 43 5 54 18 23 49 58 9 10 30 15 62 56</file>
+                    <file> 42 61 72 17 18 45 73 55 53 35 50 41 26 47 5 40 0 28 59 23 67 51 6 62 24 29 57 66 13 14 36 21 71 64</file>
                 </tool>
             </inputs>
         </file>
@@ -312,13 +346,13 @@
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 28</file>
+                    <file> 34</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 35 53 63 12 13 37 64 47 45 29 42 34 20 39 4 33 0 22 51 17 59 43 5 54 18 23 49 58 9 10 30 15 62 56</file>
+                    <file> 42 61 72 17 18 45 73 55 53 35 50 41 26 47 5 40 0 28 59 23 67 51 6 62 24 29 57 66 13 14 36 21 71 64</file>
                 </tool>
             </inputs>
         </file>
@@ -333,7 +367,7 @@
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 35 53 63 12 13 37 64 47 45 29 42 34 20 39 4 33 0 22 51 17 59 43 5 54 18 23 49 58 9 10 30 15 62 56</file>
+                    <file> 42 61 72 17 18 45 73 55 53 35 50 41 26 47 5 40 0 28 59 23 67 51 6 62 24 29 57 66 13 14 36 21 71 64</file>
                 </tool>
             </inputs>
         </file>
@@ -342,13 +376,13 @@
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 21</file>
+                    <file> 27</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 35 53 63 12 13 37 64 47 45 29 42 34 20 39 4 33 0 22 51 17 59 43 5 54 18 23 49 58 9 10 30 15 62 56</file>
+                    <file> 42 61 72 17 18 45 73 55 53 35 50 41 26 47 5 40 0 28 59 23 67 51 6 62 24 29 57 66 13 14 36 21 71 64</file>
                 </tool>
             </inputs>
         </file>
@@ -357,13 +391,13 @@
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 14</file>
+                    <file> 20</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 35 53 63 12 13 37 64 47 45 29 42 34 20 39 4 33 0 22 51 17 59 43 5 54 18 23 49 58 9 10 30 15 62 56</file>
+                    <file> 42 61 72 17 18 45 73 55 53 35 50 41 26 47 5 40 0 28 59 23 67 51 6 62 24 29 57 66 13 14 36 21 71 64</file>
                 </tool>
             </inputs>
         </file>
@@ -372,13 +406,13 @@
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 40</file>
+                    <file> 48</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 35 53 63 12 13 37 64 47 45 29 42 34 20 39 4 33 0 22 51 17 59 43 5 54 18 23 49 58 9 10 30 15 62 56</file>
+                    <file> 42 61 72 17 18 45 73 55 53 35 50 41 26 47 5 40 0 28 59 23 67 51 6 62 24 29 57 66 13 14 36 21 71 64</file>
                 </tool>
             </inputs>
         </file>
@@ -387,13 +421,13 @@
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 11</file>
+                    <file> 15</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 35 53 63 12 13 37 64 47 45 29 42 34 20 39 4 33 0 22 51 17 59 43 5 54 18 23 49 58 9 10 30 15 62 56</file>
+                    <file> 42 61 72 17 18 45 73 55 53 35 50 41 26 47 5 40 0 28 59 23 67 51 6 62 24 29 57 66 13 14 36 21 71 64</file>
                 </tool>
             </inputs>
         </file>
@@ -402,18 +436,33 @@
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 50</file>
+                    <file> 58</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 35 53 63 12 13 37 64 47 45 29 42 34 20 39 4 33 0 22 51 17 59 43 5 54 18 23 49 58 9 10 30 15 62 56</file>
+                    <file> 42 61 72 17 18 45 73 55 53 35 50 41 26 47 5 40 0 28 59 23 67 51 6 62 24 29 57 66 13 14 36 21 71 64</file>
                 </tool>
             </inputs>
         </file>
         <file>
             <name>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_rcc.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 68</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 42 61 72 17 18 45 73 55 53 35 50 41 26 47 5 40 0 28 59 23 67 51 6 62 24 29 57 66 13 14 36 21 71 64</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_rcc_ex.c</name>
             <outputs>
                 <tool>
                     <name>ICCARM</name>
@@ -423,24 +472,18 @@
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 35 53 63 12 13 37 64 47 45 29 42 34 20 39 4 33 0 22 51 17 59 43 5 54 18 23 49 58 9 10 30 15 62 56</file>
+                    <file> 42 61 72 17 18 45 73 55 53 35 50 41 26 47 5 40 0 28 59 23 67 51 6 62 24 29 57 66 13 14 36 21 71 64</file>
                 </tool>
             </inputs>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_rcc_ex.c</name>
+            <name>[ROOT_NODE]</name>
             <outputs>
                 <tool>
-                    <name>ICCARM</name>
-                    <file> 52</file>
+                    <name>ILINK</name>
+                    <file> 43 2</file>
                 </tool>
             </outputs>
-            <inputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 35 53 63 12 13 37 64 47 45 29 42 34 20 39 4 33 0 22 51 17 59 43 5 54 18 23 49 58 9 10 30 15 62 56</file>
-                </tool>
-            </inputs>
         </file>
         <forcedrebuild>
             <name>[REBUILD_ALL]</name>

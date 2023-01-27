@@ -2,6 +2,7 @@
 #include "SPI1.h"
 #include "LORA SX1276.h"
 #include "gpio.h"
+#include "usart.h"
 
 #define RX_BUFFER_SIZE 100
 uint8_t RSSI_value = 0;
@@ -9,7 +10,8 @@ uint8_t SNR_value = 0;
 
 
 extern UART_HandleTypeDef huart2;
-
+extern uint8_t str_uart[RX_BUFFER_SIZE];
+extern bool flag_uart_receiver;
 void Lora_init (void)
 {  
    Lora_reset();
@@ -154,4 +156,30 @@ void Lora_Show_Firmware_Version (void)
 {
   uint8_t str_FW_Config[] = "Firmware ver. 0.1.1 (27-01-2023) by D.Zaretski\r\n";
   HAL_UART_Transmit(&huart2, str_FW_Config, sizeof(str_FW_Config), 100);
+}
+
+void Lora_Show_Help (void)
+{
+  uint8_t help[] = "Write help for list of commands \r\n";
+  HAL_UART_Transmit(&huart2, help, sizeof(help), 100);
+}
+
+bool Lora_Show_List_of_Commands (void)
+{  
+  uint8_t help_compare[] = "help\r\n"; 
+  uint8_t list_of_commands[] = "LIST OF COMMANDS\r\n";
+  uint8_t compare = 0;
+  for(uint8_t counter = 0; counter <=sizeof(help_compare); counter++)
+  {
+    if(*(str_uart+counter) == *(help_compare+counter))
+      compare++;
+  }
+    if(compare == sizeof(help_compare))
+    {
+      HAL_UART_Transmit(&huart2, list_of_commands, sizeof(list_of_commands), 100);
+      return true;
+    }
+    else 
+      return false;
+  
 }

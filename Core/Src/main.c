@@ -48,8 +48,9 @@
 
 /* USER CODE BEGIN PV */
    uint8_t rx_buffer_len;
-   bool flag = false;
-   bool answer = false;
+   bool flag_transmit = false;
+   bool receiver_answer = false;
+   bool flag_uart_receiver = false;
    uint8_t num_of_bytes;
    uint8_t str_uart[RX_BUFFER_SIZE] = {1, 2, 3};
    uint8_t str_uart_r[RX_BUFFER_SIZE] = {0, };
@@ -100,7 +101,8 @@ int main(void)
   exti_config();
   MCO_config();
   Lora_init ();
-  Lora_Show_Firmware_Version();  
+  Lora_Show_Firmware_Version(); 
+  Lora_Show_Help();
   __HAL_UART_ENABLE_IT(&huart2, UART_IT_IDLE);
   HAL_UART_Receive_IT(&huart2, str_uart, RX_BUFFER_SIZE);
   /* USER CODE END 2 */
@@ -109,19 +111,28 @@ int main(void)
   while (1)
   {    
     
-    if (flag)
+    if (flag_transmit)
      {
         Lora_transmit (str_uart, rx_buffer_len);
-        flag = false;          
+        flag_transmit = false;          
      }
-    if (answer)
+    
+     if (flag_uart_receiver)
+     {
+       if(!Lora_Show_List_of_Commands())
+       {
+         Lora_transmit (str_uart, rx_buffer_len);
+         flag_uart_receiver = false;
+       }                
+     }   
+    if (receiver_answer)
       {
         Lora_recieve(str_uart_r, &num_of_bytes);
         HAL_UART_Transmit(&huart2, str_uart_r, num_of_bytes, 100);
         Show_RSSI();
         Show_SNR();
         led_red_high();
-        answer = false;
+        receiver_answer = false;
       }    
     /*
     
@@ -190,7 +201,7 @@ void EXTI0_IRQHandler(void)
     asm("nop");
     asm("nop");
     asm("nop");
-    flag = true;
+    flag_transmit = true;
 }
 
 void EXTI15_10_IRQHandler(void)	
@@ -201,7 +212,7 @@ void EXTI15_10_IRQHandler(void)
     asm("nop");
     asm("nop");
     asm("nop");
-    answer = true;
+    receiver_answer = true;
 }
 
 /* USER CODE END 4 */

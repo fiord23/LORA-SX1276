@@ -152,6 +152,8 @@ void Lora_recieve(uint8_t *str_r, uint8_t *num_of_bytes);
 void Show_RSSI (void);
 void Show_SNR (void);
 void Lora_Show_Firmware_Version (void);
+void Lora_Show_Help (void);
+bool Lora_Show_List_of_Commands (void);
 
 #endif
 

@@ -134,8 +134,9 @@
 #define REG_INVERTIQ2            0x3b
 #define REG_DIO_MAPPING_1        0x40
     //Interrupt
-    #define RFLR_DIOMAPPING1_RX_READY   0x00  // Default
-    #define RFLR_DIOMAPPING1_DIO0_01    0x40
+    #define RFLR_DIOMAPPING1_RX_READY  0x00  // Default
+    #define RFLR_DIOMAPPING1_DIO0_01   0x40
+    #define RFLR_CONTINIOUS_RX_READY   0x80  // Default
 #define REG_LR_DIOMAPPING2       0x41
 #define REG_VERSION              0x42
 #define REG_PA_DAC               0x4d

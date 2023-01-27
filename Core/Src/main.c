@@ -107,7 +107,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {    
-  //  /*
+    /*
     if (flag)
      {
         Lora_transmit (str_uart, rx_buffer_len);
@@ -122,13 +122,13 @@ int main(void)
         led_red_high();
         answer = false;
        }    
-    //*/
-   /* 
+    */
+    
     for (uint8_t i = 0x41; i< 0x5B; i++)
     {  
         *str_test = i;      
         Lora_transmit (str_test, 3);
-        HAL_Delay(3000);
+        HAL_Delay(5000);
     }
   //  */
      
@@ -183,10 +183,10 @@ void SystemClock_Config(void)
 /* USER CODE BEGIN 4 */
 void EXTI0_IRQHandler(void)	
 {
-    EXTI->PR |= EXTI_PR_PR0;
+    EXTI->PR = EXTI_PR_PR0;
     asm("nop");
     asm("nop");
-     asm("nop");
+    asm("nop");
     asm("nop");
     asm("nop");
     flag = true;
@@ -194,7 +194,7 @@ void EXTI0_IRQHandler(void)
 
 void EXTI15_10_IRQHandler(void)	
 {
-    EXTI->PR |= EXTI_PR_PR15;
+    EXTI->PR = EXTI_PR_PR15;
     asm("nop");
     asm("nop");
     asm("nop");

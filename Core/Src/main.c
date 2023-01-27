@@ -99,7 +99,8 @@ int main(void)
   LED_config(); 
   exti_config();
   MCO_config();
-  Lora_init ();  
+  Lora_init ();
+  Lora_Show_Firmware_Version();  
   __HAL_UART_ENABLE_IT(&huart2, UART_IT_IDLE);
   HAL_UART_Receive_IT(&huart2, str_uart, RX_BUFFER_SIZE);
   /* USER CODE END 2 */
@@ -107,12 +108,12 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {    
-    /*
+    
     if (flag)
      {
         Lora_transmit (str_uart, rx_buffer_len);
         flag = false;          
-      }
+     }
     if (answer)
       {
         Lora_recieve(str_uart_r, &num_of_bytes);
@@ -121,8 +122,8 @@ int main(void)
         Show_SNR();
         led_red_high();
         answer = false;
-       }    
-    */
+      }    
+    /*
     
     for (uint8_t i = 0x41; i< 0x5B; i++)
     {  

@@ -151,6 +151,7 @@ void Lora_reset (void);
 void Lora_recieve(uint8_t *str_r, uint8_t *num_of_bytes);
 void Show_RSSI (void);
 void Show_SNR (void);
+void Lora_Show_Firmware_Version (void);
 
 #endif
 

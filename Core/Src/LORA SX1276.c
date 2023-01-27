@@ -149,3 +149,9 @@ void Show_SNR (void)
     *(SNR + 8) = ((SNR_value - 100*(*(SNR + 6) - 0x30) - 10*(*(SNR + 7) - 0x30))+ 0x30);
     HAL_UART_Transmit(&huart2, SNR, sizeof(SNR), 100);
 }
+
+void Lora_Show_Firmware_Version (void)
+{
+  uint8_t str_FW_Config[] = "Firmware ver. 0.1.1 (27-01-2023) by D.Zaretski\r\n";
+  HAL_UART_Transmit(&huart2, str_FW_Config, sizeof(str_FW_Config), 100);
+}

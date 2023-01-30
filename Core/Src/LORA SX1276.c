@@ -160,7 +160,7 @@ void Lora_Show_Firmware_Version (void)
 
 void Lora_Show_Help (void)
 {
-  uint8_t help[] = "Write /help for list of commands \r\n";
+  uint8_t help[] = "Write \"/help\" for list of commands \r\n";
   HAL_UART_Transmit(&huart2, help, sizeof(help), 100);
 }
 

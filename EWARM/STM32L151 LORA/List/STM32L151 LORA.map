@@ -1,70 +1,68 @@
 ###############################################################################
 #
-# IAR ELF Linker V9.32.1.338/W64 for ARM                  27/Jan/2023  22:59:50
+# IAR ELF Linker V9.32.1.338/W64 for ARM                  30/Jan/2023  13:11:37
 # Copyright 2007-2022 IAR Systems AB.
 #
 #    Output file  =
-#        D:\Programming\LORA\LORA-SX1276\EWARM\STM32L151 LORA\Exe\STM32L151
-#        LORA.out
+#        D:\Work\Programming\LORA\LORA SX1276\EWARM\STM32L151
+#        LORA\Exe\STM32L151 LORA.out
 #    Map file     =
-#        D:\Programming\LORA\LORA-SX1276\EWARM\STM32L151 LORA\List\STM32L151
-#        LORA.map
+#        D:\Work\Programming\LORA\LORA SX1276\EWARM\STM32L151
+#        LORA\List\STM32L151 LORA.map
 #    Command line =
-#        -f "D:\Programming\LORA\LORA-SX1276\EWARM\STM32L151 LORA\Exe\STM32L151
-#        LORA.out.rsp" ("D:\Programming\LORA\LORA-SX1276\EWARM\STM32L151
-#        LORA\Obj\Application\User\Core\gpio.o"
-#        "D:\Programming\LORA\LORA-SX1276\EWARM\STM32L151
+#        -f "D:\Work\Programming\LORA\LORA SX1276\EWARM\STM32L151
+#        LORA\Exe\STM32L151 LORA.out.rsp" ("D:\Work\Programming\LORA\LORA
+#        SX1276\EWARM\STM32L151 LORA\Obj\Application\User\Core\gpio.o"
+#        "D:\Work\Programming\LORA\LORA SX1276\EWARM\STM32L151
 #        LORA\Obj\Application\User\Core\LORA SX1276.o"
-#        "D:\Programming\LORA\LORA-SX1276\EWARM\STM32L151
-#        LORA\Obj\Application\User\Core\main.o"
-#        "D:\Programming\LORA\LORA-SX1276\EWARM\STM32L151
-#        LORA\Obj\Application\User\Core\SPI1.o"
-#        "D:\Programming\LORA\LORA-SX1276\EWARM\STM32L151
+#        "D:\Work\Programming\LORA\LORA SX1276\EWARM\STM32L151
+#        LORA\Obj\Application\User\Core\main.o" "D:\Work\Programming\LORA\LORA
+#        SX1276\EWARM\STM32L151 LORA\Obj\Application\User\Core\SPI1.o"
+#        "D:\Work\Programming\LORA\LORA SX1276\EWARM\STM32L151
 #        LORA\Obj\Application\EWARM\startup_stm32l151xb.o"
-#        "D:\Programming\LORA\LORA-SX1276\EWARM\STM32L151
+#        "D:\Work\Programming\LORA\LORA SX1276\EWARM\STM32L151
 #        LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal.o"
-#        "D:\Programming\LORA\LORA-SX1276\EWARM\STM32L151
+#        "D:\Work\Programming\LORA\LORA SX1276\EWARM\STM32L151
 #        LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_cortex.o"
-#        "D:\Programming\LORA\LORA-SX1276\EWARM\STM32L151
+#        "D:\Work\Programming\LORA\LORA SX1276\EWARM\STM32L151
 #        LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_dma.o"
-#        "D:\Programming\LORA\LORA-SX1276\EWARM\STM32L151
+#        "D:\Work\Programming\LORA\LORA SX1276\EWARM\STM32L151
 #        LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_exti.o"
-#        "D:\Programming\LORA\LORA-SX1276\EWARM\STM32L151
+#        "D:\Work\Programming\LORA\LORA SX1276\EWARM\STM32L151
 #        LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_flash.o"
-#        "D:\Programming\LORA\LORA-SX1276\EWARM\STM32L151
+#        "D:\Work\Programming\LORA\LORA SX1276\EWARM\STM32L151
 #        LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_flash_ex.o"
-#        "D:\Programming\LORA\LORA-SX1276\EWARM\STM32L151
+#        "D:\Work\Programming\LORA\LORA SX1276\EWARM\STM32L151
 #        LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_flash_ramfunc.o"
-#        "D:\Programming\LORA\LORA-SX1276\EWARM\STM32L151
+#        "D:\Work\Programming\LORA\LORA SX1276\EWARM\STM32L151
 #        LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_gpio.o"
-#        "D:\Programming\LORA\LORA-SX1276\EWARM\STM32L151
+#        "D:\Work\Programming\LORA\LORA SX1276\EWARM\STM32L151
 #        LORA\Obj\Application\User\Core\stm32l1xx_hal_msp.o"
-#        "D:\Programming\LORA\LORA-SX1276\EWARM\STM32L151
+#        "D:\Work\Programming\LORA\LORA SX1276\EWARM\STM32L151
 #        LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_pwr.o"
-#        "D:\Programming\LORA\LORA-SX1276\EWARM\STM32L151
+#        "D:\Work\Programming\LORA\LORA SX1276\EWARM\STM32L151
 #        LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_pwr_ex.o"
-#        "D:\Programming\LORA\LORA-SX1276\EWARM\STM32L151
+#        "D:\Work\Programming\LORA\LORA SX1276\EWARM\STM32L151
 #        LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_rcc.o"
-#        "D:\Programming\LORA\LORA-SX1276\EWARM\STM32L151
+#        "D:\Work\Programming\LORA\LORA SX1276\EWARM\STM32L151
 #        LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_rcc_ex.o"
-#        "D:\Programming\LORA\LORA-SX1276\EWARM\STM32L151
+#        "D:\Work\Programming\LORA\LORA SX1276\EWARM\STM32L151
 #        LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_tim.o"
-#        "D:\Programming\LORA\LORA-SX1276\EWARM\STM32L151
+#        "D:\Work\Programming\LORA\LORA SX1276\EWARM\STM32L151
 #        LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_tim_ex.o"
-#        "D:\Programming\LORA\LORA-SX1276\EWARM\STM32L151
+#        "D:\Work\Programming\LORA\LORA SX1276\EWARM\STM32L151
 #        LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_uart.o"
-#        "D:\Programming\LORA\LORA-SX1276\EWARM\STM32L151
+#        "D:\Work\Programming\LORA\LORA SX1276\EWARM\STM32L151
 #        LORA\Obj\Application\User\Core\stm32l1xx_it.o"
-#        "D:\Programming\LORA\LORA-SX1276\EWARM\STM32L151
+#        "D:\Work\Programming\LORA\LORA SX1276\EWARM\STM32L151
 #        LORA\Obj\Drivers\CMSIS\system_stm32l1xx.o"
-#        "D:\Programming\LORA\LORA-SX1276\EWARM\STM32L151
+#        "D:\Work\Programming\LORA\LORA SX1276\EWARM\STM32L151
 #        LORA\Obj\Application\User\Core\usart.o" --no_out_extension -o
-#        "D:\Programming\LORA\LORA-SX1276\EWARM\STM32L151 LORA\Exe\STM32L151
-#        LORA.out" --redirect _Printf=_PrintfFullNoMb --redirect
-#        _Scanf=_ScanfFullNoMb --map
-#        "D:\Programming\LORA\LORA-SX1276\EWARM\STM32L151 LORA\List\STM32L151
-#        LORA.map" --config
-#        D:\Programming\LORA\LORA-SX1276\EWARM/stm32l151xb_flash.icf
+#        "D:\Work\Programming\LORA\LORA SX1276\EWARM\STM32L151
+#        LORA\Exe\STM32L151 LORA.out" --redirect _Printf=_PrintfFullNoMb
+#        --redirect _Scanf=_ScanfFullNoMb --map "D:\Work\Programming\LORA\LORA
+#        SX1276\EWARM\STM32L151 LORA\List\STM32L151 LORA.map" --config
+#        "D:\Work\Programming\LORA\LORA SX1276\EWARM/stm32l151xb_flash.icf"
 #        --semihosting --entry __iar_program_start --vfe --text_out locale
 #        --cpu=Cortex-M3 --fpu=None)
 #
@@ -263,12 +261,12 @@ command line/config:
     -------------------------------------------------
     Total:
 
-D:\Programming\LORA\LORA-SX1276\EWARM\STM32L151 LORA\Obj\Application\EWARM: [1]
+D:\Work\Programming\LORA\LORA SX1276\EWARM\STM32L151 LORA\Obj\Application\EWARM: [1]
     startup_stm32l151xb.o       424
     -------------------------------------------------
     Total:                      424
 
-D:\Programming\LORA\LORA-SX1276\EWARM\STM32L151 LORA\Obj\Application\User\Core: [2]
+D:\Work\Programming\LORA\LORA SX1276\EWARM\STM32L151 LORA\Obj\Application\User\Core: [2]
     LORA SX1276.o             1'124      152        2
     SPI1.o                      444
     gpio.o                      514
@@ -279,12 +277,12 @@ D:\Programming\LORA\LORA-SX1276\EWARM\STM32L151 LORA\Obj\Application\User\Core: 
     -------------------------------------------------
     Total:                    2'986      168      275
 
-D:\Programming\LORA\LORA-SX1276\EWARM\STM32L151 LORA\Obj\Drivers\CMSIS: [3]
+D:\Work\Programming\LORA\LORA SX1276\EWARM\STM32L151 LORA\Obj\Drivers\CMSIS: [3]
     system_stm32l1xx.o           16       37        4
     -------------------------------------------------
     Total:                       16       37        4
 
-D:\Programming\LORA\LORA-SX1276\EWARM\STM32L151 LORA\Obj\Drivers\STM32L1xx_HAL_Driver: [4]
+D:\Work\Programming\LORA\LORA SX1276\EWARM\STM32L151 LORA\Obj\Drivers\STM32L1xx_HAL_Driver: [4]
     stm32l1xx_hal.o             208        2       12
     stm32l1xx_hal_cortex.o      344
     stm32l1xx_hal_dma.o         178
@@ -526,10 +524,10 @@ uwTickFreq              0x2000'0068    0x4  Data  Gb  stm32l1xx_hal.o [4]
 uwTickPrio              0x2000'0064    0x4  Data  Gb  stm32l1xx_hal.o [4]
 
 
-[1] = D:\Programming\LORA\LORA-SX1276\EWARM\STM32L151 LORA\Obj\Application\EWARM
-[2] = D:\Programming\LORA\LORA-SX1276\EWARM\STM32L151 LORA\Obj\Application\User\Core
-[3] = D:\Programming\LORA\LORA-SX1276\EWARM\STM32L151 LORA\Obj\Drivers\CMSIS
-[4] = D:\Programming\LORA\LORA-SX1276\EWARM\STM32L151 LORA\Obj\Drivers\STM32L1xx_HAL_Driver
+[1] = D:\Work\Programming\LORA\LORA SX1276\EWARM\STM32L151 LORA\Obj\Application\EWARM
+[2] = D:\Work\Programming\LORA\LORA SX1276\EWARM\STM32L151 LORA\Obj\Application\User\Core
+[3] = D:\Work\Programming\LORA\LORA SX1276\EWARM\STM32L151 LORA\Obj\Drivers\CMSIS
+[4] = D:\Work\Programming\LORA\LORA SX1276\EWARM\STM32L151 LORA\Obj\Drivers\STM32L1xx_HAL_Driver
 [5] = dl7M_tln.a
 [6] = rt7M_tl.a
 [7] = shb_l.a

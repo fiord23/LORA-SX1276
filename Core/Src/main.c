@@ -121,9 +121,9 @@ int main(void)
      {
        if(!Lora_Show_List_of_Commands())
        {
-         Lora_transmit (str_uart, rx_buffer_len);
-         flag_uart_receiver = false;
-       }                
+         Lora_transmit (str_uart, rx_buffer_len);       
+       }    
+       flag_uart_receiver = false;
      }   
     if (receiver_answer)
       {

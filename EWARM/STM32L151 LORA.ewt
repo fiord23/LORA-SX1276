@@ -1436,6 +1436,12 @@
             <group>
                 <name>Core</name>
                 <file>
+                    <name>$PROJ_DIR$\..\Core\Src\Commands.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\Core\Inc\Commands.h</name>
+                </file>
+                <file>
                     <name>$PROJ_DIR$\..\Core\Src\gpio.c</name>
                 </file>
                 <file>

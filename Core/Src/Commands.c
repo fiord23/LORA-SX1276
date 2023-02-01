@@ -51,16 +51,23 @@ bool Parser_Commands (void)
     if ((ASCII_to_hex(&str_uart[7], &str_uart[8], &reg)) & (ASCII_to_hex(&str_uart[12], &str_uart[13], &data)))
     {
       SPI1_Write(reg, data);
-      if (SPI1_Read(reg) == data)
-      {
-        led_blue_high();
-        HAL_Delay(200);
-        led_blue_low();
-      }      
+    }
+
+  } 
+  uint8_t read_command[] = "/Read 0x";
+  if (!strncmp(str_uart, read_command, sizeof(read_command) - 1))
+  {
+    uint8_t reg = 0;
+    uint8_t data = 0;
+    if (ASCII_to_hex(&str_uart[8], &str_uart[9], &reg))
+    {
+        data = SPI1_Read(reg);
+        
     }
     Uart_Data_Clear();
     return true;
   }
+    
   
     return false;
 }

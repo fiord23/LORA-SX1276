@@ -6,7 +6,7 @@
 #include "usart.h"
 #define RX_BUFFER_SIZE 100
 extern uint8_t str_uart[RX_BUFFER_SIZE];
-
+uint8_t reg = 0;
 bool Lora_Show_List_of_Commands (void)
 {  
   uint8_t help_compare[] = "/help\n"; 
@@ -43,9 +43,38 @@ bool Parser_Commands (void)
     Lora_Show_Firmware_Version();  
     Uart_Data_Clear();
     return true;
+  }  
+  uint8_t set_command[] = "/Set 0x";
+  if (!strncmp(str_uart, set_command, sizeof(set_command) - 1))
+  {
+    //uint8_t reg = 0;
+    uint8_t error[] = "\r\nError!!!\r\n";
+    if(str_uart[7] >= '0' & str_uart[7] <= '9') 
+        reg = (str_uart[7] - '0') << 4;
+    else if (str_uart[7] >= 'A' & str_uart[7] <= 'B')
+        reg = (str_uart[7] - 'A') << 4;
+    else  
+    {
+      HAL_UART_Transmit(&huart2, error, sizeof(error), 100);
+      return false;
+    }
+    
+    if(str_uart[8] >= '0' & str_uart[8] <= '9') 
+        reg |= (str_uart[8] - '0');
+    else if (str_uart[8] >= 'A' & str_uart[8] <= 'B')
+        reg |= (str_uart[8] - 'A');
+    else  
+    {
+      HAL_UART_Transmit(&huart2, error, sizeof(error), 100);
+      return false;
+    }
+    
+    HAL_UART_Transmit(&huart2, str_uart+7, 2, 100);
+    //uint8_t reg = (str_uart[7] - 0x30)*10 + str_uart[8] - 0x30;
+    Uart_Data_Clear();
+    return true;
   }
   
-  else 
     return false;
 }
 void Uart_Data_Clear (void)

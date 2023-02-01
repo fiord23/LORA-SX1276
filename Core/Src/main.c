@@ -18,14 +18,14 @@
   */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
-#include "main.h"
+//#include "main.h"
 #include "usart.h"
 #include "gpio.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "SPI1.h"
 #include "LORA SX1276.h" 
-
+#include "Commands.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/

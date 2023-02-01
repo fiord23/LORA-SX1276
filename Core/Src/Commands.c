@@ -51,7 +51,7 @@ bool Parser_Commands (void)
     uint8_t error[] = "\r\nError!!!\r\n";
     if(str_uart[7] >= '0' & str_uart[7] <= '9') 
         reg = (str_uart[7] - '0') << 4;
-    else if (str_uart[7] >= 'A' & str_uart[7] <= 'B')
+    else if (str_uart[7] >= 'A' & str_uart[7] <= 'F')
         reg = (str_uart[7] - 'A') << 4;
     else  
     {
@@ -61,7 +61,7 @@ bool Parser_Commands (void)
     
     if(str_uart[8] >= '0' & str_uart[8] <= '9') 
         reg |= (str_uart[8] - '0');
-    else if (str_uart[8] >= 'A' & str_uart[8] <= 'B')
+    else if (str_uart[8] >= 'A' & str_uart[8] <= 'F')
         reg |= (str_uart[8] - 'A');
     else  
     {

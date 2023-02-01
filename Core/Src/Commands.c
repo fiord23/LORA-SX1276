@@ -6,7 +6,6 @@
 #include "usart.h"
 #define RX_BUFFER_SIZE 100
 extern uint8_t str_uart[RX_BUFFER_SIZE];
-uint8_t reg = 0;
 bool Lora_Show_List_of_Commands (void)
 {  
   uint8_t help_compare[] = "/help\n"; 
@@ -47,30 +46,18 @@ bool Parser_Commands (void)
   uint8_t set_command[] = "/Set 0x";
   if (!strncmp(str_uart, set_command, sizeof(set_command) - 1))
   {
-    //uint8_t reg = 0;
-    uint8_t error[] = "\r\nError!!!\r\n";
-    if(str_uart[7] >= '0' & str_uart[7] <= '9') 
-        reg = (str_uart[7] - '0') << 4;
-    else if (str_uart[7] >= 'A' & str_uart[7] <= 'F')
-        reg = (str_uart[7] - 'A') << 4;
-    else  
+    uint8_t reg = 0;
+    uint8_t data = 0;
+    if ((ASCII_to_hex(&str_uart[7], &str_uart[8], &reg)) & (ASCII_to_hex(&str_uart[12], &str_uart[13], &data)))
     {
-      HAL_UART_Transmit(&huart2, error, sizeof(error), 100);
-      return false;
+      SPI1_Write(reg, data);
+      if (SPI1_Read(reg) == data)
+      {
+        led_blue_high();
+        HAL_Delay(200);
+        led_blue_low();
+      }      
     }
-    
-    if(str_uart[8] >= '0' & str_uart[8] <= '9') 
-        reg |= (str_uart[8] - '0');
-    else if (str_uart[8] >= 'A' & str_uart[8] <= 'F')
-        reg |= (str_uart[8] - 'A');
-    else  
-    {
-      HAL_UART_Transmit(&huart2, error, sizeof(error), 100);
-      return false;
-    }
-    
-    HAL_UART_Transmit(&huart2, str_uart+7, 2, 100);
-    //uint8_t reg = (str_uart[7] - 0x30)*10 + str_uart[8] - 0x30;
     Uart_Data_Clear();
     return true;
   }
@@ -81,4 +68,36 @@ void Uart_Data_Clear (void)
 {
       for (volatile uint8_t a = 0; a< RX_BUFFER_SIZE; a ++)
         *(str_uart + a) = 0;
+}
+
+bool ASCII_to_hex (uint8_t* first_symbol, uint8_t* second_symbol, uint8_t* hexdata)
+{
+    *hexdata = 0;
+    if(*first_symbol >= '0' & *first_symbol <= '9') 
+        *hexdata = (*first_symbol - '0') << 4;
+    else if (*first_symbol >= 'A' & *first_symbol <= 'F')
+    {
+        *hexdata = (((*first_symbol - 'A')<<4) + 0xA0);      
+    }
+    else  
+    {
+      Error();
+      return false;
+    }   
+    if(*second_symbol >= '0' & *second_symbol <= '9') 
+        *hexdata |= (*second_symbol - '0');
+    else if (*second_symbol >= 'A' & *second_symbol <= 'F')
+        *hexdata |= (*second_symbol - 'A' + 0x0A);
+    else  
+    {
+      Error();
+      return false;
+    }
+    return true;
+}
+
+void Error (void)
+{
+  uint8_t error[] = "\r\nError!!!\r\n";
+  HAL_UART_Transmit(&huart2, error, sizeof(error), 100);
 }

@@ -52,8 +52,9 @@ bool Parser_Commands (void)
     {
       SPI1_Write(reg, data);
     }
-
+    Uart_Data_Clear();
   } 
+  
   uint8_t read_command[] = "/Read 0x";
   if (!strncmp(str_uart, read_command, sizeof(read_command) - 1))
   {
@@ -62,9 +63,14 @@ bool Parser_Commands (void)
     if (ASCII_to_hex(&str_uart[8], &str_uart[9], &reg))
     {
         data = SPI1_Read(reg);
-        
+        uint8_t result_read[] = "\r\nResult from reg 0xXX is 0xXX";
+        result_read[20] = str_uart[8];
+        result_read[21] = str_uart[9];
+        Hex_to_ASCII(&data, &result_read[28], &result_read[29]);
+        HAL_UART_Transmit(&huart2, result_read, sizeof(result_read), 100);
+        Uart_Data_Clear();
     }
-    Uart_Data_Clear();
+    
     return true;
   }
     
@@ -101,6 +107,20 @@ bool ASCII_to_hex (uint8_t* first_symbol, uint8_t* second_symbol, uint8_t* hexda
       return false;
     }
     return true;
+}
+
+void Hex_to_ASCII(uint8_t* hex, uint8_t* first_symbol, uint8_t* second_symbol)
+{
+  *first_symbol = *hex >> 4;
+  if(*first_symbol >= 0x00 & *first_symbol <=0x09)
+    *first_symbol+= '0';
+  if(*first_symbol >= 0x0A & *first_symbol <=0x0F)
+    *first_symbol =  *first_symbol - 0x0A + 'A';
+  *second_symbol = 0x0F & (*hex);
+  if(*second_symbol >= 0x00 & *second_symbol <=0x09)
+    *second_symbol+= '0';
+  if(*second_symbol >= 0x0A & *second_symbol <=0x0F)
+    *second_symbol =  *second_symbol - 0x0A + 'A';
 }
 
 void Error (void)

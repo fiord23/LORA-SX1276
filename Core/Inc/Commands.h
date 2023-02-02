@@ -7,4 +7,5 @@ bool Parser_Commands (void);
 void Uart_Data_Clear (void);
 void Error (void);
 bool ASCII_to_hex (uint8_t*, uint8_t*, uint8_t*);
+void Hex_to_ASCII(uint8_t*, uint8_t*, uint8_t*);
 #endif

@@ -37,27 +37,59 @@ bool Lora_Show_List_of_Commands (void)
 bool Parser_Commands (void)
 {
   uint8_t firmware_version[] = "/FW\n";
+  uint8_t set_command[] = "/Set 0x";
+  uint8_t read_command[] = "/Read 0x";
   if (!strcmp(str_uart, firmware_version))
   {
+    Command_FW();
+    return true;
+  }    
+  else if (!strncmp(str_uart, set_command, sizeof(set_command) - 1))
+  {
+    Command_Set();
+    return true;
+  }      
+  else if (!strncmp(str_uart, read_command, sizeof(read_command) - 1))
+  {
+    Command_Read();
+    return true;
+  }
+  else return false;
+}
+
+void Command_FW(void)
+{
     Lora_Show_Firmware_Version();  
     Uart_Data_Clear();
-    return true;
-  }  
-  uint8_t set_command[] = "/Set 0x";
-  if (!strncmp(str_uart, set_command, sizeof(set_command) - 1))
-  {
+}
+
+void Command_Set(void)
+{
     uint8_t reg = 0;
     uint8_t data = 0;
     if ((ASCII_to_hex(&str_uart[7], &str_uart[8], &reg)) & (ASCII_to_hex(&str_uart[12], &str_uart[13], &data)))
     {
-      SPI1_Write(reg, data);
+        if (reg == REG_OP_MODE)
+            SPI1_Write(reg, data);
+        else  
+        {
+            uint8_t temp_reg = SPI1_Read(REG_OP_MODE);
+            SPI1_Write(REG_OP_MODE, MODE_LONG_RANGE_MODE | MODE_STDBY);
+            SPI1_Write(reg, data);
+            SPI1_Write(REG_OP_MODE, temp_reg);
+        }
+     uint8_t result_write[] = "\r\nIn reg 0xXX has been written 0xXX";
+     result_write[11] = str_uart[7];
+     result_write[12] = str_uart[8];
+     result_write[33] = str_uart[12];
+     result_write[34] = str_uart[13];
+     HAL_UART_Transmit(&huart2, result_write, sizeof(result_write), 100);  
+     Uart_Data_Clear();
     }
-    Uart_Data_Clear();
-  } 
-  
-  uint8_t read_command[] = "/Read 0x";
-  if (!strncmp(str_uart, read_command, sizeof(read_command) - 1))
-  {
+}
+
+void Command_Read(void)
+{
     uint8_t reg = 0;
     uint8_t data = 0;
     if (ASCII_to_hex(&str_uart[8], &str_uart[9], &reg))
@@ -67,19 +99,14 @@ bool Parser_Commands (void)
         result_read[20] = str_uart[8];
         result_read[21] = str_uart[9];
         Hex_to_ASCII(&data, &result_read[28], &result_read[29]);
-        HAL_UART_Transmit(&huart2, result_read, sizeof(result_read), 100);
+        HAL_UART_Transmit(&huart2, result_read, sizeof(result_read), 100);  
         Uart_Data_Clear();
     }
-    
-    return true;
-  }
-    
-  
-    return false;
 }
+
 void Uart_Data_Clear (void)
 {
-      for (volatile uint8_t a = 0; a< RX_BUFFER_SIZE; a ++)
+    for (volatile uint8_t a = 0; a< RX_BUFFER_SIZE; a ++)
         *(str_uart + a) = 0;
 }
 

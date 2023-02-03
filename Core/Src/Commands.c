@@ -39,6 +39,8 @@ bool Parser_Commands (void)
   uint8_t firmware_version[] = "/FW\n";
   uint8_t set_command[] = "/Set 0x";
   uint8_t read_command[] = "/Read 0x";
+  uint8_t config_command[] = "/Config\n";
+  
   if (!strcmp(str_uart, firmware_version))
   {
     Command_FW();
@@ -52,6 +54,11 @@ bool Parser_Commands (void)
   else if (!strncmp(str_uart, read_command, sizeof(read_command) - 1))
   {
     Command_Read();
+    return true;
+  }
+  else if (!strcmp(str_uart, config_command))
+  {
+    Show_Config();
     return true;
   }
   else return false;
@@ -104,6 +111,18 @@ void Command_Read(void)
     }
 }
 
+void Show_Config (void)
+{
+  uint8_t result_data[] = "\r\nData from reg 0xXX is 0xXX";
+  for (uint8_t reg = 0; reg <= 0x3F; reg++)
+  {
+    uint8_t data = SPI1_Read(reg);
+    Hex_to_ASCII(&reg, &result_data[18], &result_data[19]);
+    Hex_to_ASCII(&data, &result_data[26], &result_data[27]);
+    HAL_UART_Transmit(&huart2, result_data, sizeof(result_data), 100);      
+  }
+    Uart_Data_Clear();
+}
 void Uart_Data_Clear (void)
 {
     for (volatile uint8_t a = 0; a< RX_BUFFER_SIZE; a ++)

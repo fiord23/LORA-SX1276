@@ -121,7 +121,8 @@ int main(void)
        if(!Parser_Commands())
        {
          Lora_transmit (str_uart, rx_buffer_len);       
-       }    
+       }
+       flag_transmit = false; 
        flag_uart_receiver = false;
      }   
     if (receiver_answer)

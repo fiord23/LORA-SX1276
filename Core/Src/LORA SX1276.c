@@ -89,6 +89,7 @@ void Lora_transmit (uint8_t *strdata, uint8_t number_of_data)
    SPI1_Write(REG_FIFO_ADDR_PTR,0x00);
    SPI1_Write(REG_OP_MODE, MODE_RX_CONTINUOUS|MODE_LONG_RANGE_MODE);
    SPI1_Write(REG_FIFO_ADDR_PTR,0x00);
+   Uart_Data_Clear();
 }
 
 void Lora_recieve(uint8_t *str_r, uint8_t *num_of_bytes)

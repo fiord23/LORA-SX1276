@@ -6,9 +6,45 @@
 #include "usart.h"
 #define RX_BUFFER_SIZE 100
 extern uint8_t str_uart[RX_BUFFER_SIZE];
-bool Lora_Show_List_of_Commands (void)
+
+
+bool Parser_Commands (void)
+{
+  uint8_t help[] = "/Help\n";
+  uint8_t firmware_version[] = "/FW\n";
+  uint8_t set_command[] = "/Set 0x";
+  uint8_t read_command[] = "/Read 0x";
+  uint8_t config_command[] = "/Config\n";
+  if(strncmp((char*)str_uart, (char*)help, 5) == 0)
+  {
+    Lora_Show_List_of_Commands();
+    return true;
+  }
+  else if (strncmp((char*)str_uart, (char*)firmware_version, 3 ) == 0)
+  {
+    Command_FW();
+    return true;
+  }    
+  else if ((strncmp((char*)str_uart, (char*)set_command, sizeof(set_command) - 1)) == 0)
+  {
+    Command_Set();
+    return true;
+  }      
+  else if ((strncmp((char*)str_uart, (char*)read_command, sizeof(read_command) - 1)) == 0)
+  {
+    Command_Read();
+    return true;
+  }
+  else if ((strcmp((char*)str_uart, (char*)config_command)) == 0)
+  {
+    Show_Config();
+    return true;
+  }
+  else return false;
+}
+
+void Lora_Show_List_of_Commands (void)
 {  
-  uint8_t help_compare[] = "/help\n"; 
   uint8_t list_of_commands[] = "\r\n--------------------\r\nLIST OF COMMANDS\r\n";
   uint8_t set_data_to_reg[] = "/Set - Set in reg(0xAB) data (0x55). Example:/Set 0xAB 0x55\r\n";
   uint8_t read_data_from_reg[] = "/Read - Read from reg(0xAB) data (0x55). Example:/Read 0xAB 0x55\r\n";
@@ -17,53 +53,16 @@ bool Lora_Show_List_of_Commands (void)
   uint8_t who[] = "/Who - to get list  ID available lora online \r\n";
   uint8_t send_target_message[] = "Msg ID text - send message target ID lora. Example: msg 0x18 Hello!\r\n";
   uint8_t send_all_lora_message[] = "Msg 0 text - send message all available lora. Example: msg 0x00 Hello!\r\n";
-  if (!strcmp(str_uart, help_compare))
-    {
-      HAL_UART_Transmit(&huart2, list_of_commands, sizeof(list_of_commands), 100);
-      HAL_UART_Transmit(&huart2, set_data_to_reg, sizeof(set_data_to_reg), 100);
-      HAL_UART_Transmit(&huart2, read_data_from_reg, sizeof(read_data_from_reg), 100);
-      HAL_UART_Transmit(&huart2, lora_config_data, sizeof(lora_config_data), 100);
-      HAL_UART_Transmit(&huart2, get_FW, sizeof(get_FW), 100);
-      HAL_UART_Transmit(&huart2, who, sizeof(who), 100);
-      HAL_UART_Transmit(&huart2, send_target_message, sizeof(send_target_message), 100);
-      HAL_UART_Transmit(&huart2, send_all_lora_message, sizeof(send_all_lora_message), 100);
-      Uart_Data_Clear();
-      return true;
-    }
-    else 
-      return false; 
+  HAL_UART_Transmit(&huart2, list_of_commands, sizeof(list_of_commands), 100);
+  HAL_UART_Transmit(&huart2, set_data_to_reg, sizeof(set_data_to_reg), 100);
+  HAL_UART_Transmit(&huart2, read_data_from_reg, sizeof(read_data_from_reg), 100);
+  HAL_UART_Transmit(&huart2, lora_config_data, sizeof(lora_config_data), 100);
+  HAL_UART_Transmit(&huart2, get_FW, sizeof(get_FW), 100);
+  HAL_UART_Transmit(&huart2, who, sizeof(who), 100);
+  HAL_UART_Transmit(&huart2, send_target_message, sizeof(send_target_message), 100);
+  HAL_UART_Transmit(&huart2, send_all_lora_message, sizeof(send_all_lora_message), 100);
+  Uart_Data_Clear();
 }
-
-bool Parser_Commands (void)
-{
-  uint8_t firmware_version[] = "/FW\n";
-  uint8_t set_command[] = "/Set 0x";
-  uint8_t read_command[] = "/Read 0x";
-  uint8_t config_command[] = "/Config\n";
-  
-  if (!strcmp(str_uart, firmware_version))
-  {
-    Command_FW();
-    return true;
-  }    
-  else if (!strncmp(str_uart, set_command, sizeof(set_command) - 1))
-  {
-    Command_Set();
-    return true;
-  }      
-  else if (!strncmp(str_uart, read_command, sizeof(read_command) - 1))
-  {
-    Command_Read();
-    return true;
-  }
-  else if (!strcmp(str_uart, config_command))
-  {
-    Show_Config();
-    return true;
-  }
-  else return false;
-}
-
 void Command_FW(void)
 {
     Lora_Show_Firmware_Version();  
@@ -158,12 +157,13 @@ bool ASCII_to_hex (uint8_t* first_symbol, uint8_t* second_symbol, uint8_t* hexda
 void Hex_to_ASCII(uint8_t* hex, uint8_t* first_symbol, uint8_t* second_symbol)
 {
   *first_symbol = *hex >> 4;
-  if(*first_symbol >= 0x00 & *first_symbol <=0x09)
+  uint8_t zero = 0x00;
+  if(*first_symbol >= zero & *first_symbol <=0x09)
     *first_symbol+= '0';
   if(*first_symbol >= 0x0A & *first_symbol <=0x0F)
     *first_symbol =  *first_symbol - 0x0A + 'A';
   *second_symbol = 0x0F & (*hex);
-  if(*second_symbol >= 0x00 & *second_symbol <=0x09)
+  if(*second_symbol >= zero & *second_symbol <=0x09)
     *second_symbol+= '0';
   if(*second_symbol >= 0x0A & *second_symbol <=0x0F)
     *second_symbol =  *second_symbol - 0x0A + 'A';

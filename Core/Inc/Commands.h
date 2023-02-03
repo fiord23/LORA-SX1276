@@ -2,8 +2,9 @@
 #define __COMMANDS_H
 #include <stdbool.h>
 #include "main.h"
-bool Lora_Show_List_of_Commands (void);
+
 bool Parser_Commands (void);
+void Lora_Show_List_of_Commands (void);
 void Command_FW(void);
 void Command_Set(void);
 void Command_Read(void);

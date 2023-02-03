@@ -118,7 +118,7 @@ int main(void)
     
      if (flag_uart_receiver)
      {
-       if(!Lora_Show_List_of_Commands() & !Parser_Commands())
+       if(!Parser_Commands())
        {
          Lora_transmit (str_uart, rx_buffer_len);       
        }    

@@ -15,12 +15,12 @@ bool Parser_Commands (void)
   uint8_t set_command[] = "/Set 0x";
   uint8_t read_command[] = "/Read 0x";
   uint8_t config_command[] = "/Config\n";
-  if(strncmp((char*)str_uart, (char*)help, 5) == 0)
+  if(strncmp((char*)str_uart, (char*)help, sizeof(help) - 1) == 0)
   {
     Lora_Show_List_of_Commands();
     return true;
   }
-  else if (strncmp((char*)str_uart, (char*)firmware_version, 3 ) == 0)
+  else if (strncmp((char*)str_uart, (char*)firmware_version, sizeof(firmware_version) - 1 ) == 0)
   {
     Command_FW();
     return true;
@@ -35,7 +35,7 @@ bool Parser_Commands (void)
     Command_Read();
     return true;
   }
-  else if ((strcmp((char*)str_uart, (char*)config_command)) == 0)
+  else if ((strncmp((char*)str_uart, (char*)config_command, sizeof(config_command) - 1)) == 0)
   {
     Show_Config();
     return true;

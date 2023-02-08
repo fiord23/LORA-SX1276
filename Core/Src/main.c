@@ -26,6 +26,7 @@
 #include "SPI1.h"
 #include "LORA SX1276.h" 
 #include "Commands.h"
+#include <string.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -35,7 +36,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define RX_BUFFER_SIZE 100
+//#define RX_BUFFER_SIZE 100
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -47,9 +48,10 @@
 
 /* USER CODE BEGIN PV */
    uint8_t rx_buffer_len;
-   bool flag_transmit = false;
+   bool flag_press_button = false;
    bool receiver_answer = false;
    bool flag_uart_receiver = false;
+   bool auto_send = false;
    uint8_t num_of_bytes;
    uint8_t str_uart[RX_BUFFER_SIZE] = {1, 2, 3};
    uint8_t str_uart_r[RX_BUFFER_SIZE] = {0, };
@@ -107,40 +109,53 @@ int main(void)
   /* USER CODE END 2 */
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  uint32_t autosend_i;
   while (1)
   {    
     
-    if (flag_transmit)
+    if (flag_press_button)
      {
-        Lora_transmit (str_uart, rx_buffer_len);
-        flag_transmit = false;          
+         Lora_Show_Firmware_Version();
+         HAL_Delay(100);
+       // Lora_transmit (str_uart, rx_buffer_len);
+//        auto_send=!auto_send;
+        flag_press_button = false;          
      }
     
      if (flag_uart_receiver)
      {
        if(!Parser_Commands())
        {
+//         setendstr(str_uart);
          Lora_transmit (str_uart, rx_buffer_len);       
        }
-       flag_transmit = false; 
+//       flag_transmit = false; 
        flag_uart_receiver = false;
      }   
     if (receiver_answer)
       {
         Lora_recieve(str_uart_r, &num_of_bytes);
-        HAL_UART_Transmit(&huart2, str_uart_r, num_of_bytes, 100);
+        HAL_UART_Transmit(&huart2, str_uart_r, num_of_bytes, 30);
         Show_RSSI();
         Show_SNR();
         led_red_high();
         receiver_answer = false;
       }    
-    /*
-    
-    for (uint8_t i = 0x41; i< 0x5B; i++)
-    {  
-        *str_test = i;      
-        Lora_transmit (str_test, 3);
-        HAL_Delay(5000);
+ 
+    if (auto_send) {
+      HAL_UART_Transmit(&huart2, "Start AutoSend\r\n", 16, 30);  
+      uint8_t msg[] = "Msg N00000 by LoRa fw 000000\r\n";
+      uint8_t msg_size=strlen((char *)msg);
+      dec2str(autosend_i++,&msg[5],5);
+      HAL_UART_Transmit(&huart2, "send:", 5, 30);  
+      HAL_UART_Transmit(&huart2, msg, msg_size, 30);  
+      Lora_transmit (msg, msg_size);
+      HAL_Delay(2500);
+      if (autosend_i==32000) {
+        auto_send=false;
+        HAL_UART_Transmit(&huart2, "finish autosend.\r\n", 18, 30);
+      }
+
     }
   //  */
      
@@ -196,12 +211,13 @@ void SystemClock_Config(void)
 void EXTI0_IRQHandler(void)	
 {
     EXTI->PR = EXTI_PR_PR0;
+/*    asm("nop");
     asm("nop");
     asm("nop");
     asm("nop");
-    asm("nop");
-    asm("nop");
-    flag_transmit = true;
+    asm("nop");*/
+    flag_press_button = true;
+    auto_send=!auto_send;
 }
 
 void EXTI15_10_IRQHandler(void)	

@@ -4,7 +4,6 @@
 #include "gpio.h"
 #include "usart.h"
 
-#define RX_BUFFER_SIZE 100
 uint8_t RSSI_value = 0;
 uint8_t SNR_value = 0;
 
@@ -50,8 +49,8 @@ void Lora_init (void)
    SPI1_Write(REG_PA_DAC, PA_HIGH_POWER);
    SPI1_Write(REG_OCP, OCP_ENABLED | OCP_240mA);
    SPI1_Write(REG_PA_CONFIG, PA_BOOST_TO_20dBm | POUT_PA_17dBm);
-   SPI1_Write(REG_MODEM_CONFIG_1, BANDWIDTH_250_kHz | CODING_RATE_4_8 | EXPLICIT_HEADER_MODE);
-   SPI1_Write(REG_MODEM_CONFIG_2, SPREADING_FACTOR_12 | TX_NORMAL_SINGLE_MODE | CRC_DISABLE); 
+   SPI1_Write(REG_MODEM_CONFIG_1, BANDWIDTH_500_kHz | CODING_RATE_4_8 | EXPLICIT_HEADER_MODE);
+   SPI1_Write(REG_MODEM_CONFIG_2, SPREADING_FACTOR_12 | TX_NORMAL_SINGLE_MODE | CRC_ENABLE ); 
    SPI1_Write(REG_MODEM_CONFIG_3, GAIN_INTERANL_AGC_LOOP); 
    SPI1_Write(REG_DIO_MAPPING_1, RFLR_DIOMAPPING1_RX_READY);
    SPI1_Write(REG_SYNC_WORD,0x12);	
@@ -77,11 +76,9 @@ void Lora_transmit (uint8_t *strdata, uint8_t number_of_data)
    SPI1_Write(REG_PAYLOAD_LENGTH, number_of_data);
    SPI1_Write(REG_OP_MODE,MODE_TX|MODE_LONG_RANGE_MODE); // MODE TX
   /*------------------Transmit--------*/
-  HAL_Delay(300);
-   while( SPI1_Read(REG_IRQ_FLAGS) != IRQ_TX_DONE_MASK)
-   {
-     led_green_high();
-   }       
+   HAL_Delay(300);
+   SPI1_Read(REG_IRQ_FLAGS);
+   led_green_high();
    SPI1_Write(REG_IRQ_FLAGS, IRQ_TX_DONE_MASK);
    HAL_Delay(300);
    led_green_low();     
@@ -131,37 +128,5 @@ void Lora_reset (void)
     HAL_Delay(1);
     Lora_reset_high();
     HAL_Delay(10);  
-}
-
-void Show_RSSI (void)
-{
-    uint8_t RSSI[] = "RSSI = -XXXdBm\r\n";
-    *(RSSI + 8) = (RSSI_value/100) + 0x30;
-    *(RSSI + 9) = (RSSI_value - 100*(*(RSSI + 8) - 0x30));
-    *(RSSI + 9) = (*(RSSI + 9)/10) + 0x30;
-    *(RSSI + 10) = ((RSSI_value - 100*(*(RSSI + 8) - 0x30) - 10*(*(RSSI + 9) - 0x30))+ 0x30);
-    HAL_UART_Transmit(&huart2, RSSI, sizeof(RSSI), 100);
-}
-
-void Show_SNR (void)
-{
-    uint8_t SNR[] = "SNR = XXXdB\r\n";
-    *(SNR + 6) = (SNR_value/100) + 0x30;
-    *(SNR + 7) = (SNR_value - 100*(*(SNR + 6) - 0x30));
-    *(SNR + 7) = (*(SNR + 7)/10) + 0x30;
-    *(SNR + 8) = ((SNR_value - 100*(*(SNR + 6) - 0x30) - 10*(*(SNR + 7) - 0x30))+ 0x30);
-    HAL_UART_Transmit(&huart2, SNR, sizeof(SNR), 100);
-}
-
-void Lora_Show_Firmware_Version (void)
-{
-  uint8_t str_FW_Config[] = "\r\nFirmware ver. 0.1.7 (03-02-2023) by D.Zaretski\r\n";
-  HAL_UART_Transmit(&huart2, str_FW_Config, sizeof(str_FW_Config), 100);
-}
-
-void Lora_Show_Help (void)
-{
-  uint8_t help[] = "Write \"/Help\" for list of commands \r\n";
-  HAL_UART_Transmit(&huart2, help, sizeof(help), 100);
 }
 

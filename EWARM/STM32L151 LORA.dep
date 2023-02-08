@@ -5,6 +5,7 @@
     <configuration>
         <name>STM32L151 LORA</name>
         <outputs>
+<<<<<<< Updated upstream
             <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal.c</file>
             <file>$PROJ_DIR$\STM32L151 LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_gpio.o</file>
             <file>$PROJ_DIR$\..\Core\Src\SPI1.c</file>
@@ -115,16 +116,138 @@
                 <tool>
                     <name>ICCARM</name>
                     <file> 45</file>
+=======
+            <file>$PROJ_DIR$\..\Core\Inc\stm32l1xx_hal_conf.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\ctype.h</file>
+            <file>$PROJ_DIR$\..\Core\Inc\usart.h</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal.h</file>
+            <file>$PROJ_DIR$\STM32L151 LORA\List\STM32L151 LORA.map</file>
+            <file>$PROJ_DIR$\STM32L151 LORA\Exe\STM32L151 LORA.hex</file>
+            <file>$PROJ_DIR$\..\Drivers\CMSIS\Include\cmsis_compiler.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\DLib_Defaults.h</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_uart.h</file>
+            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_rcc.o</file>
+            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_pwr.o</file>
+            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_tim_ex.o</file>
+            <file>$TOOLKIT_DIR$\inc\c\stdbool.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\stddef.h</file>
+            <file>$PROJ_DIR$\..\Drivers\CMSIS\Device\ST\STM32L1xx\Include\system_stm32l1xx.h</file>
+            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_gpio.o</file>
+            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_flash.o</file>
+            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Application\User\Core\usart.o</file>
+            <file>$PROJ_DIR$\stm32l151xb_flash.icf</file>
+            <file>$PROJ_DIR$\..\Core\Inc\main.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\DLib_Product.h</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_gpio_ex.h</file>
+            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Application\User\Core\stm32l1xx_hal_msp.o</file>
+            <file>$PROJ_DIR$\..\Drivers\CMSIS\Include\core_cm3.h</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_exti.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\DLib_Product_string.h</file>
+            <file>$PROJ_DIR$\STM32L151 LORA\Exe\STM32L151 LORA.out</file>
+            <file>$PROJ_DIR$\..\Drivers\CMSIS\Include\mpu_armv7.h</file>
+            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_exti.o</file>
+            <file>$TOOLKIT_DIR$\inc\c\aarch32\iccarm_builtin.h</file>
+            <file>$PROJ_DIR$\..\Drivers\CMSIS\Device\ST\STM32L1xx\Include\stm32l151xb.h</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_flash_ramfunc.h</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_rcc.h</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_pwr_ex.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\stdint.h</file>
+            <file>$PROJ_DIR$\..\Core\Inc\gpio.h</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_gpio.h</file>
+            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_rcc_ex.o</file>
+            <file>$TOOLKIT_DIR$\lib\rt7M_tl.a</file>
+            <file>$TOOLKIT_DIR$\inc\c\string.h</file>
+            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_cortex.o</file>
+            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_pwr_ex.o</file>
+            <file>$TOOLKIT_DIR$\inc\c\ycheck.h</file>
+            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Application\User\Core\LORA SX1276.o</file>
+            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Drivers\CMSIS\system_stm32l1xx.o</file>
+            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Application\EWARM\startup_stm32l151xb.o</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_def.h</file>
+            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_flash_ramfunc.o</file>
+            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Application\User\Core\stm32l1xx_it.o</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_rcc.c</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_uart.c</file>
+            <file>$TOOLKIT_DIR$\lib\dl7M_tlf.a</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_flash.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\ysizet.h</file>
+            <file>$PROJ_DIR$\..\Drivers\CMSIS\Include\cmsis_iccarm.h</file>
+            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal.o</file>
+            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Application\User\Core\SPI1.o</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_tim_ex.c</file>
+            <file>$PROJ_DIR$\..\Core\Inc\stm32l1xx_it.h</file>
+            <file>$TOOLKIT_DIR$\lib\shb_l.a</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_tim.c</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_rcc_ex.c</file>
+            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_uart.o</file>
+            <file>$TOOLKIT_DIR$\inc\c\yvals.h</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_pwr.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\DLib_Config_Full.h</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_pwr_ex.c</file>
+            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_tim.o</file>
+            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Application\User\Core\Commands.o</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_flash_ex.h</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Inc\Legacy\stm32_hal_legacy.h</file>
+            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_dma.o</file>
+            <file>$TOOLKIT_DIR$\lib\m7M_tl.a</file>
+            <file>$PROJ_DIR$\..\Drivers\CMSIS\Include\cmsis_version.h</file>
+            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Application\User\Core\main.o</file>
+            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Application\User\Core\gpio.o</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_rcc_ex.h</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_dma.h</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_cortex.h</file>
+            <file>$PROJ_DIR$\..\Drivers\CMSIS\Device\ST\STM32L1xx\Include\stm32l1xx.h</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_pwr.c</file>
+            <file>$PROJ_DIR$\STM32L151 LORA\Obj\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_flash_ex.o</file>
+            <file>$PROJ_DIR$\..\Core\Src\stm32l1xx_hal_msp.c</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal.c</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_cortex.c</file>
+            <file>$PROJ_DIR$\..\Core\Src\main.c</file>
+            <file>$PROJ_DIR$\..\Core\Inc\SPI1.h</file>
+            <file>$PROJ_DIR$\..\Core\Src\stm32l1xx_it.c</file>
+            <file>$PROJ_DIR$\..\Core\Src\usart.c</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_exti.c</file>
+            <file>$PROJ_DIR$\..\Core\Src\system_stm32l1xx.c</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_flash_ex.c</file>
+            <file>$PROJ_DIR$\..\Core\Src\SPI1.c</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_dma.c</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_flash.c</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_flash_ramfunc.c</file>
+            <file>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_gpio.c</file>
+            <file>$PROJ_DIR$\..\Core\Src\Commands.c</file>
+            <file>$PROJ_DIR$\..\Core\Src\gpio.c</file>
+            <file>$PROJ_DIR$\..\Core\Src\LORA SX1276.c</file>
+            <file>$PROJ_DIR$\..\Core\Inc\Commands.h</file>
+            <file>$PROJ_DIR$\..\Core\Inc\LORA SX1276.h</file>
+            <file>$PROJ_DIR$\startup_stm32l151xb.s</file>
+        </outputs>
+        <file>
+            <name>$PROJ_DIR$\STM32L151 LORA\Exe\STM32L151 LORA.out</name>
+            <outputs>
+                <tool>
+                    <name>OBJCOPY</name>
+                    <file> 5</file>
+                </tool>
+                <tool>
+                    <name>ILINK</name>
+                    <file> 4</file>
+>>>>>>> Stashed changes
                 </tool>
             </outputs>
             <inputs>
                 <tool>
+<<<<<<< Updated upstream
                     <name>ICCARM</name>
                     <file> 52 25 21 80 22 64 69 31 15 62 100 33 29 65 56 24 37 39 90 53 49 79 47 20 48 35 34 68 70 17 71 81 46 44</file>
+=======
+                    <name>ILINK</name>
+                    <file> 18 68 75 43 74 56 45 55 40 71 28 16 81 47 15 22 10 41 9 37 67 11 62 48 44 17 59 38 72 51</file>
+>>>>>>> Stashed changes
                 </tool>
             </inputs>
         </file>
         <file>
+<<<<<<< Updated upstream
             <name>[ROOT_NODE]</name>
             <outputs>
                 <tool>
@@ -139,96 +262,173 @@
                 <tool>
                     <name>ICCARM</name>
                     <file> 78</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 3 97 52 25 21 80 22 64 69 31 15 62 100 33 29 65 56 24 37 39 90 53 49 79 47 20 48 35 34 68 70 17 71 81 46 44 87</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\Core\Src\stm32l1xx_hal_msp.c</name>
+=======
+            <name>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_rcc.c</name>
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 55</file>
+                    <file> 9</file>
+>>>>>>> Stashed changes
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 97 52 25 21 80 22 64 69 31 15 62 100 33 29 65 56 24 37 39 90 53 49 79 47 20 48 35 34 68 70 17 71 81 46 44</file>
+<<<<<<< Updated upstream
+                    <file> 3 97 52 25 21 80 22 64 69 31 15 62 100 33 29 65 56 24 37 39 90 53 49 79 47 20 48 35 34 68 70 17 71 81 46 44 87</file>
+=======
+                    <file> 3 0 32 46 79 30 23 34 42 63 7 65 20 73 6 54 29 27 14 70 13 53 76 36 21 77 78 52 69 31 64 33 8 24</file>
+>>>>>>> Stashed changes
                 </tool>
             </inputs>
         </file>
         <file>
+<<<<<<< Updated upstream
+            <name>$PROJ_DIR$\..\Core\Src\stm32l1xx_hal_msp.c</name>
+=======
+            <name>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_uart.c</name>
+>>>>>>> Stashed changes
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 62</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+<<<<<<< Updated upstream
+                    <file> 97 52 25 21 80 22 64 69 31 15 62 100 33 29 65 56 24 37 39 90 53 49 79 47 20 48 35 34 68 70 17 71 81 46 44</file>
+=======
+                    <file> 3 0 32 46 79 30 23 34 42 63 7 65 20 73 6 54 29 27 14 70 13 53 76 36 21 77 78 52 69 31 64 33 8 24</file>
+>>>>>>> Stashed changes
+                </tool>
+            </inputs>
+        </file>
+        <file>
+<<<<<<< Updated upstream
             <name>$PROJ_DIR$\..\Core\Src\stm32l1xx_it.c</name>
             <outputs>
                 <tool>
                     <name>ICCARM</name>
                     <file> 18</file>
+=======
+            <name>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_tim_ex.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 11</file>
+>>>>>>> Stashed changes
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
+<<<<<<< Updated upstream
                     <file> 97 52 25 21 80 22 64 69 31 15 62 100 33 29 65 56 24 37 39 90 53 49 79 47 20 48 35 34 68 70 17 71 81 46 44 16</file>
+=======
+                    <file> 3 0 32 46 79 30 23 34 42 63 7 65 20 73 6 54 29 27 14 70 13 53 76 36 21 77 78 52 69 31 64 33 8 24</file>
+>>>>>>> Stashed changes
                 </tool>
             </inputs>
         </file>
         <file>
+<<<<<<< Updated upstream
             <name>$PROJ_DIR$\..\Core\Src\usart.c</name>
             <outputs>
                 <tool>
                     <name>ICCARM</name>
                     <file> 28</file>
+=======
+            <name>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_tim.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 67</file>
+>>>>>>> Stashed changes
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
+<<<<<<< Updated upstream
                     <file> 67 97 52 25 21 80 22 64 69 31 15 62 100 33 29 65 56 24 37 39 90 53 49 79 47 20 48 35 34 68 70 17 71 81 46 44 88</file>
+=======
+                    <file> 3 0 32 46 79 30 23 34 42 63 7 65 20 73 6 54 29 27 14 70 13 53 76 36 21 77 78 52 69 31 64 33 8 24</file>
+>>>>>>> Stashed changes
                 </tool>
             </inputs>
         </file>
         <file>
+<<<<<<< Updated upstream
             <name>$PROJ_DIR$\startup_stm32l151xb.s</name>
             <outputs>
                 <tool>
                     <name>AARM</name>
                     <file> 76</file>
+=======
+            <name>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_rcc_ex.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 37</file>
                 </tool>
             </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 3 0 32 46 79 30 23 34 42 63 7 65 20 73 6 54 29 27 14 70 13 53 76 36 21 77 78 52 69 31 64 33 8 24</file>
+>>>>>>> Stashed changes
+                </tool>
+            </inputs>
         </file>
         <file>
+<<<<<<< Updated upstream
             <name>$PROJ_DIR$\..\Core\Src\system_stm32l1xx.c</name>
             <outputs>
                 <tool>
                     <name>ICCARM</name>
                     <file> 36</file>
+=======
+            <name>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_pwr_ex.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 41</file>
+>>>>>>> Stashed changes
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
+<<<<<<< Updated upstream
                     <file> 22 64 69 31 15 62 100 33 29 65 56 24 37 39 90 52 25 21 80 53 49 79 47 20 48 35 34 68 70 17 71 81 46 44</file>
+=======
+                    <file> 3 0 32 46 79 30 23 34 42 63 7 65 20 73 6 54 29 27 14 70 13 53 76 36 21 77 78 52 69 31 64 33 8 24</file>
+>>>>>>> Stashed changes
                 </tool>
             </inputs>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\Core\Src\LORA SX1276.c</name>
+            <name>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_pwr.c</name>
             <outputs>
                 <tool>
                     <name>ICCARM</name>
+<<<<<<< Updated upstream
                     <file> 86</file>
+=======
+                    <file> 10</file>
+>>>>>>> Stashed changes
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
+<<<<<<< Updated upstream
                     <file> 3 97 52 25 21 80 22 64 69 31 15 62 100 33 29 65 56 24 37 39 90 53 49 79 47 20 48 35 34 68 70 17 71 81 46 44 12 88 87 67</file>
+=======
+                    <file> 3 0 32 46 79 30 23 34 42 63 7 65 20 73 6 54 29 27 14 70 13 53 76 36 21 77 78 52 69 31 64 33 8 24</file>
+>>>>>>> Stashed changes
                 </tool>
             </inputs>
         </file>
@@ -237,47 +437,80 @@
             <outputs>
                 <tool>
                     <name>ICCARM</name>
+<<<<<<< Updated upstream
                     <file> 41</file>
+=======
+                    <file> 22</file>
+>>>>>>> Stashed changes
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
+<<<<<<< Updated upstream
                     <file> 9 88 97 52 25 21 80 22 64 69 31 15 62 100 33 29 65 56 24 37 39 90 53 49 79 47 20 48 35 34 68 70 17 71 81 46 44 98 27 84 3 12 87 67</file>
+=======
+                    <file> 19 3 0 32 46 79 30 23 34 42 63 7 65 20 73 6 54 29 27 14 70 13 53 76 36 21 77 78 52 69 31 64 33 8 24</file>
+>>>>>>> Stashed changes
                 </tool>
             </inputs>
         </file>
         <file>
+<<<<<<< Updated upstream
             <name>$PROJ_DIR$\..\Core\Src\gpio.c</name>
             <outputs>
                 <tool>
                     <name>ICCARM</name>
                     <file> 60</file>
+=======
+            <name>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 55</file>
+>>>>>>> Stashed changes
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
+<<<<<<< Updated upstream
                     <file> 87 97 52 25 21 80 22 64 69 31 15 62 100 33 29 65 56 24 37 39 90 53 49 79 47 20 48 35 34 68 70 17 71 81 46 44</file>
+=======
+                    <file> 3 0 32 46 79 30 23 34 42 63 7 65 20 73 6 54 29 27 14 70 13 53 76 36 21 77 78 52 69 31 64 33 8 24</file>
+>>>>>>> Stashed changes
                 </tool>
             </inputs>
         </file>
         <file>
+<<<<<<< Updated upstream
             <name>$PROJ_DIR$\..\Core\Src\main.c</name>
             <outputs>
                 <tool>
                     <name>ICCARM</name>
                     <file> 51</file>
+=======
+            <name>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_cortex.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 40</file>
+>>>>>>> Stashed changes
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
+<<<<<<< Updated upstream
                     <file> 67 97 52 25 21 80 22 64 69 31 15 62 100 33 29 65 56 24 37 39 90 53 49 79 47 20 48 35 34 68 70 17 71 81 46 44 87 3 12 88 9 98 27</file>
+=======
+                    <file> 3 0 32 46 79 30 23 34 42 63 7 65 20 73 6 54 29 27 14 70 13 53 76 36 21 77 78 52 69 31 64 33 8 24</file>
+>>>>>>> Stashed changes
                 </tool>
             </inputs>
         </file>
         <file>
+<<<<<<< Updated upstream
             <name>$PROJ_DIR$\STM32L151 LORA\Exe\STM32L151 LORA.out</name>
             <outputs>
                 <tool>
@@ -287,12 +520,24 @@
                 <tool>
                     <name>ILINK</name>
                     <file> 54</file>
+=======
+            <name>$PROJ_DIR$\..\Core\Src\main.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 74</file>
+>>>>>>> Stashed changes
                 </tool>
             </outputs>
             <inputs>
                 <tool>
+<<<<<<< Updated upstream
                     <name>ILINK</name>
                     <file> 85 41 60 86 51 78 76 45 32 43 50 61 59 40 1 55 19 66 63 42 30 38 57 18 36 28 58 26 89 96</file>
+=======
+                    <name>ICCARM</name>
+                    <file> 2 19 3 0 32 46 79 30 23 34 42 63 7 65 20 73 6 54 29 27 14 70 13 53 76 36 21 77 78 52 69 31 64 33 8 24 35 86 101 12 100 39 25</file>
+>>>>>>> Stashed changes
                 </tool>
             </inputs>
         </file>
@@ -301,13 +546,21 @@
             <outputs>
                 <tool>
                     <name>ICCARM</name>
+<<<<<<< Updated upstream
                     <file> 43</file>
+=======
+                    <file> 48</file>
+>>>>>>> Stashed changes
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
+<<<<<<< Updated upstream
                     <file> 52 25 21 80 22 64 69 31 15 62 100 33 29 65 56 24 37 39 90 53 49 79 47 20 48 35 34 68 70 17 71 81 46 44</file>
+=======
+                    <file> 19 3 0 32 46 79 30 23 34 42 63 7 65 20 73 6 54 29 27 14 70 13 53 76 36 21 77 78 52 69 31 64 33 8 24 58</file>
+>>>>>>> Stashed changes
                 </tool>
             </inputs>
         </file>
@@ -316,48 +569,84 @@
             <outputs>
                 <tool>
                     <name>ICCARM</name>
+<<<<<<< Updated upstream
                     <file> 59</file>
+=======
+                    <file> 17</file>
+>>>>>>> Stashed changes
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
+<<<<<<< Updated upstream
                     <file> 52 25 21 80 22 64 69 31 15 62 100 33 29 65 56 24 37 39 90 53 49 79 47 20 48 35 34 68 70 17 71 81 46 44</file>
+=======
+                    <file> 2 19 3 0 32 46 79 30 23 34 42 63 7 65 20 73 6 54 29 27 14 70 13 53 76 36 21 77 78 52 69 31 64 33 8 24 12</file>
+>>>>>>> Stashed changes
                 </tool>
             </inputs>
         </file>
         <file>
+<<<<<<< Updated upstream
             <name>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_pwr.c</name>
             <outputs>
                 <tool>
                     <name>ICCARM</name>
                     <file> 19</file>
+=======
+            <name>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_exti.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 28</file>
+>>>>>>> Stashed changes
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
+<<<<<<< Updated upstream
                     <file> 52 25 21 80 22 64 69 31 15 62 100 33 29 65 56 24 37 39 90 53 49 79 47 20 48 35 34 68 70 17 71 81 46 44</file>
+=======
+                    <file> 3 0 32 46 79 30 23 34 42 63 7 65 20 73 6 54 29 27 14 70 13 53 76 36 21 77 78 52 69 31 64 33 8 24</file>
+>>>>>>> Stashed changes
                 </tool>
             </inputs>
         </file>
         <file>
+<<<<<<< Updated upstream
             <name>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_uart.c</name>
             <outputs>
                 <tool>
                     <name>ICCARM</name>
                     <file> 57</file>
+=======
+            <name>$PROJ_DIR$\..\Core\Src\system_stm32l1xx.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 44</file>
+>>>>>>> Stashed changes
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
+<<<<<<< Updated upstream
                     <file> 52 25 21 80 22 64 69 31 15 62 100 33 29 65 56 24 37 39 90 53 49 79 47 20 48 35 34 68 70 17 71 81 46 44</file>
+=======
+                    <file> 79 30 23 34 42 63 7 65 20 73 6 54 29 27 14 3 0 32 46 70 13 53 76 36 21 77 78 52 69 31 64 33 8 24</file>
+>>>>>>> Stashed changes
                 </tool>
             </inputs>
         </file>
         <file>
+<<<<<<< Updated upstream
             <name>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_rcc.c</name>
+=======
+            <name>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_flash_ex.c</name>
+>>>>>>> Stashed changes
             <outputs>
                 <tool>
                     <name>ICCARM</name>
@@ -367,86 +656,147 @@
             <inputs>
                 <tool>
                     <name>ICCARM</name>
+<<<<<<< Updated upstream
                     <file> 52 25 21 80 22 64 69 31 15 62 100 33 29 65 56 24 37 39 90 53 49 79 47 20 48 35 34 68 70 17 71 81 46 44</file>
+=======
+                    <file> 3 0 32 46 79 30 23 34 42 63 7 65 20 73 6 54 29 27 14 70 13 53 76 36 21 77 78 52 69 31 64 33 8 24</file>
+>>>>>>> Stashed changes
                 </tool>
             </inputs>
         </file>
         <file>
+<<<<<<< Updated upstream
             <name>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_tim.c</name>
             <outputs>
                 <tool>
                     <name>ICCARM</name>
                     <file> 30</file>
+=======
+            <name>$PROJ_DIR$\..\Core\Src\SPI1.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 56</file>
+>>>>>>> Stashed changes
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
+<<<<<<< Updated upstream
                     <file> 52 25 21 80 22 64 69 31 15 62 100 33 29 65 56 24 37 39 90 53 49 79 47 20 48 35 34 68 70 17 71 81 46 44</file>
+=======
+                    <file> 86 19 3 0 32 46 79 30 23 34 42 63 7 65 20 73 6 54 29 27 14 70 13 53 76 36 21 77 78 52 69 31 64 33 8 24 35</file>
+>>>>>>> Stashed changes
                 </tool>
             </inputs>
         </file>
         <file>
+<<<<<<< Updated upstream
             <name>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_flash_ramfunc.c</name>
             <outputs>
                 <tool>
                     <name>ICCARM</name>
                     <file> 40</file>
+=======
+            <name>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_dma.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 71</file>
+>>>>>>> Stashed changes
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
+<<<<<<< Updated upstream
                     <file> 52 25 21 80 22 64 69 31 15 62 100 33 29 65 56 24 37 39 90 53 49 79 47 20 48 35 34 68 70 17 71 81 46 44</file>
+=======
+                    <file> 3 0 32 46 79 30 23 34 42 63 7 65 20 73 6 54 29 27 14 70 13 53 76 36 21 77 78 52 69 31 64 33 8 24</file>
+>>>>>>> Stashed changes
                 </tool>
             </inputs>
         </file>
         <file>
+<<<<<<< Updated upstream
             <name>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_pwr_ex.c</name>
             <outputs>
                 <tool>
                     <name>ICCARM</name>
                     <file> 66</file>
+=======
+            <name>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_flash.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 16</file>
+>>>>>>> Stashed changes
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
+<<<<<<< Updated upstream
                     <file> 52 25 21 80 22 64 69 31 15 62 100 33 29 65 56 24 37 39 90 53 49 79 47 20 48 35 34 68 70 17 71 81 46 44</file>
+=======
+                    <file> 3 0 32 46 79 30 23 34 42 63 7 65 20 73 6 54 29 27 14 70 13 53 76 36 21 77 78 52 69 31 64 33 8 24</file>
+>>>>>>> Stashed changes
                 </tool>
             </inputs>
         </file>
         <file>
+<<<<<<< Updated upstream
             <name>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_cortex.c</name>
             <outputs>
                 <tool>
                     <name>ICCARM</name>
                     <file> 32</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 52 25 21 80 22 64 69 31 15 62 100 33 29 65 56 24 37 39 90 53 49 79 47 20 48 35 34 68 70 17 71 81 46 44</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_tim_ex.c</name>
+=======
+            <name>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_flash_ramfunc.c</name>
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 38</file>
+                    <file> 47</file>
+>>>>>>> Stashed changes
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
+<<<<<<< Updated upstream
                     <file> 52 25 21 80 22 64 69 31 15 62 100 33 29 65 56 24 37 39 90 53 49 79 47 20 48 35 34 68 70 17 71 81 46 44</file>
+=======
+                    <file> 3 0 32 46 79 30 23 34 42 63 7 65 20 73 6 54 29 27 14 70 13 53 76 36 21 77 78 52 69 31 64 33 8 24</file>
+>>>>>>> Stashed changes
                 </tool>
             </inputs>
         </file>
         <file>
+            <name>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_gpio.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+<<<<<<< Updated upstream
+                    <file> 38</file>
+=======
+                    <file> 15</file>
+>>>>>>> Stashed changes
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+<<<<<<< Updated upstream
+                    <file> 52 25 21 80 22 64 69 31 15 62 100 33 29 65 56 24 37 39 90 53 49 79 47 20 48 35 34 68 70 17 71 81 46 44</file>
+=======
+                    <file> 3 0 32 46 79 30 23 34 42 63 7 65 20 73 6 54 29 27 14 70 13 53 76 36 21 77 78 52 69 31 64 33 8 24</file>
+>>>>>>> Stashed changes
+                </tool>
+            </inputs>
+        </file>
+        <file>
+<<<<<<< Updated upstream
             <name>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_exti.c</name>
             <outputs>
                 <tool>
@@ -460,51 +810,101 @@
                     <file> 52 25 21 80 22 64 69 31 15 62 100 33 29 65 56 24 37 39 90 53 49 79 47 20 48 35 34 68 70 17 71 81 46 44</file>
                 </tool>
             </inputs>
+=======
+            <name>[ROOT_NODE]</name>
+            <outputs>
+                <tool>
+                    <name>ILINK</name>
+                    <file> 26 4</file>
+                </tool>
+            </outputs>
+>>>>>>> Stashed changes
         </file>
         <file>
-            <name>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_rcc_ex.c</name>
+            <name>$PROJ_DIR$\..\Core\Src\Commands.c</name>
             <outputs>
                 <tool>
                     <name>ICCARM</name>
+<<<<<<< Updated upstream
                     <file> 42</file>
+=======
+                    <file> 68</file>
+>>>>>>> Stashed changes
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
+<<<<<<< Updated upstream
                     <file> 52 25 21 80 22 64 69 31 15 62 100 33 29 65 56 24 37 39 90 53 49 79 47 20 48 35 34 68 70 17 71 81 46 44</file>
+=======
+                    <file> 100 12 19 3 0 32 46 79 30 23 34 42 63 7 65 20 73 6 54 29 27 14 70 13 53 76 36 21 77 78 52 69 31 64 33 8 24 39 25 1 86 101 35 2</file>
+>>>>>>> Stashed changes
                 </tool>
             </inputs>
         </file>
         <file>
+<<<<<<< Updated upstream
             <name>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_gpio.c</name>
             <outputs>
                 <tool>
                     <name>ICCARM</name>
                     <file> 1</file>
+=======
+            <name>$PROJ_DIR$\..\Core\Src\gpio.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 75</file>
+>>>>>>> Stashed changes
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
+<<<<<<< Updated upstream
                     <file> 52 25 21 80 22 64 69 31 15 62 100 33 29 65 56 24 37 39 90 53 49 79 47 20 48 35 34 68 70 17 71 81 46 44</file>
+=======
+                    <file> 35 19 3 0 32 46 79 30 23 34 42 63 7 65 20 73 6 54 29 27 14 70 13 53 76 36 21 77 78 52 69 31 64 33 8 24</file>
+>>>>>>> Stashed changes
                 </tool>
             </inputs>
         </file>
         <file>
+<<<<<<< Updated upstream
             <name>$PROJ_DIR$\..\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_flash.c</name>
             <outputs>
                 <tool>
                     <name>ICCARM</name>
                     <file> 61</file>
+=======
+            <name>$PROJ_DIR$\..\Core\Src\LORA SX1276.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 43</file>
+>>>>>>> Stashed changes
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
+<<<<<<< Updated upstream
                     <file> 52 25 21 80 22 64 69 31 15 62 100 33 29 65 56 24 37 39 90 53 49 79 47 20 48 35 34 68 70 17 71 81 46 44</file>
+=======
+                    <file> 86 19 3 0 32 46 79 30 23 34 42 63 7 65 20 73 6 54 29 27 14 70 13 53 76 36 21 77 78 52 69 31 64 33 8 24 101 12 35 2</file>
+>>>>>>> Stashed changes
                 </tool>
             </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\startup_stm32l151xb.s</name>
+            <outputs>
+                <tool>
+                    <name>AARM</name>
+                    <file> 45</file>
+                </tool>
+            </outputs>
         </file>
         <forcedrebuild>
             <name>[REBUILD_ALL]</name>

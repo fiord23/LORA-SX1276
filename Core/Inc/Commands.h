@@ -21,4 +21,10 @@ void dec2hex(uint8_t, uint8_t *);
 bool hex2dec (uint8_t*, uint8_t*);
 char * toUpper(char*);
 uint8_t dec2str(uint32_t, uint8_t *, uint8_t );
+<<<<<<< Updated upstream
+=======
+void writeToEEPROM (uint32_t, uint32_t);
+uint32_t readFromEEPROM (uint32_t);
+
+>>>>>>> Stashed changes
 #endif

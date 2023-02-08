@@ -36,7 +36,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define RX_BUFFER_SIZE 100
+//#define RX_BUFFER_SIZE 100
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -48,11 +48,15 @@
 
 /* USER CODE BEGIN PV */
    uint8_t rx_buffer_len;
-   bool flag_transmit = false;
+   uint8_t nodeN=0;
+   bool flag_press_button = false;
    bool receiver_answer = false;
    bool flag_uart_receiver = false;
    bool auto_send = false;
+<<<<<<< Updated upstream
    uint8_t autosend_loop=1;
+=======
+>>>>>>> Stashed changes
    uint8_t num_of_bytes;
    uint8_t str_uart[RX_BUFFER_SIZE] = {1, 2, 3};
    uint8_t str_uart_r[RX_BUFFER_SIZE] = {0, };
@@ -84,12 +88,10 @@ int main(void)
   /* USER CODE END 1 */
   /* MCU Configuration--------------------------------------------------------*/
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-  HAL_Init();
   /* USER CODE BEGIN Init */
     
   /* USER CODE END Init */
   /* Configure the system clock */
-  SystemClock_Config();
   /* USER CODE BEGIN SysInit */
     
   /* USER CODE END SysInit */
@@ -110,13 +112,22 @@ int main(void)
   /* USER CODE END 2 */
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  uint32_t autosend_i;
   while (1)
   {    
     
-    if (flag_transmit)
+    if (flag_press_button)
      {
+<<<<<<< Updated upstream
        Lora_transmit (str_uart, rx_buffer_len);
         flag_transmit = false;          
+=======
+         Lora_Show_Firmware_Version();
+         HAL_Delay(100);
+       // Lora_transmit (str_uart, rx_buffer_len);
+//        auto_send=!auto_send;
+        flag_press_button = false;          
+>>>>>>> Stashed changes
      }
     
      if (flag_uart_receiver)
@@ -126,7 +137,7 @@ int main(void)
 //         setendstr(str_uart);
          Lora_transmit (str_uart, rx_buffer_len);       
        }
-       flag_transmit = false; 
+//       flag_transmit = false; 
        flag_uart_receiver = false;
      }   
     if (receiver_answer)
@@ -140,6 +151,7 @@ int main(void)
       }    
  
     if (auto_send) {
+<<<<<<< Updated upstream
       HAL_UART_Transmit(&huart2, "Start AutoSend\r\n", 16, 30);  
       uint8_t loop[] = "Loop X to X\r\n";
       uint8_t msg[] = "Msg N00000 by LoRa fw 000000\r\n";
@@ -159,6 +171,21 @@ int main(void)
         auto_send=false;
       }
       HAL_UART_Transmit(&huart2, "finish autosend.\r\n", 18, 30);        
+=======
+//      HAL_UART_Transmit(&huart2, "Start AutoSend\r\n", 16, 30);  
+      uint8_t msg[] = "Msg N00000 by LoRa fw 000\r\n";
+      uint8_t msg_size=strlen((char *)msg);
+      dec2str(autosend_i++,&msg[5],5);
+      dec2str(nodeN,&msg[22],3);
+      HAL_UART_Transmit(&huart2, "send:", 5, 30);  
+      HAL_UART_Transmit(&huart2, msg, msg_size, 30);  
+      Lora_transmit (msg, msg_size);
+      HAL_Delay(2500);
+      if (autosend_i==32000) {
+        auto_send=false;
+        HAL_UART_Transmit(&huart2, "finish autosend.\r\n", 18, 30);
+      }
+>>>>>>> Stashed changes
 
     }
   //  */
@@ -215,12 +242,13 @@ void SystemClock_Config(void)
 void EXTI0_IRQHandler(void)	
 {
     EXTI->PR = EXTI_PR_PR0;
+/*    asm("nop");
     asm("nop");
     asm("nop");
     asm("nop");
-    asm("nop");
-    asm("nop");
-    flag_transmit = true;
+    asm("nop");*/
+    flag_press_button = true;
+    auto_send=!auto_send;
 }
 
 void EXTI15_10_IRQHandler(void)	

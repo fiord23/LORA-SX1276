@@ -19,7 +19,7 @@
     #define FREQUENCY_868_MSB    0xD9
 #define REG_FRF_MID              0x07
     //FREQUENCY 868
-    #define FREQUENCY_868_MID    0x00
+    #define FREQUENCY_868_MID    0x00    // Change Alex to Default
 #define REG_FRF_LSB              0x08
     //FREQUENCY 868
     #define FREQUENCY_868_LSB    0x00

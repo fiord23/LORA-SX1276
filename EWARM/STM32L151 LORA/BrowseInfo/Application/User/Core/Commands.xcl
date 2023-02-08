@@ -1,25 +1,25 @@
-"D:\Work\Programming\LORA\LORA SX1276\Core\Src\Commands.c"
+"C:\Dev\LORA-SX1276\Core\Src\Commands.c"
 -std=c11
 -ferror-limit=0
 -fbracket-depth=512
 -funsigned-char
 -MD
 -MF
-D:\Work\Programming\LORA\LORA SX1276\EWARM\STM32L151 LORA\BrowseInfo\Application\User\Core\Commands.pbi.dep
+C:\Dev\LORA-SX1276\EWARM\STM32L151 LORA\BrowseInfo\Application\User\Core\Commands.pbi.dep
 -o
-D:\Work\Programming\LORA\LORA SX1276\EWARM\STM32L151 LORA\BrowseInfo\Application\User\Core\Commands.pbi
+C:\Dev\LORA-SX1276\EWARM\STM32L151 LORA\BrowseInfo\Application\User\Core\Commands.pbi
 -I
-D:\Work\Programming\LORA\LORA SX1276\Core\Src
+C:\Dev\LORA-SX1276\Core\Src
 -I
-D:\Work\Programming\LORA\LORA SX1276\EWARM/../Core/Inc\
+C:\Dev\LORA-SX1276\EWARM/../Core/Inc
 -I
-D:\Work\Programming\LORA\LORA SX1276\EWARM/../Drivers/STM32L1xx_HAL_Driver/Inc\
+C:\Dev\LORA-SX1276\EWARM/../Drivers/STM32L1xx_HAL_Driver/Inc
 -I
-D:\Work\Programming\LORA\LORA SX1276\EWARM/../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy\
+C:\Dev\LORA-SX1276\EWARM/../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy
 -I
-D:\Work\Programming\LORA\LORA SX1276\EWARM/../Drivers/CMSIS/Device/ST/STM32L1xx/Include\
+C:\Dev\LORA-SX1276\EWARM/../Drivers/CMSIS/Device/ST/STM32L1xx/Include
 -I
-D:\Work\Programming\LORA\LORA SX1276\EWARM/../Drivers/CMSIS/Include\
+C:\Dev\LORA-SX1276\EWARM/../Drivers/CMSIS/Include
 -I
 C:\Program Files\IAR Systems\Embedded Workbench 9.1\arm\inc\c\aarch32
 -I
@@ -27,15 +27,15 @@ C:\Program Files\IAR Systems\Embedded Workbench 9.1\arm\inc
 -I
 C:\Program Files\IAR Systems\Embedded Workbench 9.1\arm\inc\c
 -I
-D:\Work\Programming\LORA\LORA SX1276\Core\Inc
+C:\Dev\LORA-SX1276\Core\Inc
 -I
-D:\Work\Programming\LORA\LORA SX1276\Drivers\STM32L1xx_HAL_Driver\Inc
+C:\Dev\LORA-SX1276\Drivers\STM32L1xx_HAL_Driver\Inc
 -I
-D:\Work\Programming\LORA\LORA SX1276\Drivers\STM32L1xx_HAL_Driver\Inc\Legacy
+C:\Dev\LORA-SX1276\Drivers\STM32L1xx_HAL_Driver\Inc\Legacy
 -I
-D:\Work\Programming\LORA\LORA SX1276\Drivers\CMSIS\Device\ST\STM32L1xx\Include
+C:\Dev\LORA-SX1276\Drivers\CMSIS\Device\ST\STM32L1xx\Include
 -I
-D:\Work\Programming\LORA\LORA SX1276\Drivers\CMSIS\Include
+C:\Dev\LORA-SX1276\Drivers\CMSIS\Include
 -D__CHAR_BITS__=8
 -D__CHAR_MAX__=0xff
 -D__CHAR_MIN__=0

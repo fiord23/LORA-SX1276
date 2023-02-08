@@ -26,6 +26,7 @@
 #include "SPI1.h"
 #include "LORA SX1276.h" 
 #include "Commands.h"
+#include <string.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -50,6 +51,8 @@
    bool flag_transmit = false;
    bool receiver_answer = false;
    bool flag_uart_receiver = false;
+   bool auto_send = false;
+   uint8_t autosend_loop=1;
    uint8_t num_of_bytes;
    uint8_t str_uart[RX_BUFFER_SIZE] = {1, 2, 3};
    uint8_t str_uart_r[RX_BUFFER_SIZE] = {0, };
@@ -112,7 +115,7 @@ int main(void)
     
     if (flag_transmit)
      {
-        Lora_transmit (str_uart, rx_buffer_len);
+       Lora_transmit (str_uart, rx_buffer_len);
         flag_transmit = false;          
      }
     
@@ -120,6 +123,7 @@ int main(void)
      {
        if(!Parser_Commands())
        {
+//         setendstr(str_uart);
          Lora_transmit (str_uart, rx_buffer_len);       
        }
        flag_transmit = false; 
@@ -128,19 +132,34 @@ int main(void)
     if (receiver_answer)
       {
         Lora_recieve(str_uart_r, &num_of_bytes);
-        HAL_UART_Transmit(&huart2, str_uart_r, num_of_bytes, 100);
+        HAL_UART_Transmit(&huart2, str_uart_r, num_of_bytes, 30);
         Show_RSSI();
         Show_SNR();
         led_red_high();
         receiver_answer = false;
       }    
-    /*
-    
-    for (uint8_t i = 0x41; i< 0x5B; i++)
-    {  
-        *str_test = i;      
-        Lora_transmit (str_test, 3);
-        HAL_Delay(5000);
+ 
+    if (auto_send) {
+      HAL_UART_Transmit(&huart2, "Start AutoSend\r\n", 16, 30);  
+      uint8_t loop[] = "Loop X to X\r\n";
+      uint8_t msg[] = "Msg N00000 by LoRa fw 000000\r\n";
+      uint8_t msg_size=strlen((char *)msg);
+      for (uint8_t j=0;j<autosend_loop;j++) {
+        loop[5]=j+49;
+        loop[10]=autosend_loop+48;        
+        HAL_UART_Transmit(&huart2, loop, sizeof(loop)-1, 30);
+        for (uint32_t i = 1; i< 32000; i++)
+        {  
+          dec2str(i,&msg[5],5);
+          HAL_UART_Transmit(&huart2, "send:", 5, 30);  
+          HAL_UART_Transmit(&huart2, msg, msg_size, 30);  
+          Lora_transmit (msg, msg_size);
+          HAL_Delay(2500);
+        }
+        auto_send=false;
+      }
+      HAL_UART_Transmit(&huart2, "finish autosend.\r\n", 18, 30);        
+
     }
   //  */
      

@@ -1,41 +1,41 @@
-"D:\Programming\LORA\LORA-SX1276\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_gpio.c"
+"C:\Dev\LORA-SX1276\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_gpio.c"
 -std=c11
 -ferror-limit=0
 -fbracket-depth=512
 -funsigned-char
 -MD
 -MF
-D:\Programming\LORA\LORA-SX1276\EWARM\STM32L151 LORA\BrowseInfo\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_gpio.pbi.dep
+C:\Dev\LORA-SX1276\EWARM\STM32L151 LORA\BrowseInfo\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_gpio.pbi.dep
 -o
-D:\Programming\LORA\LORA-SX1276\EWARM\STM32L151 LORA\BrowseInfo\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_gpio.pbi
+C:\Dev\LORA-SX1276\EWARM\STM32L151 LORA\BrowseInfo\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_gpio.pbi
 -I
-D:\Programming\LORA\LORA-SX1276\Drivers\STM32L1xx_HAL_Driver\Src
+C:\Dev\LORA-SX1276\Drivers\STM32L1xx_HAL_Driver\Src
 -I
-D:\Programming\LORA\LORA-SX1276\EWARM/../Core/Inc
+C:\Dev\LORA-SX1276\EWARM/../Core/Inc
 -I
-D:\Programming\LORA\LORA-SX1276\EWARM/../Drivers/STM32L1xx_HAL_Driver/Inc
+C:\Dev\LORA-SX1276\EWARM/../Drivers/STM32L1xx_HAL_Driver/Inc
 -I
-D:\Programming\LORA\LORA-SX1276\EWARM/../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy
+C:\Dev\LORA-SX1276\EWARM/../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy
 -I
-D:\Programming\LORA\LORA-SX1276\EWARM/../Drivers/CMSIS/Device/ST/STM32L1xx/Include
+C:\Dev\LORA-SX1276\EWARM/../Drivers/CMSIS/Device/ST/STM32L1xx/Include
 -I
-D:\Programming\LORA\LORA-SX1276\EWARM/../Drivers/CMSIS/Include
+C:\Dev\LORA-SX1276\EWARM/../Drivers/CMSIS/Include
 -I
-D:\IAR 9.32\arm\inc\c\aarch32
+C:\Program Files\IAR Systems\Embedded Workbench 9.1\arm\inc\c\aarch32
 -I
-D:\IAR 9.32\arm\inc
+C:\Program Files\IAR Systems\Embedded Workbench 9.1\arm\inc
 -I
-D:\IAR 9.32\arm\inc\c
+C:\Program Files\IAR Systems\Embedded Workbench 9.1\arm\inc\c
 -I
-D:\Programming\LORA\LORA-SX1276\Core\Inc
+C:\Dev\LORA-SX1276\Core\Inc
 -I
-D:\Programming\LORA\LORA-SX1276\Drivers\STM32L1xx_HAL_Driver\Inc
+C:\Dev\LORA-SX1276\Drivers\STM32L1xx_HAL_Driver\Inc
 -I
-D:\Programming\LORA\LORA-SX1276\Drivers\STM32L1xx_HAL_Driver\Inc\Legacy
+C:\Dev\LORA-SX1276\Drivers\STM32L1xx_HAL_Driver\Inc\Legacy
 -I
-D:\Programming\LORA\LORA-SX1276\Drivers\CMSIS\Device\ST\STM32L1xx\Include
+C:\Dev\LORA-SX1276\Drivers\CMSIS\Device\ST\STM32L1xx\Include
 -I
-D:\Programming\LORA\LORA-SX1276\Drivers\CMSIS\Include
+C:\Dev\LORA-SX1276\Drivers\CMSIS\Include
 -D__CHAR_BITS__=8
 -D__CHAR_MAX__=0xff
 -D__CHAR_MIN__=0
@@ -375,8 +375,8 @@ D:\Programming\LORA\LORA-SX1276\Drivers\CMSIS\Include
 -D__EDG_INT128_EXTENSIONS_ALLOWED=0
 -DUSE_HAL_DRIVER=1
 -DSTM32L151xB=1
--D_DLIB_CONFIG_FILE_HEADER_NAME="D:\IAR 9.32\arm\inc\c\DLib_Config_Full.h"
--D_DLIB_CONFIG_FILE_STRING="D:\\IAR 9.32\\arm\\inc\\c\\DLib_Config_Full.h"
+-D_DLIB_CONFIG_FILE_HEADER_NAME="C:\Program Files\IAR Systems\Embedded Workbench 9.1\arm\inc\c\DLib_Config_Full.h"
+-D_DLIB_CONFIG_FILE_STRING="C:\\Program Files\\IAR Systems\\Embedded Workbench 9.1\\arm\\inc\\c\\DLib_Config_Full.h"
 -D__VERSION__="IAR ANSI C/C++ Compiler V9.32.1.338/W64 for ARM"
 -D_VA_DEFINED=
 -D_VA_LIST=struct __va_list

@@ -1,36 +1,36 @@
-C:\Dev\LORA-SX1276\EWARM\STM32L151\ LORA\BrowseInfo\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_tim.pbi: \
-  C:\Dev\LORA-SX1276\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_tim.c \
-  C:\Dev\LORA-SX1276\EWARM\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal.h \
-  C:\Dev\LORA-SX1276\EWARM\..\Core\Inc\stm32l1xx_hal_conf.h \
-  C:\Dev\LORA-SX1276\EWARM\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_rcc.h \
-  C:\Dev\LORA-SX1276\EWARM\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_def.h \
-  C:\Dev\LORA-SX1276\EWARM\..\Drivers\CMSIS\Device\ST\STM32L1xx\Include\stm32l1xx.h \
-  C:\Dev\LORA-SX1276\EWARM\..\Drivers\CMSIS\Device\ST\STM32L1xx\Include\stm32l151xb.h \
-  C:\Dev\LORA-SX1276\EWARM\..\Drivers\CMSIS\Include\core_cm3.h \
+D:\Work\Programming\LORA\LORA\ SX1276\EWARM\STM32L151\ LORA\BrowseInfo\Drivers\STM32L1xx_HAL_Driver\stm32l1xx_hal_tim.pbi: \
+  D:\Work\Programming\LORA\LORA\ SX1276\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_tim.c \
+  D:\Work\Programming\LORA\LORA\ SX1276\EWARM\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal.h \
+  D:\Work\Programming\LORA\LORA\ SX1276\EWARM\..\Core\Inc\stm32l1xx_hal_conf.h \
+  D:\Work\Programming\LORA\LORA\ SX1276\EWARM\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_rcc.h \
+  D:\Work\Programming\LORA\LORA\ SX1276\EWARM\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_def.h \
+  D:\Work\Programming\LORA\LORA\ SX1276\EWARM\..\Drivers\CMSIS\Device\ST\STM32L1xx\Include\stm32l1xx.h \
+  D:\Work\Programming\LORA\LORA\ SX1276\EWARM\..\Drivers\CMSIS\Device\ST\STM32L1xx\Include\stm32l151xb.h \
+  D:\Work\Programming\LORA\LORA\ SX1276\EWARM\..\Drivers\CMSIS\Include\core_cm3.h \
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.1\arm\inc\c\stdint.h \
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.1\arm\inc\c\ycheck.h \
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.1\arm\inc\c\yvals.h \
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.1\arm\inc\c\DLib_Defaults.h \
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.1\arm\inc\c\DLib_Config_Full.h \
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.1\arm\inc\c\DLib_Product.h \
-  C:\Dev\LORA-SX1276\EWARM\..\Drivers\CMSIS\Include\cmsis_version.h \
-  C:\Dev\LORA-SX1276\EWARM\..\Drivers\CMSIS\Include\cmsis_compiler.h \
-  C:\Dev\LORA-SX1276\EWARM\..\Drivers\CMSIS\Include\cmsis_iccarm.h \
+  D:\Work\Programming\LORA\LORA\ SX1276\EWARM\..\Drivers\CMSIS\Include\cmsis_version.h \
+  D:\Work\Programming\LORA\LORA\ SX1276\EWARM\..\Drivers\CMSIS\Include\cmsis_compiler.h \
+  D:\Work\Programming\LORA\LORA\ SX1276\EWARM\..\Drivers\CMSIS\Include\cmsis_iccarm.h \
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.1\arm\inc\c\aarch32\iccarm_builtin.h \
-  C:\Dev\LORA-SX1276\EWARM\..\Drivers\CMSIS\Include\mpu_armv7.h \
-  C:\Dev\LORA-SX1276\EWARM\..\Drivers\CMSIS\Device\ST\STM32L1xx\Include\system_stm32l1xx.h \
-  C:\Dev\LORA-SX1276\EWARM\..\Drivers\STM32L1xx_HAL_Driver\Inc\Legacy\stm32_hal_legacy.h \
+  D:\Work\Programming\LORA\LORA\ SX1276\EWARM\..\Drivers\CMSIS\Include\mpu_armv7.h \
+  D:\Work\Programming\LORA\LORA\ SX1276\EWARM\..\Drivers\CMSIS\Device\ST\STM32L1xx\Include\system_stm32l1xx.h \
+  D:\Work\Programming\LORA\LORA\ SX1276\EWARM\..\Drivers\STM32L1xx_HAL_Driver\Inc\Legacy\stm32_hal_legacy.h \
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.1\arm\inc\c\stddef.h \
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.1\arm\inc\c\ysizet.h \
-  C:\Dev\LORA-SX1276\EWARM\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_rcc_ex.h \
-  C:\Dev\LORA-SX1276\EWARM\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_gpio.h \
-  C:\Dev\LORA-SX1276\EWARM\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_gpio_ex.h \
-  C:\Dev\LORA-SX1276\EWARM\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_dma.h \
-  C:\Dev\LORA-SX1276\EWARM\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_cortex.h \
-  C:\Dev\LORA-SX1276\EWARM\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_flash.h \
-  C:\Dev\LORA-SX1276\EWARM\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_flash_ex.h \
-  C:\Dev\LORA-SX1276\EWARM\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_flash_ramfunc.h \
-  C:\Dev\LORA-SX1276\EWARM\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_pwr.h \
-  C:\Dev\LORA-SX1276\EWARM\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_pwr_ex.h \
-  C:\Dev\LORA-SX1276\EWARM\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_uart.h \
-  C:\Dev\LORA-SX1276\EWARM\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_exti.h
+  D:\Work\Programming\LORA\LORA\ SX1276\EWARM\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_rcc_ex.h \
+  D:\Work\Programming\LORA\LORA\ SX1276\EWARM\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_gpio.h \
+  D:\Work\Programming\LORA\LORA\ SX1276\EWARM\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_gpio_ex.h \
+  D:\Work\Programming\LORA\LORA\ SX1276\EWARM\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_dma.h \
+  D:\Work\Programming\LORA\LORA\ SX1276\EWARM\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_cortex.h \
+  D:\Work\Programming\LORA\LORA\ SX1276\EWARM\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_flash.h \
+  D:\Work\Programming\LORA\LORA\ SX1276\EWARM\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_flash_ex.h \
+  D:\Work\Programming\LORA\LORA\ SX1276\EWARM\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_flash_ramfunc.h \
+  D:\Work\Programming\LORA\LORA\ SX1276\EWARM\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_pwr.h \
+  D:\Work\Programming\LORA\LORA\ SX1276\EWARM\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_pwr_ex.h \
+  D:\Work\Programming\LORA\LORA\ SX1276\EWARM\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_uart.h \
+  D:\Work\Programming\LORA\LORA\ SX1276\EWARM\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_exti.h

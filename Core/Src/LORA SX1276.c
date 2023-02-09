@@ -50,11 +50,7 @@ void Lora_init (void)
    SPI1_Write(REG_OCP, OCP_ENABLED | OCP_240mA);
    SPI1_Write(REG_PA_CONFIG, PA_BOOST_TO_20dBm | POUT_PA_17dBm);
    SPI1_Write(REG_MODEM_CONFIG_1, BANDWIDTH_500_kHz | CODING_RATE_4_8 | EXPLICIT_HEADER_MODE);
-<<<<<<< Updated upstream
-   SPI1_Write(REG_MODEM_CONFIG_2, SPREADING_FACTOR_12 | TX_NORMAL_SINGLE_MODE | CRC_DISABLE); 
-=======
    SPI1_Write(REG_MODEM_CONFIG_2, SPREADING_FACTOR_12 | TX_NORMAL_SINGLE_MODE | CRC_ENABLE ); 
->>>>>>> Stashed changes
    SPI1_Write(REG_MODEM_CONFIG_3, GAIN_INTERANL_AGC_LOOP); 
    SPI1_Write(REG_DIO_MAPPING_1, RFLR_DIOMAPPING1_RX_READY);
    SPI1_Write(REG_SYNC_WORD,0x12);	
@@ -134,43 +130,3 @@ void Lora_reset (void)
     HAL_Delay(10);  
 }
 
-<<<<<<< Updated upstream
-void Show_RSSI (void)
-{
-    uint8_t RSSI[] = "RSSI = -XXXdBm\r\n";
-    *(RSSI + 8) = (RSSI_value/100) + 0x30;
-    *(RSSI + 9) = (RSSI_value - 100*(*(RSSI + 8) - 0x30));
-    *(RSSI + 9) = (*(RSSI + 9)/10) + 0x30;
-    *(RSSI + 10) = ((RSSI_value - 100*(*(RSSI + 8) - 0x30) - 10*(*(RSSI + 9) - 0x30))+ 0x30);
-    HAL_UART_Transmit(&huart2, RSSI, sizeof(RSSI)-1, 30);
-}
-
-void Show_SNR (void)
-{
-    uint8_t SNR[] = "SNR = XXXdB\r\n";
-    *(SNR + 6) = (SNR_value/100) + 0x30;
-    *(SNR + 7) = (SNR_value - 100*(*(SNR + 6) - 0x30));
-    *(SNR + 7) = (*(SNR + 7)/10) + 0x30;
-    *(SNR + 8) = ((SNR_value - 100*(*(SNR + 6) - 0x30) - 10*(*(SNR + 7) - 0x30))+ 0x30);
-    HAL_UART_Transmit(&huart2, SNR, sizeof(SNR)-1, 30);
-}
-
-void Lora_Show_Firmware_Version (void)
-{
-<<<<<<< HEAD
-  uint8_t str_FW_Config[] = "\r\nFirmware ver. 0.1.7 (03-02-2023) by D.Zaretski\r\n";
-  HAL_UART_Transmit(&huart2, str_FW_Config, sizeof(str_FW_Config), 100);
-=======
-  uint8_t str_FW_Config[] = "Firmware ver. 0.1.7c (04-02-2023) by D.Zaretski with add auto by Alex\r\n";
-  HAL_UART_Transmit(&huart2, str_FW_Config, sizeof(str_FW_Config)-1, 30);
->>>>>>> help_str
-}
-
-void Lora_Show_Help (void)
-{
-  uint8_t help[] = "Write \"/Help\" for list of commands \r\n";
-  HAL_UART_Transmit(&huart2, help, sizeof(help)-1, 100);
-}
-
-=======
->>>>>>> Stashed changes

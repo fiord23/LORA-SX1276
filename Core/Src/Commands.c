@@ -7,6 +7,10 @@
 #include "usart.h"
 #define RX_BUFFER_SIZE 100
 extern uint8_t str_uart[RX_BUFFER_SIZE];
+extern bool auto_send;
+extern uint8_t autosend_loop;
+extern uint8_t SNR_value;
+extern uint8_t RSSI_value;
 
 // CRC8 Table
 uint8_t CRC8Table[256]={0};
@@ -25,14 +29,79 @@ void CRC8_init (uint8_t CRC8_Polynom) {
   } while (x > 0);
 }    
 
-bool Parser_Commands (void)
+// dec to byte Hex in ASCII
+void dec2hex(uint8_t dec, uint8_t * str)
 {
-  uint8_t help[] = "/Help\n";
-  uint8_t firmware_version[] = "/FW\n";
-  uint8_t set_command[] = "/Set 0x";
-  uint8_t read_command[] = "/Read 0x";
-  uint8_t config_command[] = "/Config\n";
-  if(strncmp((char*)str_uart, (char*)help, sizeof(help) - 1) == 0)
+  uint8_t symbol = dec >> 4, i=0;
+  do  {
+    if(symbol <0x0A)
+      str[i++] = symbol + '0';
+    else
+      str[i++] = symbol - 0x0A + 'A';
+    symbol = dec&0x0F;
+  } while (i<2);
+}
+
+// byte Hex ASCII to byte dec
+bool hex2dec (uint8_t* str, uint8_t* dec)
+{
+  uint8_t _dec = 0, i=0, symbol;
+  do  {
+    symbol=str[i]-'0';
+    if (symbol>0x09) 
+    {
+      symbol=toupper(str[i])-'A';
+      if (symbol>5) 
+        return false;
+      symbol+=0x0A;
+    }
+    _dec+=symbol<<4*(1-i++);
+  } while (i<2);
+  *dec=_dec;
+  return true;
+}
+
+// dec to byte Hex in ASCII
+uint8_t dec2str(uint32_t dec, uint8_t * str, uint8_t len)
+{
+  uint8_t symbol=0, i=0;
+  do  {
+    symbol=dec%10;
+    dec=dec/10;
+    str[len-++i] = symbol + '0';
+  } while ((dec!=0)&(i<len));
+  return i;
+}
+
+
+// Change \r\n to \0 in string
+void setendstr(uint8_t *str)
+{
+   char *isym,sym[]="\r\n";
+   isym = strpbrk ((char*)str,sym);
+   if ( isym != NULL)
+      *isym='\0';  
+}
+
+// Upper chars in string
+char * toUpper(char* str) {
+  for(char *ch=str; *ch; ch++) *ch=toupper(*ch);
+  return str;
+}
+
+
+// Read  from EEPROM
+// copy from https://blog.radiotech.kz/stm32/eeprom-v-stm32l-s-ispolzovaniem-hal/
+uint32_t readFromEEPROM (uint32_t address)
+{
+  return (*(__IO uint32_t *)address);
+}
+
+// Write from EEPROM
+void writeToEEPROM (uint32_t address, uint32_t value)
+{
+  HAL_StatusTypeDef flash_ok = HAL_ERROR;
+  while (flash_ok != HAL_OK)
   {
     flash_ok = HAL_FLASHEx_DATAEEPROM_Unlock();
   }
@@ -51,7 +120,6 @@ bool Parser_Commands (void)
   {
     flash_ok = HAL_FLASHEx_DATAEEPROM_Lock ();
   }
-  else return false;
 }
 
 
@@ -150,7 +218,7 @@ Msg 0 text - send message all available lora. Example: msg 0x00 Hello!\r\n";
 void Command_FW(void)
 {
   Lora_Show_Firmware_Version();
-  uint8_t color[] = "Show light RGBM, Red, Green, Blue, Mainred.\r\n";
+  uint8_t color[] = "RGBM, Red, Green, Blue, Mainred";
   HAL_UART_Transmit(&huart2, color, sizeof(color)-1, 100);  
   led_red_high();
   led_green_high();
@@ -179,6 +247,11 @@ void Command_FW(void)
   led_green_low();        
   led_redmain_low();
         
+/*
+  uint32_t x = readFromEEPROM(0x08080000);
+  if (x!=333)
+    writeToEEPROM (0x08080000, 333);
+*/
   Uart_Data_Clear();
 }  
 
@@ -187,7 +260,17 @@ void Command_auto(void)
      auto_send=true;
 }
 
-void Command_Set(void)
+void Command_Setloop(char * command)
+{
+// DELETE OR FOR TEST, COMMAND do't use
+  uint8_t msg[] = "Set loop=X\r\n";
+  msg[9]=command[6];
+  uint8_t loop = (uint8_t)command[6]-48;
+  HAL_UART_Transmit(&huart2, msg, sizeof(msg)-1, 100);
+}
+
+
+void Command_Set(char * command)
 {
     uint8_t reg = 0;
     uint8_t data = 0;
@@ -349,13 +432,6 @@ void Show_SNR (void)
 void Lora_Show_Firmware_Version (void)
 {
   uint8_t str_FW_Config[] = FW;
-  // read|set node N
-  if (nodeN==0) {
-    uint32_t x = readFromEEPROM(0x08080000);
-    if (x==0)
-      writeToEEPROM (0x08080000, 105);
-    nodeN=x&0xFF;
-  }
   HAL_UART_Transmit(&huart2, str_FW_Config, sizeof(str_FW_Config)-1, 30);
 }
 

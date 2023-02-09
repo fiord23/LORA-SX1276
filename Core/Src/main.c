@@ -18,9 +18,11 @@
   */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
-//#include "main.h"
+#include "main.h"
+#include "tim.h"
 #include "usart.h"
 #include "gpio.h"
+
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "SPI1.h"
@@ -56,6 +58,7 @@
    uint8_t str_uart[RX_BUFFER_SIZE] = {1, 2, 3};
    uint8_t str_uart_r[RX_BUFFER_SIZE] = {0, };
    uint8_t str_test[3] = {0, '\r', '\n'};
+   uint8_t counter_led = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -74,27 +77,33 @@ void SystemClock_Config(void);
   * @brief  The application entry point.
   * @retval int
   */
-   
 int main(void)
 {
   /* USER CODE BEGIN 1 */
    HAL_Init();
    SystemClock_Config();
   /* USER CODE END 1 */
+
   /* MCU Configuration--------------------------------------------------------*/
+
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
   HAL_Init();
+
   /* USER CODE BEGIN Init */
     
   /* USER CODE END Init */
+
   /* Configure the system clock */
   SystemClock_Config();
+
   /* USER CODE BEGIN SysInit */
     
   /* USER CODE END SysInit */
+
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_USART2_UART_Init();
+  MX_TIM10_Init();
   /* USER CODE BEGIN 2 */
   SPI_GPIO_config ();
   SPI_config();
@@ -106,7 +115,10 @@ int main(void)
   Lora_Show_Help();
   __HAL_UART_ENABLE_IT(&huart2, UART_IT_IDLE);
   HAL_UART_Receive_IT(&huart2, str_uart, RX_BUFFER_SIZE);
+  HAL_TIM_OC_Start_IT(&htim10, TIM_CHANNEL_1);
+  
   /* USER CODE END 2 */
+
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   uint32_t autosend_i;
@@ -178,6 +190,7 @@ void SystemClock_Config(void)
   /** Configure the main internal regulator output voltage
   */
   __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);
+
   /** Initializes the RCC Oscillators according to the specified parameters
   * in the RCC_OscInitTypeDef structure.
   */
@@ -192,6 +205,7 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
+
   /** Initializes the CPU, AHB and APB buses clocks
   */
   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
@@ -210,12 +224,20 @@ void SystemClock_Config(void)
 /* USER CODE BEGIN 4 */
 void EXTI0_IRQHandler(void)	
 {
-    EXTI->PR = EXTI_PR_PR0;
-/*    asm("nop");
-    asm("nop");
-    asm("nop");
-    asm("nop");
-    asm("nop");*/
+    
+    if( (GPIOA->IDR & (1 << 0)) == 1 ) 
+    {
+      //led_blue_high();
+    //  led_green_low();
+      EXTI->PR = EXTI_PR_PR0;
+    }
+    else 
+    {
+    //  led_green_high();
+     // led_blue_low();
+      EXTI->PR = EXTI_PR_PR0;
+    }
+    
     flag_press_button = true;
     auto_send=!auto_send;
 }
@@ -231,6 +253,27 @@ void EXTI15_10_IRQHandler(void)
     receiver_answer = true;
 }
 
+
+void HAL_TIM_OC_DelayElapsedCallback(TIM_HandleTypeDef *htim)
+{
+        if(htim->Instance == TIM10) //check if the interrupt comes from TIM1
+        {
+          
+          if(counter_led == 0)
+          {
+                led_green_high();
+                led_blue_low();
+                counter_led++;
+          }
+         else  if (counter_led == 1)
+         {
+                led_green_low();
+                led_blue_high();
+                counter_led = 0;
+         }
+          
+        }
+}
 /* USER CODE END 4 */
 
 /**
@@ -264,5 +307,3 @@ void assert_failed(uint8_t *file, uint32_t line)
   /* USER CODE END 6 */
 }
 #endif /* USE_FULL_ASSERT */
-
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

@@ -1,3 +1,4 @@
+/* USER CODE BEGIN Header */
 /**
   ******************************************************************************
   * @file    gpio.c
@@ -6,16 +7,16 @@
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; Copyright (c) 2023 STMicroelectronics.
-  * All rights reserved.</center></h2>
+  * Copyright (c) 2023 STMicroelectronics.
+  * All rights reserved.
   *
-  * This software component is licensed by ST under BSD 3-Clause license,
-  * the "License"; You may not use this file except in compliance with the
-  * License. You may obtain a copy of the License at:
-  *                        opensource.org/licenses/BSD-3-Clause
+  * This software is licensed under terms that can be found in the LICENSE file
+  * in the root directory of this software component.
+  * If no LICENSE file comes with this software, it is provided AS-IS.
   *
   ******************************************************************************
   */
+/* USER CODE END Header */
 
 /* Includes ------------------------------------------------------------------*/
 #include "gpio.h"
@@ -70,7 +71,8 @@ void exti_config (void)
     SYSCFG->EXTICR[1] |= SYSCFG_EXTICR1_EXTI0_PA;
     SYSCFG->EXTICR[2] |= SYSCFG_EXTICR2_EXTI5;
     EXTI->PR |= EXTI_PR_PR0 | EXTI_PR_PR15; 
-    EXTI->RTSR |= EXTI_RTSR_RT0 | EXTI_RTSR_RT15;  ; //rising
+    EXTI->RTSR |= EXTI_RTSR_RT0 | EXTI_RTSR_RT15; //rising
+    EXTI->FTSR |=  EXTI_FTSR_TR0; //falling button
     EXTI->IMR |= EXTI_IMR_MR0 | EXTI_IMR_MR15;
     NVIC_SetPriority(EXTI0_IRQn, 0);
     NVIC_SetPriority(EXTI15_10_IRQn, 0);
@@ -98,5 +100,3 @@ void Delay_a (void)
   for (i=0; i != 0x100; i++);  
 }
 /* USER CODE END 2 */
-
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

@@ -749,7 +749,6 @@ void HAL_UART_ErrorCallback(UART_HandleTypeDef *huart);
 void HAL_UART_AbortCpltCallback(UART_HandleTypeDef *huart);
 void HAL_UART_AbortTransmitCpltCallback(UART_HandleTypeDef *huart);
 void HAL_UART_AbortReceiveCpltCallback(UART_HandleTypeDef *huart);
-void HAL_UART_IDLE_Callback(UART_HandleTypeDef *huart);
 
 void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size);
 

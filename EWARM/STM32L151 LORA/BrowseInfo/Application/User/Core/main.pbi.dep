@@ -1,6 +1,5 @@
 D:\Work\Programming\LORA\LORA\ SX1276\EWARM\STM32L151\ LORA\BrowseInfo\Application\User\Core\main.pbi: \
   D:\Work\Programming\LORA\LORA\ SX1276\Core\Src\main.c \
-  D:\Work\Programming\LORA\LORA\ SX1276\EWARM\..\Core\Inc\usart.h \
   D:\Work\Programming\LORA\LORA\ SX1276\EWARM\..\Core\Inc\main.h \
   D:\Work\Programming\LORA\LORA\ SX1276\EWARM\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal.h \
   D:\Work\Programming\LORA\LORA\ SX1276\EWARM\..\Core\Inc\stm32l1xx_hal_conf.h \
@@ -34,8 +33,13 @@ D:\Work\Programming\LORA\LORA\ SX1276\EWARM\STM32L151\ LORA\BrowseInfo\Applicati
   D:\Work\Programming\LORA\LORA\ SX1276\EWARM\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_flash_ramfunc.h \
   D:\Work\Programming\LORA\LORA\ SX1276\EWARM\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_pwr.h \
   D:\Work\Programming\LORA\LORA\ SX1276\EWARM\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_pwr_ex.h \
+  D:\Work\Programming\LORA\LORA\ SX1276\EWARM\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_tim.h \
+  D:\Work\Programming\LORA\LORA\ SX1276\EWARM\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_tim_ex.h \
   D:\Work\Programming\LORA\LORA\ SX1276\EWARM\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_uart.h \
   D:\Work\Programming\LORA\LORA\ SX1276\EWARM\..\Drivers\STM32L1xx_HAL_Driver\Inc\stm32l1xx_hal_exti.h \
+  D:\Work\Programming\LORA\LORA\ SX1276\EWARM\..\Core\Inc\tim.h \
+  D:\Work\Programming\LORA\LORA\ SX1276\EWARM\..\Core\Inc\main.h \
+  D:\Work\Programming\LORA\LORA\ SX1276\EWARM\..\Core\Inc\usart.h \
   D:\Work\Programming\LORA\LORA\ SX1276\EWARM\..\Core\Inc\gpio.h \
   D:\Work\Programming\LORA\LORA\ SX1276\EWARM\..\Core\Inc\SPI1.h \
   D:\Work\Programming\LORA\LORA\ SX1276\EWARM\..\Core\Inc\LORA\ SX1276.h \

@@ -1,4 +1,5 @@
 /* USER CODE BEGIN Header */
+#define FW "Firmware ver. 0.1.8 (08-02-2023) by D.Zaretski with add auto by Alex\r\n"
 /**
   ******************************************************************************
   * @file           : main.h
@@ -59,7 +60,7 @@ void Error_Handler(void);
 
 /* Private defines -----------------------------------------------------------*/
 /* USER CODE BEGIN Private defines */
-
+#define RX_BUFFER_SIZE 100
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus

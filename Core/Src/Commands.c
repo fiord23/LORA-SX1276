@@ -7,8 +7,6 @@
 #include "usart.h"
 #define RX_BUFFER_SIZE 100
 extern uint8_t str_uart[RX_BUFFER_SIZE];
-extern bool auto_send;
-extern uint8_t autosend_loop;
 
 // CRC8 Table
 uint8_t CRC8Table[256]={0};
@@ -27,69 +25,8 @@ void CRC8_init (uint8_t CRC8_Polynom) {
   } while (x > 0);
 }    
 
-// dec to byte Hex in ASCII
-void dec2hex(uint8_t dec, uint8_t * str)
-{
-  uint8_t symbol = dec >> 4, i=0;
-  do  {
-    if(symbol <0x0A)
-      str[i++] = symbol + '0';
-    else
-      str[i++] = symbol - 0x0A + 'A';
-    symbol = dec&0x0F;
-  } while (i<2);
-}
-
-// byte Hex ASCII to byte dec
-bool hex2dec (uint8_t* str, uint8_t* dec)
-{
-  uint8_t _dec = 0, i=0, symbol;
-  do  {
-    symbol=str[i]-'0';
-    if (symbol>0x09) 
-    {
-      symbol=toupper(str[i])-'A';
-      if (symbol>5) 
-        return false;
-      symbol+=0x0A;
-    }
-    _dec+=symbol<<4*(1-i++);
-  } while (i<2);
-  *dec=_dec;
-  return true;
-}
-
-// dec to byte Hex in ASCII
-uint8_t dec2str(uint32_t dec, uint8_t * str, uint8_t len)
-{
-  uint8_t symbol=0, i=0;
-  do  {
-    symbol=dec%10;
-    dec=dec/10;
-    str[len-++i] = symbol + '0';
-  } while ((dec!=0)&(i<len));
-  return i;
-}
-
-
-// Change \r\n to \0 in string
-void setendstr(uint8_t *str)
-{
-   char *isym,sym[]="\r\n";
-   isym = strpbrk ((char*)str,sym);
-   if ( isym != NULL)
-      *isym='\0';  
-}
-
-// Upper chars in string
-char * toUpper(char* str) {
-  for(char *ch=str; *ch; ch++) *ch=toupper(*ch);
-  return str;
-}
-
 bool Parser_Commands (void)
 {
-<<<<<<< HEAD
   uint8_t help[] = "/Help\n";
   uint8_t firmware_version[] = "/FW\n";
   uint8_t set_command[] = "/Set 0x";
@@ -97,31 +34,30 @@ bool Parser_Commands (void)
   uint8_t config_command[] = "/Config\n";
   if(strncmp((char*)str_uart, (char*)help, sizeof(help) - 1) == 0)
   {
-    Lora_Show_List_of_Commands();
-    return true;
+    flash_ok = HAL_FLASHEx_DATAEEPROM_Unlock();
   }
-  else if (strncmp((char*)str_uart, (char*)firmware_version, sizeof(firmware_version) - 1 ) == 0)
+  flash_ok = HAL_ERROR;
+  while (flash_ok != HAL_OK)
   {
-    Command_FW();
-    return true;
-  }    
-  else if ((strncmp((char*)str_uart, (char*)set_command, sizeof(set_command) - 1)) == 0)
-  {
-    Command_Set();
-    return true;
-  }      
-  else if ((strncmp((char*)str_uart, (char*)read_command, sizeof(read_command) - 1)) == 0)
-  {
-    Command_Read();
-    return true;
+    flash_ok = HAL_FLASHEx_DATAEEPROM_Erase (FLASH_TYPEERASEDATA_WORD, address);
   }
-  else if ((strncmp((char*)str_uart, (char*)config_command, sizeof(config_command) - 1)) == 0)
+  flash_ok = HAL_ERROR;
+  while (flash_ok != HAL_OK)
   {
-    Show_Config();
-    return true;
+    flash_ok = HAL_FLASHEx_DATAEEPROM_Program (FLASH_TYPEPROGRAMDATA_WORD, address, value);
+  }
+  flash_ok = HAL_ERROR;
+  while (flash_ok != HAL_OK)
+  {
+    flash_ok = HAL_FLASHEx_DATAEEPROM_Lock ();
   }
   else return false;
-=======
+}
+
+
+
+bool Parser_Commands (void)
+{
   char help[] = "/HELP";
   char firmware_version[] = "/FW";
   char auto_command[] = "/AUTO";
@@ -129,6 +65,8 @@ bool Parser_Commands (void)
   char set_command[] = "/SET 0X";
   char read_command[] = "/READ 0X";
   char config_command[] = "/CONFIG";
+  char resetlora_command[] = "/RESETLORA";
+  char resetstm_command[] = "/RESETSTM";  
   char msg_comerror[]="\r\nUnkonw command\r\n";
   char command[20];
 
@@ -173,13 +111,22 @@ bool Parser_Commands (void)
         Show_Config();
         return true;
       }
+      else if ((strncmp(command, resetstm_command, sizeof(resetstm_command)-1)) == 0)
+      {
+        HAL_NVIC_SystemReset();
+        return true;
+      }
+      else if ((strncmp(command, resetlora_command, sizeof(resetlora_command)-1)) == 0)
+      {
+        Lora_reset();
+        return true;
+      }
       else {
         HAL_UART_Transmit(&huart2, (uint8_t*)msg_comerror, sizeof(msg_comerror)-1, 30);
         return false;
       }
    }
    return false;
->>>>>>> help_str
 }
 
 void Lora_Show_List_of_Commands (void)
@@ -190,6 +137,8 @@ void Lora_Show_List_of_Commands (void)
 /Set - Set in reg(0xAB) data (0x55). Example:/Set 0xAB 0x55\r\n \
 /Read - Read from reg(0xAB) data (0x55). Example:/Read 0xAB 0x55\r\n \
 /Config - show current lora config\r\n \
+/ResetSTMr\n \
+/ResetloRa - reset LoRa\r\n \
 /FW - Show firmware version\r\n \
 /Who - to get list  ID available lora online \r\n \
 Msg ID text - send message target ID lora. Example: msg 0x18 Hello!\r\n \
@@ -200,26 +149,45 @@ Msg 0 text - send message all available lora. Example: msg 0x00 Hello!\r\n";
 
 void Command_FW(void)
 {
-    Lora_Show_Firmware_Version();  
-    Uart_Data_Clear();
-}
+  Lora_Show_Firmware_Version();
+  uint8_t color[] = "Show light RGBM, Red, Green, Blue, Mainred.\r\n";
+  HAL_UART_Transmit(&huart2, color, sizeof(color)-1, 100);  
+  led_red_high();
+  led_green_high();
+  led_blue_high();
+  led_redmain_high();
+  HAL_Delay(500);
+
+  led_green_low();
+  led_blue_low();
+  led_redmain_low();
+  HAL_Delay(100);
+
+  led_red_low();  
+  led_green_high();
+  HAL_Delay(100);
+
+  led_green_low(); 
+  led_blue_high();
+  HAL_Delay(100);
+
+  led_blue_low(); 
+  led_redmain_high();
+  HAL_Delay(100);
+  led_blue_low();
+  led_red_low();
+  led_green_low();        
+  led_redmain_low();
+        
+  Uart_Data_Clear();
+}  
 
 void Command_auto(void)
 {
      auto_send=true;
 }
 
-void Command_Setloop(char * command)
-{
-  uint8_t msg[] = "Set loop=X\r\n";
-  msg[9]=command[6];
-  uint8_t loop = (uint8_t)command[6]-48;
-  HAL_UART_Transmit(&huart2, msg, sizeof(msg)-1, 100);
-  autosend_loop=loop;
-}
-
-
-void Command_Set(char * command)
+void Command_Set(void)
 {
     uint8_t reg = 0;
     uint8_t data = 0;
@@ -355,3 +323,46 @@ void Error (void)
   uint8_t error[] = "\r\nAscii 2 Hex Error!!!\r\n";
   HAL_UART_Transmit(&huart2, error, sizeof(error)-1, 100);
 }
+
+
+
+void Show_RSSI (void)
+{
+    uint8_t RSSI[] = "RSSI = -XXXdBm\r\n";
+    *(RSSI + 8) = (RSSI_value/100) + 0x30;
+    *(RSSI + 9) = (RSSI_value - 100*(*(RSSI + 8) - 0x30));
+    *(RSSI + 9) = (*(RSSI + 9)/10) + 0x30;
+    *(RSSI + 10) = ((RSSI_value - 100*(*(RSSI + 8) - 0x30) - 10*(*(RSSI + 9) - 0x30))+ 0x30);
+    HAL_UART_Transmit(&huart2, RSSI, sizeof(RSSI)-1, 30);
+}
+
+void Show_SNR (void)
+{
+    uint8_t SNR[] = "SNR = XXXdB\r\n";
+    *(SNR + 6) = (SNR_value/100) + 0x30;
+    *(SNR + 7) = (SNR_value - 100*(*(SNR + 6) - 0x30));
+    *(SNR + 7) = (*(SNR + 7)/10) + 0x30;
+    *(SNR + 8) = ((SNR_value - 100*(*(SNR + 6) - 0x30) - 10*(*(SNR + 7) - 0x30))+ 0x30);
+    HAL_UART_Transmit(&huart2, SNR, sizeof(SNR)-1, 30);
+}
+
+void Lora_Show_Firmware_Version (void)
+{
+  uint8_t str_FW_Config[] = FW;
+  // read|set node N
+  if (nodeN==0) {
+    uint32_t x = readFromEEPROM(0x08080000);
+    if (x==0)
+      writeToEEPROM (0x08080000, 105);
+    nodeN=x&0xFF;
+  }
+  HAL_UART_Transmit(&huart2, str_FW_Config, sizeof(str_FW_Config)-1, 30);
+}
+
+void Lora_Show_Help (void)
+{
+  uint8_t help[] = "Write \"/Help\" for list of commands \r\n";
+  HAL_UART_Transmit(&huart2, help, sizeof(help)-1, 100);
+}
+
+

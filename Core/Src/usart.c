@@ -21,7 +21,7 @@
 #include "usart.h"
 #include <stdbool.h>
 /* USER CODE BEGIN 0 */
-#define RX_BUFFER_SIZE 100
+//#define RX_BUFFER_SIZE 100
 extern uint8_t str_uart[RX_BUFFER_SIZE];
 extern uint8_t rx_buffer_len;
 extern bool flag_uart_receiver;

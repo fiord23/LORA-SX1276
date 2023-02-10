@@ -59,6 +59,9 @@
    uint8_t str_uart_r[RX_BUFFER_SIZE] = {0, };
    uint8_t str_test[3] = {0, '\r', '\n'};
    uint8_t counter_led = 0;
+   uint32_t counter_for_button = 0;
+   uint8_t button_sw = '0';
+   bool button_state = false;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -227,19 +230,29 @@ void EXTI0_IRQHandler(void)
     
     if( (GPIOA->IDR & (1 << 0)) == 1 ) 
     {
-      //led_blue_high();
-    //  led_green_low();
       EXTI->PR = EXTI_PR_PR0;
+      button_state = true;
     }
     else 
     {
-    //  led_green_high();
-     // led_blue_low();
       EXTI->PR = EXTI_PR_PR0;
+      if ((counter_for_button >0)  &  (counter_for_button <10) )
+       {
+        led_blue_low();
+        led_green_low();
+      }       
+      else if ((counter_for_button >=10)  &  (counter_for_button <=500) )
+      {
+        led_blue_high();
+        led_green_low();
+      }
+        counter_for_button = 0;
+        button_state = false;
+      
     }
     
-    flag_press_button = true;
-    auto_send=!auto_send;
+   // flag_press_button = true;
+   // auto_send=!auto_send;
 }
 
 void EXTI15_10_IRQHandler(void)	
@@ -258,20 +271,17 @@ void HAL_TIM_OC_DelayElapsedCallback(TIM_HandleTypeDef *htim)
 {
         if(htim->Instance == TIM10) //check if the interrupt comes from TIM1
         {
-          
-          if(counter_led == 0)
+          if(button_state)
           {
-                led_green_high();
-                led_blue_low();
-                counter_led++;
+            counter_for_button++;
           }
-         else  if (counter_led == 1)
-         {
-                led_green_low();
-                led_blue_high();
-                counter_led = 0;
-         }
-          
+          if(counter_for_button >= 2000)
+            counter_for_button = 2000;
+           if ((counter_for_button >1500)  &  (counter_for_button <=2000) )
+            {
+                led_blue_low();
+                led_green_high();
+            }             
         }
 }
 /* USER CODE END 4 */

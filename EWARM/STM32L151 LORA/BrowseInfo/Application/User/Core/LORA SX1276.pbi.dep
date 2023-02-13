@@ -41,4 +41,5 @@ D:\Work\Programming\LORA\LORA\ SX1276\EWARM\STM32L151\ LORA\BrowseInfo\Applicati
   D:\Work\Programming\LORA\LORA\ SX1276\EWARM\..\Core\Inc\LORA\ SX1276.h \
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.1\arm\inc\c\stdbool.h \
   D:\Work\Programming\LORA\LORA\ SX1276\EWARM\..\Core\Inc\gpio.h \
-  D:\Work\Programming\LORA\LORA\ SX1276\EWARM\..\Core\Inc\usart.h
+  D:\Work\Programming\LORA\LORA\ SX1276\EWARM\..\Core\Inc\usart.h \
+  D:\Work\Programming\LORA\LORA\ SX1276\EWARM\..\Core\Inc\Commands.h

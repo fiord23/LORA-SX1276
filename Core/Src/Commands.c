@@ -11,7 +11,6 @@ extern bool auto_send;
 extern uint8_t autosend_loop;
 extern uint8_t SNR_value;
 extern uint8_t RSSI_value;
-
 // CRC8 Table
 uint8_t CRC8Table[256]={0};
 void CRC8_init (uint8_t CRC8_Polynom) {
@@ -190,7 +189,7 @@ bool Parser_Commands (void)
         return true;
       }
       else {
-        HAL_UART_Transmit(&huart2, (uint8_t*)msg_comerror, sizeof(msg_comerror)-1, 30);
+        HAL_UART_Transmit(&huart2, (uint8_t*)msg_comerror, sizeof(msg_comerror)-1, TIME_FOR_TRANSMIT_UART);
         return false;
       }
    }
@@ -211,7 +210,7 @@ void Lora_Show_List_of_Commands (void)
 /Who - to get list  ID available lora online \r\n \
 Msg ID text - send message target ID lora. Example: msg 0x18 Hello!\r\n \
 Msg 0 text - send message all available lora. Example: msg 0x00 Hello!\r\n";
-  HAL_UART_Transmit(&huart2, list_of_commands, sizeof(list_of_commands)-1, 100);
+  HAL_UART_Transmit(&huart2, list_of_commands, sizeof(list_of_commands)-1, TIME_FOR_TRANSMIT_UART);
   Uart_Data_Clear();
 }
 
@@ -219,7 +218,7 @@ void Command_FW(void)
 {
   Lora_Show_Firmware_Version();
   uint8_t color[] = "RGBM, Red, Green, Blue, Mainred";
-  HAL_UART_Transmit(&huart2, color, sizeof(color)-1, 100);  
+  HAL_UART_Transmit(&huart2, color, sizeof(color)-1, TIME_FOR_TRANSMIT_UART);  
   led_red_high();
   led_green_high();
   led_blue_high();
@@ -265,8 +264,8 @@ void Command_Setloop(char * command)
 // DELETE OR FOR TEST, COMMAND do't use
   uint8_t msg[] = "Set loop=X\r\n";
   msg[9]=command[6];
-  uint8_t loop = (uint8_t)command[6]-48;
-  HAL_UART_Transmit(&huart2, msg, sizeof(msg)-1, 100);
+  //uint8_t loop = (uint8_t)command[6]-48;
+  HAL_UART_Transmit(&huart2, msg, sizeof(msg)-1, TIME_FOR_TRANSMIT_UART);
 }
 
 
@@ -294,7 +293,7 @@ void Command_Set(char * command)
      result_write[12] = str_uart[8];
      result_write[33] = str_uart[12];
      result_write[34] = str_uart[13];
-     HAL_UART_Transmit(&huart2, result_write, sizeof(result_write)-1, 100);  
+     HAL_UART_Transmit(&huart2, result_write, sizeof(result_write)-1, TIME_FOR_TRANSMIT_UART);  
      Uart_Data_Clear();
     }
 }
@@ -312,14 +311,14 @@ void Command_Read(char * command)
         result_read[20] = str_uart[8];
         result_read[21] = str_uart[9];
         Hex_to_ASCII(&data, &result_read[28], &result_read[29]);
-        HAL_UART_Transmit(&huart2, result_read, sizeof(result_read)-1, 100);  
+        HAL_UART_Transmit(&huart2, result_read, sizeof(result_read)-1, TIME_FOR_TRANSMIT_UART);  
         Uart_Data_Clear();
     }
 }
 
 void Show_Config (void)
 {
-  HAL_UART_Transmit(&huart2, "{", 1, 30); 
+  HAL_UART_Transmit(&huart2, "{", 1, TIME_FOR_TRANSMIT_UART); 
   uint8_t json_data[] = "\"0x00\":\"0x00\"";
   uint8_t str[] = "\"0x00\":\"0x00\"";
   bool firstch=true;
@@ -331,13 +330,13 @@ void Show_Config (void)
     if (firstch)
       firstch=false;
     else
-      HAL_UART_Transmit(&huart2, ",", 1, 30);       
+      HAL_UART_Transmit(&huart2, ",", 1, TIME_FOR_TRANSMIT_UART);       
     uint8_t data = SPI1_Read(reg);
     crc = CRC8Table[crc ^ reg];
     crc = CRC8Table[crc ^ data];
     Hex_to_ASCII(&reg, &json_data[3], &json_data[4]);
     Hex_to_ASCII(&data, &json_data[10], &json_data[11]);
-    HAL_UART_Transmit(&huart2, json_data, sizeof(json_data)-1, 30);   
+    HAL_UART_Transmit(&huart2, json_data, sizeof(json_data)-1, TIME_FOR_TRANSMIT_UART);   
   }
 
   //show CRC code
@@ -441,4 +440,20 @@ void Lora_Show_Help (void)
   HAL_UART_Transmit(&huart2, help, sizeof(help)-1, 100);
 }
 
+void Auto_Mode(void)
+{
+      uint32_t autosend_i = 0;
+      HAL_UART_Transmit(&huart2, "Start AutoSend\r\n", 16, 30);  
+      uint8_t msg[] = "Msg N00000 by LoRa fw 000000\r\n";
+      uint8_t msg_size=strlen((char *)msg);
+      dec2str(autosend_i++,&msg[5],5);
+      HAL_UART_Transmit(&huart2, "send:", 5, 30);  
+      HAL_UART_Transmit(&huart2, msg, msg_size, 30);  
+      Lora_transmit (msg, msg_size);
+      HAL_Delay(2500);
+      if (autosend_i==32000) {
+        auto_send=false;
+        HAL_UART_Transmit(&huart2, "finish autosend.\r\n", 18, 30);
+      }
 
+}

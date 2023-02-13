@@ -35,7 +35,7 @@ extern "C" {
 extern UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN Private defines */
-
+#define TIME_FOR_TRANSMIT_UART 30
 /* USER CODE END Private defines */
 
 void MX_USART2_UART_Init(void);

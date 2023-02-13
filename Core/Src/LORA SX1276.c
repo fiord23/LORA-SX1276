@@ -3,6 +3,7 @@
 #include "LORA SX1276.h"
 #include "gpio.h"
 #include "usart.h"
+#include "Commands.h"
 
 uint8_t RSSI_value = 0;
 uint8_t SNR_value = 0;

@@ -124,7 +124,7 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  uint32_t autosend_i;
+  
   while (1)
   {    
     
@@ -150,27 +150,15 @@ int main(void)
     if (receiver_answer)
       {
         Lora_recieve(str_uart_r, &num_of_bytes);
-        HAL_UART_Transmit(&huart2, str_uart_r, num_of_bytes, 30);
+        HAL_UART_Transmit(&huart2, str_uart_r, num_of_bytes, TIME_FOR_TRANSMIT_UART);
         Show_RSSI();
         Show_SNR();
         led_red_high();
         receiver_answer = false;
-      }    
- 
-    if (auto_send) {
-      HAL_UART_Transmit(&huart2, "Start AutoSend\r\n", 16, 30);  
-      uint8_t msg[] = "Msg N00000 by LoRa fw 000000\r\n";
-      uint8_t msg_size=strlen((char *)msg);
-      dec2str(autosend_i++,&msg[5],5);
-      HAL_UART_Transmit(&huart2, "send:", 5, 30);  
-      HAL_UART_Transmit(&huart2, msg, msg_size, 30);  
-      Lora_transmit (msg, msg_size);
-      HAL_Delay(2500);
-      if (autosend_i==32000) {
-        auto_send=false;
-        HAL_UART_Transmit(&huart2, "finish autosend.\r\n", 18, 30);
-      }
-
+      }     
+    if (auto_send)
+    {
+      Auto_Mode();
     }
   //  */
      
@@ -231,10 +219,10 @@ void EXTI0_IRQHandler(void)
     if( (GPIOA->IDR & (1 << 0)) == 1 ) 
     {
       EXTI->PR = EXTI_PR_PR0;
-      button_state = true;
+      button_state = true;            
     }
     else 
-    {
+    {     
       EXTI->PR = EXTI_PR_PR0;
       if ((counter_for_button >0)  &  (counter_for_button <10) )
        {
@@ -243,6 +231,8 @@ void EXTI0_IRQHandler(void)
       }       
       else if ((counter_for_button >=10)  &  (counter_for_button <=500) )
       {
+        flag_press_button = true;
+        auto_send=!auto_send;
         led_blue_high();
         led_green_low();
       }
@@ -251,8 +241,7 @@ void EXTI0_IRQHandler(void)
       
     }
     
-   // flag_press_button = true;
-   // auto_send=!auto_send;
+
 }
 
 void EXTI15_10_IRQHandler(void)	
@@ -281,6 +270,7 @@ void HAL_TIM_OC_DelayElapsedCallback(TIM_HandleTypeDef *htim)
             {
                 led_blue_low();
                 led_green_high();
+                button_state = false;
             }             
         }
 }

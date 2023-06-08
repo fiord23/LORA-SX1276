@@ -2,7 +2,7 @@
 #include <string.h>
 #include <ctype.h>
 #include "SPI1.h"
-#include "LORA SX1276.h"
+#include "LORASX1276.h"
 #include "gpio.h"
 #include "usart.h"
 #define RX_BUFFER_SIZE 100

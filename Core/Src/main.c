@@ -26,7 +26,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "SPI1.h"
-#include "LORA SX1276.h" 
+#include "LORASX1276.h" 
 #include "Commands.h"
 #include <string.h>
 /* USER CODE END Includes */

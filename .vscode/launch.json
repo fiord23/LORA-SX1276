@@ -1,0 +1,24 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    
+        "version": "0.2.0",
+        "configurations": [
+            {
+                "name": "LORA-SX1276",
+                "type": "cortex-debug",
+                "request": "launch",
+                "cwd": "${workspaceRoot}",
+                "servertype": "openocd",
+                "executable": "./build/lorastm32l151.elf",
+                "interface": "swd",
+                "svdFile": "STM32L151.svd",
+                "configFiles": [
+                    "interface/stlink-v2.cfg",
+                    "target/stm32l1.cfg"
+                ],
+                "preLaunchTask": "Build",
+            }
+        ]
+    }

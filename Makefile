@@ -187,10 +187,12 @@ $(BUILD_DIR):
 #######################################
 clean:
 	-rm -fR $(BUILD_DIR)
-  
 #######################################
 # dependencies
 #######################################
 -include $(wildcard $(BUILD_DIR)/*.d)
+#######################################
+prog: $(BUILD_DIR)/$(TARGET).elf 
+	openocd -f interface/stlink.cfg -f target/stm32l1.cfg -c "program build/$(TARGET).elf verify exit reset"
 
 # *** EOF ***
